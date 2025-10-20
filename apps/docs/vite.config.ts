@@ -6,7 +6,7 @@ import { defineConfig } from "vite"
 import tsConfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
-  base: "./",
+  base: "/frontend/uilab",
   server: {
     port: 3000,
   },
