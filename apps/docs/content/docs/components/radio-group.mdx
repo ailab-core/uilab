@@ -1,0 +1,148 @@
+---
+title: Radio Group
+description: A set of checkable buttons where only one can be checked at a time.
+---
+
+import { RadioGroup, RadioGroupItem, Label } from "uilab-core"
+
+The Radio Group component allows users to select a single option from a set of choices.
+
+## Examples
+
+### Default Radio Group
+
+<ComponentPreview title="Default Radio Group">
+  <RadioGroup defaultValue="option-1">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-1" id="option-1" />
+      <Label htmlFor="option-1">Option 1</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-2" id="option-2" />
+      <Label htmlFor="option-2">Option 2</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-3" id="option-3" />
+      <Label htmlFor="option-3">Option 3</Label>
+    </div>
+  </RadioGroup>
+</ComponentPreview>
+
+```tsx
+import { RadioGroup, RadioGroupItem, Label } from 'uilab-core'
+
+export function Example() {
+  return (
+    <RadioGroup defaultValue="option-1">
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-1" id="option-1" />
+        <Label htmlFor="option-1">Option 1</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-2" id="option-2" />
+        <Label htmlFor="option-2">Option 2</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-3" id="option-3" />
+        <Label htmlFor="option-3">Option 3</Label>
+      </div>
+    </RadioGroup>
+  )
+}
+```
+
+### With Descriptions
+
+<ComponentPreview title="Radio Group with Descriptions">
+  <RadioGroup defaultValue="comfortable">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="default" id="r1" />
+      <div>
+        <Label htmlFor="r1">Default</Label>
+        <p className="text-sm text-muted-foreground">Standard spacing</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="comfortable" id="r2" />
+      <div>
+        <Label htmlFor="r2">Comfortable</Label>
+        <p className="text-sm text-muted-foreground">More padding</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="compact" id="r3" />
+      <div>
+        <Label htmlFor="r3">Compact</Label>
+        <p className="text-sm text-muted-foreground">Less padding</p>
+      </div>
+    </div>
+  </RadioGroup>
+</ComponentPreview>
+
+```tsx
+<RadioGroup defaultValue="comfortable">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="default" id="r1" />
+    <div>
+      <Label htmlFor="r1">Default</Label>
+      <p className="text-sm text-muted-foreground">Standard spacing</p>
+    </div>
+  </div>
+  {/* More options... */}
+</RadioGroup>
+```
+
+### Disabled Options
+
+<ComponentPreview title="Radio Group with Disabled Options">
+  <RadioGroup defaultValue="option-1">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-1" id="d1" />
+      <Label htmlFor="d1">Available</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-2" id="d2" disabled />
+      <Label htmlFor="d2">Disabled</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-3" id="d3" />
+      <Label htmlFor="d3">Available</Label>
+    </div>
+  </RadioGroup>
+</ComponentPreview>
+
+```tsx
+<RadioGroup defaultValue="option-1">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-1" id="d1" />
+    <Label htmlFor="d1">Available</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-2" id="d2" disabled />
+    <Label htmlFor="d2">Disabled</Label>
+  </div>
+</RadioGroup>
+```
+
+## Components
+
+- **RadioGroup**: The root container for radio items
+- **RadioGroupItem**: An individual radio button option
+
+## Props
+
+### RadioGroup
+
+- `value`: `string` - The controlled value
+- `defaultValue`: `string` - The default value (uncontrolled)
+- `onValueChange`: `(value: string) => void` - Event handler called when the value changes
+- `disabled`: `boolean` - When true, prevents interaction with all options
+- `required`: `boolean` - When true, indicates that the user must select an option
+- `orientation`: `"horizontal" | "vertical"` - The orientation of the radio group
+- `name`: `string` - The name for form submission
+
+### RadioGroupItem
+
+- `value`: `string` - The value for this radio option (required)
+- `disabled`: `boolean` - When true, prevents interaction with this specific option
+- `required`: `boolean` - When true, indicates this option must be selected

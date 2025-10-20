@@ -1,0 +1,109 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and unchecked states.
+---
+
+import { Checkbox, Label } from "uilab-core"
+
+The Checkbox component is built on Radix UI and provides an accessible checkbox control.
+
+## Examples
+
+### Default Checkbox
+
+<ComponentPreview title="Default Checkbox">
+  <Checkbox />
+</ComponentPreview>
+
+```tsx
+import { Checkbox } from 'uilab-core'
+
+export function Example() {
+  return <Checkbox />
+}
+```
+
+### With Label
+
+<ComponentPreview title="Checkbox with Label">
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label htmlFor="terms">Accept terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Checkbox, Label } from 'uilab-core'
+
+export function Example() {
+  return (
+    <div className="flex items-center gap-2">
+      <Checkbox id="terms" />
+      <Label htmlFor="terms">Accept terms and conditions</Label>
+    </div>
+  )
+}
+```
+
+### Disabled
+
+<ComponentPreview title="Disabled Checkbox">
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-2">
+      <Checkbox id="disabled-unchecked" disabled />
+      <Label htmlFor="disabled-unchecked">Disabled unchecked</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="disabled-checked" disabled checked />
+      <Label htmlFor="disabled-checked">Disabled checked</Label>
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Checkbox disabled />
+<Checkbox disabled checked />
+```
+
+### Controlled
+
+<ComponentPreview title="Controlled Checkbox">
+  <div className="flex items-center gap-2">
+    <Checkbox id="controlled" checked={true} onCheckedChange={(checked) => console.log(checked)} />
+    <Label htmlFor="controlled">Controlled checkbox</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Checkbox, Label } from 'uilab-core'
+import { useState } from 'react'
+
+export function Example() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <div className="flex items-center gap-2">
+      <Checkbox
+        id="controlled"
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
+      <Label htmlFor="controlled">
+        {checked ? 'Checked' : 'Unchecked'}
+      </Label>
+    </div>
+  )
+}
+```
+
+## Props
+
+The Checkbox component accepts all Radix UI Checkbox props including:
+
+- `checked`: `boolean | "indeterminate"` - The controlled checked state
+- `defaultChecked`: `boolean` - The default checked state (uncontrolled)
+- `onCheckedChange`: `(checked: boolean | "indeterminate") => void` - Event handler called when the checked state changes
+- `disabled`: `boolean` - When true, prevents the user from interacting with the checkbox
+- `required`: `boolean` - When true, indicates that the user must check the checkbox
+- `name`: `string` - The name of the checkbox for form submission
+- `value`: `string` - The value of the checkbox for form submission

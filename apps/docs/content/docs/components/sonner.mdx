@@ -1,0 +1,145 @@
+---
+title: Sonner
+description: Toast notifications powered by Sonner.
+---
+
+import { Toaster, Button } from "uilab-core"
+
+The Sonner component provides beautiful toast notifications with automatic theme integration.
+
+## Setup
+
+First, add the Toaster component to your root layout:
+
+```tsx
+import { Toaster } from 'uilab-core'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+## Examples
+
+### Basic Toast
+
+```tsx
+import { Button } from 'uilab-core'
+import { toast } from 'sonner'
+
+export function Example() {
+  return (
+    <Button
+      onClick={() =>
+        toast('Event has been created', {
+          description: 'Sunday, December 03, 2023 at 9:00 AM',
+        })
+      }
+    >
+      Show Toast
+    </Button>
+  )
+}
+```
+
+### Success Toast
+
+```tsx
+import { toast } from 'sonner'
+
+toast.success('Profile updated successfully')
+```
+
+### Error Toast
+
+```tsx
+import { toast } from 'sonner'
+
+toast.error('Something went wrong')
+```
+
+### With Action
+
+```tsx
+import { toast } from 'sonner'
+
+toast('Event has been created', {
+  action: {
+    label: 'Undo',
+    onClick: () => console.log('Undo'),
+  },
+})
+```
+
+### Promise Toast
+
+```tsx
+import { toast } from 'sonner'
+
+toast.promise(
+  fetch('/api/data'),
+  {
+    loading: 'Loading...',
+    success: 'Data loaded successfully',
+    error: 'Failed to load data',
+  }
+)
+```
+
+### Custom Duration
+
+```tsx
+toast('This will disappear after 5 seconds', {
+  duration: 5000,
+})
+```
+
+### With Rich Content
+
+```tsx
+toast.custom((t) => (
+  <div className="flex items-center gap-2 p-4">
+    <Avatar>
+      <AvatarImage src="/avatar.png" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+    <div>
+      <p className="font-semibold">John Doe</p>
+      <p className="text-sm text-muted-foreground">
+        Sent you a message
+      </p>
+    </div>
+  </div>
+))
+```
+
+## API
+
+### Toaster Props
+
+The Toaster component accepts all Sonner toaster props:
+
+- `position`: `"top-left" | "top-right" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center"` - Toast position
+- `expand`: `boolean` - Whether to expand toasts on hover
+- `richColors`: `boolean` - Whether to use rich colors for different toast types
+- `closeButton`: `boolean` - Whether to show close button
+
+### Toast Functions
+
+- `toast(message, options)` - Show a toast
+- `toast.success(message, options)` - Show a success toast
+- `toast.error(message, options)` - Show an error toast
+- `toast.warning(message, options)` - Show a warning toast
+- `toast.info(message, options)` - Show an info toast
+- `toast.loading(message, options)` - Show a loading toast
+- `toast.promise(promise, options)` - Show a promise toast
+- `toast.custom(component)` - Show a custom toast
+
+Visit [Sonner documentation](https://sonner.emilkowal.ski/) for complete API reference.

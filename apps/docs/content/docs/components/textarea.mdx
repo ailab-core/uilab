@@ -1,0 +1,160 @@
+---
+title: Textarea
+description: A multi-line text input field for longer text content.
+---
+
+import { Textarea, Label } from "uilab-core"
+
+The Textarea component provides a multi-line text input with auto-resizing support.
+
+## Examples
+
+### Default Textarea
+
+<ComponentPreview title="Default Textarea">
+  <Textarea placeholder="Type your message here..." />
+</ComponentPreview>
+
+```tsx
+import { Textarea } from 'uilab-core'
+
+export function Example() {
+  return <Textarea placeholder="Type your message here..." />
+}
+```
+
+### With Label
+
+<ComponentPreview title="Textarea with Label">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="message">Message</Label>
+    <Textarea id="message" placeholder="Enter your message..." />
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Textarea, Label } from 'uilab-core'
+
+export function Example() {
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor="message">Message</Label>
+      <Textarea id="message" placeholder="Enter your message..." />
+    </div>
+  )
+}
+```
+
+### With Description
+
+<ComponentPreview title="Textarea with Description">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="bio">Bio</Label>
+    <Textarea id="bio" placeholder="Tell us about yourself..." />
+    <p className="text-sm text-muted-foreground">
+      Write a short bio about yourself. Max 500 characters.
+    </p>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex flex-col gap-2">
+  <Label htmlFor="bio">Bio</Label>
+  <Textarea id="bio" placeholder="Tell us about yourself..." />
+  <p className="text-sm text-muted-foreground">
+    Write a short bio about yourself. Max 500 characters.
+  </p>
+</div>
+```
+
+### Disabled
+
+<ComponentPreview title="Disabled Textarea">
+  <Textarea placeholder="This textarea is disabled" disabled />
+</ComponentPreview>
+
+```tsx
+<Textarea disabled placeholder="This textarea is disabled" />
+```
+
+### With Controlled Value
+
+<ComponentPreview title="Controlled Textarea">
+  <Textarea
+    placeholder="Type something..."
+    value="Controlled value"
+    onChange={(e) => console.log(e.target.value)}
+  />
+</ComponentPreview>
+
+```tsx
+import { Textarea } from 'uilab-core'
+import { useState } from 'react'
+
+export function Example() {
+  const [value, setValue] = useState('')
+
+  return (
+    <Textarea
+      placeholder="Type something..."
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  )
+}
+```
+
+### With Character Count
+
+<ComponentPreview title="Textarea with Character Count">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="feedback">Feedback</Label>
+    <Textarea id="feedback" placeholder="Share your feedback..." maxLength={200} />
+    <p className="text-sm text-muted-foreground text-right">
+      0 / 200 characters
+    </p>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Textarea, Label } from 'uilab-core'
+import { useState } from 'react'
+
+export function Example() {
+  const [value, setValue] = useState('')
+  const maxLength = 200
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor="feedback">Feedback</Label>
+      <Textarea
+        id="feedback"
+        placeholder="Share your feedback..."
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        maxLength={maxLength}
+      />
+      <p className="text-sm text-muted-foreground text-right">
+        {value.length} / {maxLength} characters
+      </p>
+    </div>
+  )
+}
+```
+
+## Props
+
+The Textarea component accepts all standard HTML textarea attributes including:
+
+- `placeholder`: `string` - Placeholder text
+- `disabled`: `boolean` - When true, prevents interaction
+- `required`: `boolean` - When true, indicates required field
+- `maxLength`: `number` - Maximum character limit
+- `rows`: `number` - Number of visible text lines
+- `value`: `string` - The controlled value
+- `defaultValue`: `string` - The default value (uncontrolled)
+- `onChange`: `(event: ChangeEvent<HTMLTextAreaElement>) => void` - Event handler for value changes
+
+## Features
+
+The Textarea component includes automatic content-based resizing using `field-sizing: content`, allowing it to grow and shrink based on the content without requiring JavaScript.

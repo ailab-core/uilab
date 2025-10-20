@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from 'fumadocs-mdx/vite';
 
 export default defineConfig({
+  base: './',
   server: {
     port: 3000,
   },

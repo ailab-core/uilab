@@ -1,0 +1,89 @@
+---
+title: Calendar
+description: A date picker component based on react-day-picker.
+---
+
+import { Calendar } from "uilab-core"
+
+The Calendar component displays an interactive calendar for date selection.
+
+## Examples
+
+### Default Calendar
+
+<ComponentPreview title="Default Calendar">
+  <Calendar mode="single" />
+</ComponentPreview>
+
+```tsx
+import { Calendar } from 'uilab-core'
+import { useState } from 'react'
+
+export function Example() {
+  const [date, setDate] = useState<Date | undefined>(new Date())
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+    />
+  )
+}
+```
+
+### Range Selection
+
+<ComponentPreview title="Calendar with Range Selection">
+  <Calendar mode="range" numberOfMonths={2} />
+</ComponentPreview>
+
+```tsx
+import { Calendar } from 'uilab-core'
+import { useState } from 'react'
+import { DateRange } from 'react-day-picker'
+
+export function Example() {
+  const [range, setRange] = useState<DateRange | undefined>()
+
+  return (
+    <Calendar
+      mode="range"
+      selected={range}
+      onSelect={setRange}
+      numberOfMonths={2}
+    />
+  )
+}
+```
+
+### With Dropdown
+
+<ComponentPreview title="Calendar with Month/Year Dropdown">
+  <Calendar mode="single" captionLayout="dropdown" fromYear={2020} toYear={2030} />
+</ComponentPreview>
+
+```tsx
+<Calendar
+  mode="single"
+  captionLayout="dropdown"
+  fromYear={2020}
+  toYear={2030}
+/>
+```
+
+## Props
+
+The Calendar component is built on react-day-picker and accepts all its props:
+
+- `mode`: `"single" | "multiple" | "range"` - The selection mode
+- `selected`: Date selection value (type depends on mode)
+- `onSelect`: Selection change handler
+- `numberOfMonths`: `number` - Number of months to display
+- `captionLayout`: `"label" | "dropdown"` - Caption display mode
+- `fromYear`: `number` - Start year for dropdown
+- `toYear`: `number` - End year for dropdown
+- `disabled`: Date matcher to disable specific dates
+- `buttonVariant`: Button variant for navigation buttons
+
+Visit [react-day-picker documentation](https://react-day-picker.js.org/) for complete API reference.

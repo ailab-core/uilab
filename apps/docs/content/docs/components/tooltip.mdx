@@ -1,0 +1,184 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when hovering or focusing.
+---
+
+import { Tooltip, TooltipTrigger, TooltipContent, Button } from "uilab-core"
+
+The Tooltip component displays informative text when users hover over or focus on an element.
+
+## Examples
+
+### Default Tooltip
+
+<ComponentPreview title="Default Tooltip">
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">Hover me</Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>This is a tooltip</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentPreview>
+
+```tsx
+import { Tooltip, TooltipTrigger, TooltipContent, Button } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Hover me</Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>This is a tooltip</p>
+      </TooltipContent>
+    </Tooltip>
+  )
+}
+```
+
+### Different Sides
+
+<ComponentPreview title="Tooltip on Different Sides">
+  <div className="flex gap-4">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Top</Button>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        <p>Tooltip on top</p>
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Right</Button>
+      </TooltipTrigger>
+      <TooltipContent side="right">
+        <p>Tooltip on right</p>
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Bottom</Button>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">
+        <p>Tooltip on bottom</p>
+      </TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline">Left</Button>
+      </TooltipTrigger>
+      <TooltipContent side="left">
+        <p>Tooltip on left</p>
+      </TooltipContent>
+    </Tooltip>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button>Top</Button>
+  </TooltipTrigger>
+  <TooltipContent side="top">
+    <p>Tooltip on top</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+### With Icon
+
+<ComponentPreview title="Tooltip with Icon">
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline" size="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span className="sr-only">Info</span>
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Additional information</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentPreview>
+
+```tsx
+import { Tooltip, TooltipTrigger, TooltipContent, Button } from 'uilab-core'
+import { Info } from 'lucide-react'
+
+export function Example() {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Info />
+          <span className="sr-only">Info</span>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Additional information</p>
+      </TooltipContent>
+    </Tooltip>
+  )
+}
+```
+
+### Rich Content
+
+<ComponentPreview title="Tooltip with Rich Content">
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="outline">View Details</Button>
+    </TooltipTrigger>
+    <TooltipContent className="max-w-xs">
+      <div className="space-y-1">
+        <p className="font-semibold">User Information</p>
+        <p className="text-xs">Name: John Doe</p>
+        <p className="text-xs">Email: john@example.com</p>
+      </div>
+    </TooltipContent>
+  </Tooltip>
+</ComponentPreview>
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button variant="outline">View Details</Button>
+  </TooltipTrigger>
+  <TooltipContent className="max-w-xs">
+    <div className="space-y-1">
+      <p className="font-semibold">User Information</p>
+      <p className="text-xs">Name: John Doe</p>
+      <p className="text-xs">Email: john@example.com</p>
+    </div>
+  </TooltipContent>
+</Tooltip>
+```
+
+## Components
+
+- **Tooltip**: The root component that manages tooltip state
+- **TooltipTrigger**: The element that triggers the tooltip on hover/focus
+- **TooltipContent**: The content displayed in the tooltip
+- **TooltipProvider**: Optional provider for configuring delay duration across multiple tooltips
+
+## Props
+
+### TooltipContent
+
+- `side`: `"top" | "right" | "bottom" | "left"` - The preferred side of the trigger to render against
+- `sideOffset`: `number` - The distance in pixels from the trigger (default: 0)
+- `align`: `"start" | "center" | "end"` - The preferred alignment against the trigger
+- `alignOffset`: `number` - An offset in pixels from the alignment
+
+### TooltipProvider
+
+- `delayDuration`: `number` - The duration from when the mouse enters a trigger until the tooltip opens (default: 0)
+- `skipDelayDuration`: `number` - How long a user must hover before the skip delay kicks in
+
+## Usage
+
+Tooltips should be used to provide supplementary information that helps users understand an interface element. The Tooltip component automatically includes an arrow pointer and adjusts its position to stay within the viewport.

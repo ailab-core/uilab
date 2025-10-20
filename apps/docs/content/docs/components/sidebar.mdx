@@ -1,0 +1,78 @@
+---
+title: Sidebar
+description: A composable sidebar component with collapsible navigation.
+---
+
+The Sidebar component provides a flexible layout component for building application sidebars with collapsible sections, navigation groups, and responsive behavior.
+
+## Features
+
+- Collapsible navigation groups
+- Mobile responsive with drawer
+- Keyboard navigation support
+- Flexible composition
+- Icon support
+
+## Basic Structure
+
+```tsx
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton
+} from 'uilab-core'
+
+export function AppSidebar() {
+  return (
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <Settings />
+                  <span>Settings</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  )
+}
+```
+
+## Components
+
+- **Sidebar**: Root sidebar container
+- **SidebarContent**: Main content area
+- **SidebarGroup**: Groups related menu items
+- **SidebarGroupLabel**: Label for a group
+- **SidebarGroupContent**: Content within a group
+- **SidebarMenu**: Menu container
+- **SidebarMenuItem**: Individual menu item
+- **SidebarMenuButton**: Clickable menu button
+- **SidebarHeader**: Header section
+- **SidebarFooter**: Footer section
+- **SidebarRail**: Collapse/expand rail
+- **SidebarTrigger**: Trigger to toggle sidebar
+- **SidebarInset**: Inset content area
+- **SidebarProvider**: Context provider for sidebar state
+
+## Usage
+
+The Sidebar component is highly composable. Build your sidebar by combining these primitive components to match your application's navigation structure.

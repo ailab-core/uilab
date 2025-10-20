@@ -1,0 +1,96 @@
+---
+title: Input Group
+description: Group inputs with addons and icons.
+---
+
+import { InputGroup, InputGroupAddon, Input } from "uilab-core"
+
+The Input Group component combines inputs with prefixes, suffixes, and icons.
+
+## Examples
+
+### With Prefix
+
+<ComponentPreview title="Input Group with Prefix">
+  <InputGroup>
+    <InputGroupAddon>https://</InputGroupAddon>
+    <Input placeholder="example.com" />
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+import { InputGroup, InputGroupAddon, Input } from 'uilab-core'
+
+export function Example() {
+  return (
+    <InputGroup>
+      <InputGroupAddon>https://</InputGroupAddon>
+      <Input placeholder="example.com" />
+    </InputGroup>
+  )
+}
+```
+
+### With Suffix
+
+<ComponentPreview title="Input Group with Suffix">
+  <InputGroup>
+    <Input placeholder="username" />
+    <InputGroupAddon>@company.com</InputGroupAddon>
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <Input placeholder="username" />
+  <InputGroupAddon>@company.com</InputGroupAddon>
+</InputGroup>
+```
+
+### With Icon
+
+<ComponentPreview title="Input Group with Icon">
+  <InputGroup>
+    <Input placeholder="Search..." />
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+import { InputGroup, Input } from 'uilab-core'
+import { Search } from 'lucide-react'
+
+export function Example() {
+  return (
+    <InputGroup>
+      <Input placeholder="Search..." />
+    </InputGroup>
+  )
+}
+```
+
+### With Both Prefix and Suffix
+
+<ComponentPreview title="Input Group with Both">
+  <InputGroup>
+    <InputGroupAddon>$</InputGroupAddon>
+    <Input type="number" placeholder="0.00" />
+    <InputGroupAddon>USD</InputGroupAddon>
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <InputGroupAddon>$</InputGroupAddon>
+  <Input type="number" placeholder="0.00" />
+  <InputGroupAddon>USD</InputGroupAddon>
+</InputGroup>
+```
+
+## Components
+
+- **InputGroup**: The root input group container
+- **InputGroupAddon**: Prefix or suffix text addon
+
+## Usage
+
+Input Group automatically handles styling and positioning of addons and icons relative to the input element.

@@ -1,0 +1,87 @@
+---
+title: Field
+description: A form field wrapper with label, description, and error handling.
+---
+
+import { Field, FieldLabel, FieldDescription, FieldError, Input } from "uilab-core"
+
+The Field component provides a complete form field with label, description, and error messaging.
+
+## Examples
+
+### Default Field
+
+<ComponentPreview title="Default Field">
+  <Field>
+    <FieldLabel>Email</FieldLabel>
+    <Input type="email" placeholder="Enter your email" />
+    <FieldDescription>We'll never share your email.</FieldDescription>
+  </Field>
+</ComponentPreview>
+
+```tsx
+import { Field, FieldLabel, FieldDescription, Input } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Field>
+      <FieldLabel>Email</FieldLabel>
+      <Input type="email" placeholder="Enter your email" />
+      <FieldDescription>We'll never share your email.</FieldDescription>
+    </Field>
+  )
+}
+```
+
+### With Error
+
+<ComponentPreview title="Field with Error">
+  <Field>
+    <FieldLabel>Username</FieldLabel>
+    <Input placeholder="Enter username" aria-invalid />
+    <FieldError>Username is required</FieldError>
+  </Field>
+</ComponentPreview>
+
+```tsx
+import { Field, FieldLabel, FieldError, Input } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Field>
+      <FieldLabel>Username</FieldLabel>
+      <Input placeholder="Enter username" aria-invalid />
+      <FieldError>Username is required</FieldError>
+    </Field>
+  )
+}
+```
+
+### Required Field
+
+<ComponentPreview title="Required Field">
+  <Field>
+    <FieldLabel>
+      Name <span className="text-destructive">*</span>
+    </FieldLabel>
+    <Input required placeholder="Enter your name" />
+    <FieldDescription>This field is required</FieldDescription>
+  </Field>
+</ComponentPreview>
+
+```tsx
+<FieldLabel>
+  Name <span className="text-destructive">*</span>
+</FieldLabel>
+```
+
+## Components
+
+- **Field**: The root field wrapper
+- **FieldLabel**: Label for the field
+- **FieldDescription**: Helper text for the field
+- **FieldError**: Error message display
+
+## Usage
+
+The Field component automatically handles accessibility by linking labels, descriptions, and errors with the input using proper ARIA attributes.

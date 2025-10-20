@@ -1,0 +1,168 @@
+---
+title: Tabs
+description: A set of layered sections of content that are displayed one at a time.
+---
+
+import { Tabs, TabsList, TabsTrigger, TabsContent, Card, CardHeader, CardTitle, CardDescription, CardContent } from "uilab-core"
+
+The Tabs component allows users to switch between different sections of related content.
+
+## Examples
+
+### Default Tabs
+
+<ComponentPreview title="Default Tabs">
+  <Tabs defaultValue="tab1">
+    <TabsList>
+      <TabsTrigger value="tab1">Account</TabsTrigger>
+      <TabsTrigger value="tab2">Password</TabsTrigger>
+      <TabsTrigger value="tab3">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="tab1">
+      <p>Account settings and information.</p>
+    </TabsContent>
+    <TabsContent value="tab2">
+      <p>Change your password here.</p>
+    </TabsContent>
+    <TabsContent value="tab3">
+      <p>Manage your preferences.</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Tabs defaultValue="tab1">
+      <TabsList>
+        <TabsTrigger value="tab1">Account</TabsTrigger>
+        <TabsTrigger value="tab2">Password</TabsTrigger>
+        <TabsTrigger value="tab3">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab1">
+        <p>Account settings and information.</p>
+      </TabsContent>
+      <TabsContent value="tab2">
+        <p>Change your password here.</p>
+      </TabsContent>
+      <TabsContent value="tab3">
+        <p>Manage your preferences.</p>
+      </TabsContent>
+    </Tabs>
+  )
+}
+```
+
+### With Cards
+
+<ComponentPreview title="Tabs with Cards">
+  <Tabs defaultValue="overview">
+    <TabsList>
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+      <TabsTrigger value="reports">Reports</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <Card>
+        <CardHeader>
+          <CardTitle>Overview</CardTitle>
+          <CardDescription>View your account overview and summary.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Overview content goes here.</p>
+        </CardContent>
+      </Card>
+    </TabsContent>
+    <TabsContent value="analytics">
+      <Card>
+        <CardHeader>
+          <CardTitle>Analytics</CardTitle>
+          <CardDescription>Detailed analytics and insights.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Analytics content goes here.</p>
+        </CardContent>
+      </Card>
+    </TabsContent>
+    <TabsContent value="reports">
+      <Card>
+        <CardHeader>
+          <CardTitle>Reports</CardTitle>
+          <CardDescription>Generate and view reports.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Reports content goes here.</p>
+        </CardContent>
+      </Card>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+```tsx
+<Tabs defaultValue="overview">
+  <TabsList>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="analytics">Analytics</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">
+    <Card>
+      <CardHeader>
+        <CardTitle>Overview</CardTitle>
+      </CardHeader>
+      <CardContent>Content here</CardContent>
+    </Card>
+  </TabsContent>
+</Tabs>
+```
+
+### Disabled Tab
+
+<ComponentPreview title="Tabs with Disabled Option">
+  <Tabs defaultValue="available">
+    <TabsList>
+      <TabsTrigger value="available">Available</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+      <TabsTrigger value="another">Another</TabsTrigger>
+    </TabsList>
+    <TabsContent value="available">
+      <p>This tab is available.</p>
+    </TabsContent>
+    <TabsContent value="another">
+      <p>Another available tab.</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+```tsx
+<Tabs defaultValue="available">
+  <TabsList>
+    <TabsTrigger value="available">Available</TabsTrigger>
+    <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+  </TabsList>
+</Tabs>
+```
+
+## Components
+
+- **Tabs**: The root container that manages tab state
+- **TabsList**: Container for tab triggers
+- **TabsTrigger**: A button that activates its associated tab content
+- **TabsContent**: The content panel for each tab
+
+## Props
+
+### Tabs
+
+- `value`: `string` - The controlled active tab value
+- `defaultValue`: `string` - The default active tab (uncontrolled)
+- `onValueChange`: `(value: string) => void` - Event handler called when the active tab changes
+- `orientation`: `"horizontal" | "vertical"` - The orientation of the tabs
+- `dir`: `"ltr" | "rtl"` - The reading direction
+
+### TabsTrigger
+
+- `value`: `string` - The value associated with this tab (required)
+- `disabled`: `boolean` - When true, prevents interaction
+- `asChild`: `boolean` - When true, renders as its child component

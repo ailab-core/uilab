@@ -1,0 +1,108 @@
+---
+title: Spinner
+description: A loading spinner indicator for async operations.
+---
+
+import { Spinner, Button } from "uilab-core"
+
+The Spinner component displays an animated loading indicator.
+
+## Examples
+
+### Default Spinner
+
+<ComponentPreview title="Default Spinner">
+  <Spinner />
+</ComponentPreview>
+
+```tsx
+import { Spinner } from 'uilab-core'
+
+export function Example() {
+  return <Spinner />
+}
+```
+
+### Different Sizes
+
+<ComponentPreview title="Spinner Sizes">
+  <div className="flex items-center gap-4">
+    <Spinner className="size-4" />
+    <Spinner className="size-6" />
+    <Spinner className="size-8" />
+    <Spinner className="size-12" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<Spinner className="size-4" />
+<Spinner className="size-6" />
+<Spinner className="size-8" />
+<Spinner className="size-12" />
+```
+
+### In Button
+
+<ComponentPreview title="Spinner in Button">
+  <div className="flex gap-4">
+    <Button disabled>
+      <Spinner className="mr-2" />
+      Loading...
+    </Button>
+    <Button variant="outline" disabled>
+      <Spinner className="mr-2" />
+      Processing
+    </Button>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Spinner, Button } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Button disabled>
+      <Spinner className="mr-2" />
+      Loading...
+    </Button>
+  )
+}
+```
+
+### Centered
+
+<ComponentPreview title="Centered Spinner">
+  <div className="flex h-32 items-center justify-center">
+    <Spinner className="size-8" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex h-32 items-center justify-center">
+  <Spinner className="size-8" />
+</div>
+```
+
+### With Text
+
+<ComponentPreview title="Spinner with Text">
+  <div className="flex flex-col items-center gap-2">
+    <Spinner className="size-8" />
+    <p className="text-sm text-muted-foreground">Loading content...</p>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex flex-col items-center gap-2">
+  <Spinner className="size-8" />
+  <p className="text-sm text-muted-foreground">Loading content...</p>
+</div>
+```
+
+## Usage
+
+The Spinner is useful for indicating loading states in:
+- Buttons during async operations
+- Page loading overlays
+- Data fetching states
+- Form submissions

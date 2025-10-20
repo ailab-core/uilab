@@ -1,0 +1,108 @@
+---
+title: Navigation Menu
+description: A navigation menu with nested submenus and content.
+---
+
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "uilab-core"
+
+The Navigation Menu component provides a navigation system with dropdown content.
+
+## Examples
+
+### Default Navigation Menu
+
+<ComponentPreview title="Default Navigation Menu">
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="grid gap-3 p-6 w-[400px]">
+            <NavigationMenuLink href="/docs">
+              <div className="text-sm font-medium">Introduction</div>
+              <p className="text-sm text-muted-foreground">
+                Get started with our component library
+              </p>
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/docs/installation">
+              <div className="text-sm font-medium">Installation</div>
+              <p className="text-sm text-muted-foreground">
+                How to install dependencies and structure your app
+              </p>
+            </NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="grid gap-3 p-6 w-[400px]">
+            <NavigationMenuLink href="/docs/components/button">
+              <div className="text-sm font-medium">Button</div>
+              <p className="text-sm text-muted-foreground">
+                Display a button or component that looks like a button
+              </p>
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/docs/components/card">
+              <div className="text-sm font-medium">Card</div>
+              <p className="text-sm text-muted-foreground">
+                Display content in a card layout
+              </p>
+            </NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/docs">
+          Documentation
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</ComponentPreview>
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink
+} from 'uilab-core'
+
+export function Example() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid gap-3 p-6 w-[400px]">
+              <NavigationMenuLink href="/docs">
+                <div className="text-sm font-medium">Introduction</div>
+                <p className="text-sm text-muted-foreground">
+                  Get started with our component library
+                </p>
+              </NavigationMenuLink>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  )
+}
+```
+
+## Components
+
+- **NavigationMenu**: The root navigation menu
+- **NavigationMenuList**: Container for menu items
+- **NavigationMenuItem**: Individual menu item
+- **NavigationMenuTrigger**: Button that opens submenu
+- **NavigationMenuContent**: Dropdown content container
+- **NavigationMenuLink**: Navigation link
+
+## Usage
+
+Navigation Menu is ideal for site-wide navigation with multiple levels and rich content in dropdowns.

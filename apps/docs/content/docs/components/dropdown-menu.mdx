@@ -1,0 +1,225 @@
+---
+title: Dropdown Menu
+description: Displays a menu triggered by a button, with items that can trigger actions.
+---
+
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, Button } from "uilab-core"
+
+The Dropdown Menu component displays a menu of actions or options.
+
+## Examples
+
+### Default Dropdown Menu
+
+<ComponentPreview title="Default Dropdown Menu">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">Open Menu</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Billing</DropdownMenuItem>
+      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem>Subscription</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  Button
+} from 'uilab-core'
+
+export function Example() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open Menu</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+```
+
+### With Checkboxes
+
+<ComponentPreview title="Dropdown Menu with Checkboxes">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">View Options</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuLabel>Toggle Features</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuCheckboxItem checked>Show Toolbar</DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem>Show Sidebar</DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem checked>Show Footer</DropdownMenuCheckboxItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+<DropdownMenuCheckboxItem checked>
+  Show Toolbar
+</DropdownMenuCheckboxItem>
+<DropdownMenuCheckboxItem>
+  Show Sidebar
+</DropdownMenuCheckboxItem>
+```
+
+### With Radio Group
+
+<ComponentPreview title="Dropdown Menu with Radio Group">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">Select Theme</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuLabel>Theme</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuRadioGroup value="light">
+        <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
+        <DropdownMenuRadioItem value="system">System</DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+<DropdownMenuRadioGroup value="light">
+  <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
+  <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
+</DropdownMenuRadioGroup>
+```
+
+### With Submenu
+
+<ComponentPreview title="Dropdown Menu with Submenu">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">Options</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>New File</DropdownMenuItem>
+      <DropdownMenuSub>
+        <DropdownMenuSubTrigger>Open Recent</DropdownMenuSubTrigger>
+        <DropdownMenuSubContent>
+          <DropdownMenuItem>Document 1</DropdownMenuItem>
+          <DropdownMenuItem>Document 2</DropdownMenuItem>
+          <DropdownMenuItem>Document 3</DropdownMenuItem>
+        </DropdownMenuSubContent>
+      </DropdownMenuSub>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Save</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+<DropdownMenuSub>
+  <DropdownMenuSubTrigger>Open Recent</DropdownMenuSubTrigger>
+  <DropdownMenuSubContent>
+    <DropdownMenuItem>Document 1</DropdownMenuItem>
+    <DropdownMenuItem>Document 2</DropdownMenuItem>
+  </DropdownMenuSubContent>
+</DropdownMenuSub>
+```
+
+### With Shortcuts
+
+<ComponentPreview title="Dropdown Menu with Keyboard Shortcuts">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">File</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>
+        New File
+        <DropdownMenuShortcut>Ctrl+N</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Open
+        <DropdownMenuShortcut>Ctrl+O</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Save
+        <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+<DropdownMenuItem>
+  Save
+  <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
+</DropdownMenuItem>
+```
+
+### Destructive Actions
+
+<ComponentPreview title="Dropdown Menu with Destructive Action">
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">Actions</Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      <DropdownMenuItem>Edit</DropdownMenuItem>
+      <DropdownMenuItem>Duplicate</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</ComponentPreview>
+
+```tsx
+<DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+```
+
+## Components
+
+- **DropdownMenu**: The root menu component
+- **DropdownMenuTrigger**: The button that opens the menu
+- **DropdownMenuContent**: The menu content container
+- **DropdownMenuItem**: An individual menu item
+- **DropdownMenuLabel**: A label for a section of items
+- **DropdownMenuSeparator**: Visual separator between items
+- **DropdownMenuGroup**: Groups related items
+- **DropdownMenuCheckboxItem**: A checkable menu item
+- **DropdownMenuRadioGroup**: Container for radio items
+- **DropdownMenuRadioItem**: A radio menu item
+- **DropdownMenuSub**: A submenu container
+- **DropdownMenuSubTrigger**: Trigger for a submenu
+- **DropdownMenuSubContent**: Submenu content
+- **DropdownMenuShortcut**: Displays keyboard shortcut
+
+## Props
+
+### DropdownMenu
+
+- `open`: `boolean` - The controlled open state
+- `defaultOpen`: `boolean` - The default open state
+- `onOpenChange`: `(open: boolean) => void` - Open state change handler
+- `modal`: `boolean` - Whether the menu is modal
+
+### DropdownMenuItem
+
+- `inset`: `boolean` - Whether to indent the item
+- `variant`: `"default" | "destructive"` - The visual style variant
+- `disabled`: `boolean` - When true, prevents interaction

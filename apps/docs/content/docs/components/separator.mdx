@@ -1,0 +1,105 @@
+---
+title: Separator
+description: Visually or semantically separates content.
+---
+
+import { Separator } from "uilab-core"
+
+The Separator component creates visual or semantic divisions between content sections.
+
+## Examples
+
+### Horizontal Separator
+
+<ComponentPreview title="Horizontal Separator">
+  <div>
+    <div className="space-y-1">
+      <h4 className="text-sm font-medium">Radix Primitives</h4>
+      <p className="text-sm text-muted-foreground">
+        An open-source UI component library.
+      </p>
+    </div>
+    <Separator className="my-4" />
+    <div className="flex h-5 items-center space-x-4 text-sm">
+      <div>Blog</div>
+      <Separator orientation="vertical" />
+      <div>Docs</div>
+      <Separator orientation="vertical" />
+      <div>Source</div>
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Separator } from 'uilab-core'
+
+export function Example() {
+  return (
+    <div>
+      <div className="space-y-1">
+        <h4 className="text-sm font-medium">Radix Primitives</h4>
+        <p className="text-sm text-muted-foreground">
+          An open-source UI component library.
+        </p>
+      </div>
+      <Separator className="my-4" />
+      <div className="flex h-5 items-center space-x-4 text-sm">
+        <div>Blog</div>
+        <Separator orientation="vertical" />
+        <div>Docs</div>
+        <Separator orientation="vertical" />
+        <div>Source</div>
+      </div>
+    </div>
+  )
+}
+```
+
+### Vertical Separator
+
+<ComponentPreview title="Vertical Separator">
+  <div className="flex h-20 items-center gap-4">
+    <span>Section 1</span>
+    <Separator orientation="vertical" />
+    <span>Section 2</span>
+    <Separator orientation="vertical" />
+    <span>Section 3</span>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex h-20 items-center gap-4">
+  <span>Section 1</span>
+  <Separator orientation="vertical" />
+  <span>Section 2</span>
+  <Separator orientation="vertical" />
+  <span>Section 3</span>
+</div>
+```
+
+### In a List
+
+<ComponentPreview title="Separator in List">
+  <div className="space-y-4">
+    <div>Item 1</div>
+    <Separator />
+    <div>Item 2</div>
+    <Separator />
+    <div>Item 3</div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="space-y-4">
+  <div>Item 1</div>
+  <Separator />
+  <div>Item 2</div>
+  <Separator />
+  <div>Item 3</div>
+</div>
+```
+
+## Props
+
+- `orientation`: `"horizontal" | "vertical"` - The orientation of the separator (default: `"horizontal"`)
+- `decorative`: `boolean` - Whether the separator is purely decorative (default: `true`)

@@ -1,0 +1,79 @@
+---
+title: Label
+description: A label component for form fields with built-in accessibility features.
+---
+
+import { Label, Input, Checkbox } from "uilab-core"
+
+The Label component is built on Radix UI and provides accessible labels for form controls.
+
+## Examples
+
+### Default Label
+
+<ComponentPreview title="Default Label">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="email">Email</Label>
+    <Input id="email" type="email" placeholder="Enter your email" />
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Label, Input } from 'uilab-core'
+
+export function Example() {
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" placeholder="Enter your email" />
+    </div>
+  )
+}
+```
+
+### With Checkbox
+
+<ComponentPreview title="Label with Checkbox">
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label htmlFor="terms">I agree to the terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Label, Checkbox } from 'uilab-core'
+
+export function Example() {
+  return (
+    <div className="flex items-center gap-2">
+      <Checkbox id="terms" />
+      <Label htmlFor="terms">I agree to the terms and conditions</Label>
+    </div>
+  )
+}
+```
+
+### Required Field
+
+<ComponentPreview title="Required Field Label">
+  <div className="flex flex-col gap-2">
+    <Label htmlFor="username">
+      Username <span className="text-destructive">*</span>
+    </Label>
+    <Input id="username" placeholder="Enter your username" required />
+  </div>
+</ComponentPreview>
+
+```tsx
+<Label htmlFor="username">
+  Username <span className="text-destructive">*</span>
+</Label>
+<Input id="username" required />
+```
+
+## Props
+
+The Label component accepts all standard HTML label attributes including:
+
+- `htmlFor`: `string` - The id of the form element this label is associated with
+- `asChild`: `boolean` - When true, the component will render its child instead of a label element

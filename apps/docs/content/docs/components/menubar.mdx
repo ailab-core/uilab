@@ -1,0 +1,105 @@
+---
+title: Menubar
+description: A horizontal menu bar with dropdown menus.
+---
+
+import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarShortcut } from "uilab-core"
+
+The Menubar component displays a horizontal menu bar with dropdown menus.
+
+## Examples
+
+### Default Menubar
+
+<ComponentPreview title="Default Menubar">
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Open <MenubarShortcut>Ctrl+O</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Save</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Undo</MenubarItem>
+        <MenubarItem>Redo</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Cut</MenubarItem>
+        <MenubarItem>Copy</MenubarItem>
+        <MenubarItem>Paste</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Zoom In</MenubarItem>
+        <MenubarItem>Zoom Out</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</ComponentPreview>
+
+```tsx
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarShortcut
+} from 'uilab-core'
+
+export function Example() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Open <MenubarShortcut>Ctrl+O</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Save</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Undo</MenubarItem>
+          <MenubarItem>Redo</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  )
+}
+```
+
+## Components
+
+Menubar uses similar components to Dropdown Menu:
+
+- **Menubar**: The root menubar container
+- **MenubarMenu**: Individual menu in the bar
+- **MenubarTrigger**: Button that opens the menu
+- **MenubarContent**: Menu content container
+- **MenubarItem**: Individual menu item
+- **MenubarCheckboxItem**: Checkable menu item
+- **MenubarRadioGroup**: Radio group container
+- **MenubarRadioItem**: Radio menu item
+- **MenubarLabel**: Label for menu sections
+- **MenubarSeparator**: Visual separator
+- **MenubarShortcut**: Keyboard shortcut display
+
+The API is similar to Dropdown Menu. See Dropdown Menu documentation for detailed props.

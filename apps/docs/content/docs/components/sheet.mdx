@@ -1,0 +1,148 @@
+---
+title: Sheet
+description: A sliding panel that appears from the edge of the screen.
+---
+
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription, Button } from "uilab-core"
+
+The Sheet component displays content in a panel that slides in from the screen edge.
+
+## Examples
+
+### Default Sheet
+
+<ComponentPreview title="Default Sheet">
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open Sheet</Button>
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Sheet Title</SheetTitle>
+        <SheetDescription>
+          This is a description of the sheet content.
+        </SheetDescription>
+      </SheetHeader>
+      <div className="py-4">
+        <p>Sheet content goes here.</p>
+      </div>
+      <SheetFooter>
+        <Button>Save changes</Button>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+```tsx
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  Button
+} from 'uilab-core'
+
+export function Example() {
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Open Sheet</Button>
+      </SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Sheet Title</SheetTitle>
+          <SheetDescription>
+            This is a description of the sheet content.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="py-4">
+          <p>Sheet content goes here.</p>
+        </div>
+        <SheetFooter>
+          <Button>Save changes</Button>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  )
+}
+```
+
+### Different Sides
+
+<ComponentPreview title="Sheet from Different Sides">
+  <div className="flex gap-2">
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Left</Button>
+      </SheetTrigger>
+      <SheetContent side="left">
+        <SheetHeader>
+          <SheetTitle>Left Sheet</SheetTitle>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Right</Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>Right Sheet</SheetTitle>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Top</Button>
+      </SheetTrigger>
+      <SheetContent side="top">
+        <SheetHeader>
+          <SheetTitle>Top Sheet</SheetTitle>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Bottom</Button>
+      </SheetTrigger>
+      <SheetContent side="bottom">
+        <SheetHeader>
+          <SheetTitle>Bottom Sheet</SheetTitle>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  </div>
+</ComponentPreview>
+
+```tsx
+<SheetContent side="left">Content</SheetContent>
+<SheetContent side="right">Content</SheetContent>
+<SheetContent side="top">Content</SheetContent>
+<SheetContent side="bottom">Content</SheetContent>
+```
+
+## Components
+
+- **Sheet**: The root sheet component
+- **SheetTrigger**: The button that opens the sheet
+- **SheetContent**: The sheet content container
+- **SheetHeader**: Container for title and description
+- **SheetFooter**: Container for action buttons
+- **SheetTitle**: The sheet title
+- **SheetDescription**: The sheet description
+- **SheetClose**: Close button component
+
+## Props
+
+### Sheet
+
+- `open`: `boolean` - The controlled open state
+- `defaultOpen`: `boolean` - The default open state
+- `onOpenChange`: `(open: boolean) => void` - Open state change handler
+
+### SheetContent
+
+- `side`: `"top" | "right" | "bottom" | "left"` - The side from which the sheet appears (default: `"right"`)

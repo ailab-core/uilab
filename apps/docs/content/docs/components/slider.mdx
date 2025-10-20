@@ -1,0 +1,111 @@
+---
+title: Slider
+description: An input control for selecting values from a range.
+---
+
+import { Slider, Label } from "uilab-core"
+
+The Slider component allows users to select a value or range of values.
+
+## Examples
+
+### Default Slider
+
+<ComponentPreview title="Default Slider">
+  <Slider defaultValue={[50]} max={100} step={1} />
+</ComponentPreview>
+
+```tsx
+import { Slider } from 'uilab-core'
+
+export function Example() {
+  return <Slider defaultValue={[50]} max={100} step={1} />
+}
+```
+
+### With Label and Value Display
+
+<ComponentPreview title="Slider with Label">
+  <div className="space-y-4">
+    <div className="flex items-center justify-between">
+      <Label>Volume</Label>
+      <span className="text-sm text-muted-foreground">50%</span>
+    </div>
+    <Slider defaultValue={[50]} max={100} step={1} />
+  </div>
+</ComponentPreview>
+
+```tsx
+import { Slider, Label } from 'uilab-core'
+import { useState } from 'react'
+
+export function Example() {
+  const [value, setValue] = useState([50])
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <Label>Volume</Label>
+        <span className="text-sm text-muted-foreground">{value[0]}%</span>
+      </div>
+      <Slider value={value} onValueChange={setValue} max={100} step={1} />
+    </div>
+  )
+}
+```
+
+### Range Slider
+
+<ComponentPreview title="Range Slider">
+  <Slider defaultValue={[25, 75]} max={100} step={1} />
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[25, 75]} max={100} step={1} />
+```
+
+### Different Steps
+
+<ComponentPreview title="Slider with Different Step Values">
+  <div className="space-y-4">
+    <div>
+      <Label className="mb-2">Step: 1</Label>
+      <Slider defaultValue={[50]} max={100} step={1} />
+    </div>
+    <div>
+      <Label className="mb-2">Step: 10</Label>
+      <Slider defaultValue={[50]} max={100} step={10} />
+    </div>
+    <div>
+      <Label className="mb-2">Step: 25</Label>
+      <Slider defaultValue={[50]} max={100} step={25} />
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} />
+<Slider defaultValue={[50]} max={100} step={10} />
+<Slider defaultValue={[50]} max={100} step={25} />
+```
+
+### Disabled
+
+<ComponentPreview title="Disabled Slider">
+  <Slider defaultValue={[50]} max={100} step={1} disabled />
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} disabled />
+```
+
+## Props
+
+- `value`: `number[]` - The controlled value(s)
+- `defaultValue`: `number[]` - The default value(s) (uncontrolled)
+- `onValueChange`: `(value: number[]) => void` - Event handler called when the value changes
+- `min`: `number` - The minimum value (default: 0)
+- `max`: `number` - The maximum value (default: 100)
+- `step`: `number` - The step increment (default: 1)
+- `disabled`: `boolean` - When true, prevents interaction
+- `orientation`: `"horizontal" | "vertical"` - The orientation of the slider
