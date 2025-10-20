@@ -17,6 +17,7 @@ build-and-publish:
     - pnpm build:docs
     - mkdir -p pages/registry
     - mv apps/docs/dist/client/* pages/
+    - cp pages/index.html pages/404.html
     - mv packages/components/dist/* pages/registry/
   artifacts:
     paths:
