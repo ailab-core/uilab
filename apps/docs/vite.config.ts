@@ -6,7 +6,6 @@ import { defineConfig } from "vite"
 import tsConfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
-  base: "/frontend/uilab",
   server: {
     port: 3000,
   },
@@ -19,8 +18,6 @@ export default defineConfig({
     tanstackStart({
       prerender: {
         enabled: true,
-        autoSubfolderIndex: true,
-        crawlLinks: true,
       },
     }),
     react(),
