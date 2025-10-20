@@ -1,7 +1,7 @@
 {
   "name": "uilab-core",
   "description": "Uilab base components and blocks",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "",
   "type": "module",
