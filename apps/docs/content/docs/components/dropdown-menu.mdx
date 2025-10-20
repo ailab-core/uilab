@@ -3,7 +3,23 @@ title: Dropdown Menu
 description: Displays a menu triggered by a button, with items that can trigger actions.
 ---
 
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent, Button } from "uilab-core"
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "uilab-core"
 
 The Dropdown Menu component displays a menu of actions or options.
 
@@ -29,14 +45,14 @@ The Dropdown Menu component displays a menu of actions or options.
 
 ```tsx
 import {
+  Button,
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  Button
-} from 'uilab-core'
+  DropdownMenuTrigger,
+} from "uilab-core"
 
 export function Example() {
   return (

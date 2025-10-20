@@ -10,19 +10,19 @@ export function ComponentPreview({
   description,
 }: ComponentPreviewProps) {
   return (
-    <div className='not-prose my-8'>
+    <div className="not-prose my-8">
       {(title || description) && (
-        <div className='mb-4'>
+        <div className="mb-4">
           {title && (
-            <h3 className='text-lg font-semibold text-foreground'>{title}</h3>
+            <h3 className="text-foreground text-lg font-semibold">{title}</h3>
           )}
           {description && (
-            <p className='text-sm text-muted-foreground'>{description}</p>
+            <p className="text-muted-foreground text-sm">{description}</p>
           )}
         </div>
       )}
-      <div className='flex flex-col gap-6 rounded-xl border py-6 shadow-sm relative overflow-hidden bg-fd-card'>
-        <div className='flex min-h-[300px] items-center justify-center p-8'>
+      <div className="bg-fd-card relative flex flex-col gap-6 overflow-hidden rounded-xl border py-6 shadow-sm">
+        <div className="flex min-h-[300px] items-center justify-center p-8">
           {children}
         </div>
       </div>

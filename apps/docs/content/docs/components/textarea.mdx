@@ -3,7 +3,7 @@ title: Textarea
 description: A multi-line text input field for longer text content.
 ---
 
-import { Textarea, Label } from "uilab-core"
+import { Label, Textarea } from "uilab-core"
 
 The Textarea component provides a multi-line text input with auto-resizing support.
 
@@ -16,7 +16,7 @@ The Textarea component provides a multi-line text input with auto-resizing suppo
 </ComponentPreview>
 
 ```tsx
-import { Textarea } from 'uilab-core'
+import { Textarea } from "uilab-core"
 
 export function Example() {
   return <Textarea placeholder="Type your message here..." />
@@ -33,7 +33,7 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { Textarea, Label } from 'uilab-core'
+import { Label, Textarea } from "uilab-core"
 
 export function Example() {
   return (
@@ -51,7 +51,7 @@ export function Example() {
   <div className="flex flex-col gap-2">
     <Label htmlFor="bio">Bio</Label>
     <Textarea id="bio" placeholder="Tell us about yourself..." />
-    <p className="text-sm text-muted-foreground">
+    <p className="text-muted-foreground text-sm">
       Write a short bio about yourself. Max 500 characters.
     </p>
   </div>
@@ -61,7 +61,7 @@ export function Example() {
 <div className="flex flex-col gap-2">
   <Label htmlFor="bio">Bio</Label>
   <Textarea id="bio" placeholder="Tell us about yourself..." />
-  <p className="text-sm text-muted-foreground">
+  <p className="text-muted-foreground text-sm">
     Write a short bio about yourself. Max 500 characters.
   </p>
 </div>
@@ -88,11 +88,11 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { Textarea } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { Textarea } from "uilab-core"
 
 export function Example() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("")
 
   return (
     <Textarea
@@ -109,19 +109,23 @@ export function Example() {
 <ComponentPreview title="Textarea with Character Count">
   <div className="flex flex-col gap-2">
     <Label htmlFor="feedback">Feedback</Label>
-    <Textarea id="feedback" placeholder="Share your feedback..." maxLength={200} />
-    <p className="text-sm text-muted-foreground text-right">
+    <Textarea
+      id="feedback"
+      placeholder="Share your feedback..."
+      maxLength={200}
+    />
+    <p className="text-muted-foreground text-right text-sm">
       0 / 200 characters
     </p>
   </div>
 </ComponentPreview>
 
 ```tsx
-import { Textarea, Label } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { Label, Textarea } from "uilab-core"
 
 export function Example() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("")
   const maxLength = 200
 
   return (
@@ -134,7 +138,7 @@ export function Example() {
         onChange={(e) => setValue(e.target.value)}
         maxLength={maxLength}
       />
-      <p className="text-sm text-muted-foreground text-right">
+      <p className="text-muted-foreground text-right text-sm">
         {value.length} / {maxLength} characters
       </p>
     </div>

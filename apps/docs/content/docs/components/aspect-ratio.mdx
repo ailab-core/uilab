@@ -3,7 +3,7 @@ title: Aspect Ratio
 description: Maintains a consistent aspect ratio for content.
 ---
 
-import { AspectRatio } from 'uilab-core'
+import { AspectRatio } from "uilab-core"
 
 The Aspect Ratio component ensures content maintains a specific width-to-height ratio.
 
@@ -13,7 +13,7 @@ The Aspect Ratio component ensures content maintains a specific width-to-height 
 
 <ComponentPreview title="16:9 Video Aspect Ratio">
   <div className="w-full max-w-md">
-    <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg overflow-hidden">
+    <AspectRatio ratio={16 / 9} className="bg-muted overflow-hidden rounded-lg">
       <img
         src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
         alt="Photo"
@@ -24,7 +24,7 @@ The Aspect Ratio component ensures content maintains a specific width-to-height 
 </ComponentPreview>
 
 ```tsx
-import { AspectRatio } from 'uilab-core'
+import { AspectRatio } from "uilab-core"
 
 export function Example() {
   return (

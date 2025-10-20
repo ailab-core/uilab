@@ -3,7 +3,7 @@ title: Sonner
 description: Toast notifications powered by Sonner.
 ---
 
-import { Toaster, Button } from "uilab-core"
+import { Button, Toaster } from "uilab-core"
 
 The Sonner component provides beautiful toast notifications with automatic theme integration.
 
@@ -12,7 +12,7 @@ The Sonner component provides beautiful toast notifications with automatic theme
 First, add the Toaster component to your root layout:
 
 ```tsx
-import { Toaster } from 'uilab-core'
+import { Toaster } from "uilab-core"
 
 export default function RootLayout({ children }) {
   return (
@@ -31,15 +31,15 @@ export default function RootLayout({ children }) {
 ### Basic Toast
 
 ```tsx
-import { Button } from 'uilab-core'
-import { toast } from 'sonner'
+import { toast } from "sonner"
+import { Button } from "uilab-core"
 
 export function Example() {
   return (
     <Button
       onClick={() =>
-        toast('Event has been created', {
-          description: 'Sunday, December 03, 2023 at 9:00 AM',
+        toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
         })
       }
     >
@@ -52,28 +52,28 @@ export function Example() {
 ### Success Toast
 
 ```tsx
-import { toast } from 'sonner'
+import { toast } from "sonner"
 
-toast.success('Profile updated successfully')
+toast.success("Profile updated successfully")
 ```
 
 ### Error Toast
 
 ```tsx
-import { toast } from 'sonner'
+import { toast } from "sonner"
 
-toast.error('Something went wrong')
+toast.error("Something went wrong")
 ```
 
 ### With Action
 
 ```tsx
-import { toast } from 'sonner'
+import { toast } from "sonner"
 
-toast('Event has been created', {
+toast("Event has been created", {
   action: {
-    label: 'Undo',
-    onClick: () => console.log('Undo'),
+    label: "Undo",
+    onClick: () => console.log("Undo"),
   },
 })
 ```
@@ -81,22 +81,19 @@ toast('Event has been created', {
 ### Promise Toast
 
 ```tsx
-import { toast } from 'sonner'
+import { toast } from "sonner"
 
-toast.promise(
-  fetch('/api/data'),
-  {
-    loading: 'Loading...',
-    success: 'Data loaded successfully',
-    error: 'Failed to load data',
-  }
-)
+toast.promise(fetch("/api/data"), {
+  loading: "Loading...",
+  success: "Data loaded successfully",
+  error: "Failed to load data",
+})
 ```
 
 ### Custom Duration
 
 ```tsx
-toast('This will disappear after 5 seconds', {
+toast("This will disappear after 5 seconds", {
   duration: 5000,
 })
 ```
@@ -112,9 +109,7 @@ toast.custom((t) => (
     </Avatar>
     <div>
       <p className="font-semibold">John Doe</p>
-      <p className="text-sm text-muted-foreground">
-        Sent you a message
-      </p>
+      <p className="text-muted-foreground text-sm">Sent you a message</p>
     </div>
   </div>
 ))

@@ -3,7 +3,16 @@ title: Select
 description: Displays a list of options for the user to pick from.
 ---
 
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from "uilab-core"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "uilab-core"
 
 The Select component provides a dropdown list for selecting values.
 
@@ -25,7 +34,13 @@ The Select component provides a dropdown list for selecting values.
 </ComponentPreview>
 
 ```tsx
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from 'uilab-core'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -96,14 +111,18 @@ export function Example() {
     </SelectTrigger>
     <SelectContent>
       <SelectItem value="option1">Option 1</SelectItem>
-      <SelectItem value="option2" disabled>Option 2 (Disabled)</SelectItem>
+      <SelectItem value="option2" disabled>
+        Option 2 (Disabled)
+      </SelectItem>
       <SelectItem value="option3">Option 3</SelectItem>
     </SelectContent>
   </Select>
 </ComponentPreview>
 
 ```tsx
-<SelectItem value="option2" disabled>Option 2 (Disabled)</SelectItem>
+<SelectItem value="option2" disabled>
+  Option 2 (Disabled)
+</SelectItem>
 ```
 
 ### Sizes

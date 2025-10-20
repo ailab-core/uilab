@@ -3,7 +3,16 @@ title: Dialog
 description: A modal dialog that overlays the page content.
 ---
 
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, Button } from "uilab-core"
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "uilab-core"
 
 The Dialog component displays content in a modal overlay.
 
@@ -36,15 +45,15 @@ The Dialog component displays content in a modal overlay.
 
 ```tsx
 import {
+  Button,
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
-  Button
-} from 'uilab-core'
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -95,9 +104,7 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-<DialogContent showCloseButton={false}>
-  {/* Content */}
-</DialogContent>
+<DialogContent showCloseButton={false}>{/* Content */}</DialogContent>
 ```
 
 ## Components

@@ -3,7 +3,12 @@ title: Input OTP
 description: An accessible one-time password component with multiple inputs.
 ---
 
-import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from "uilab-core"
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "uilab-core"
 
 The Input OTP component provides an accessible way to input one-time passwords or verification codes.
 
@@ -25,7 +30,7 @@ The Input OTP component provides an accessible way to input one-time passwords o
 </ComponentPreview>
 
 ```tsx
-import { InputOTP, InputOTPGroup, InputOTPSlot } from 'uilab-core'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "uilab-core"
 
 export function Example() {
   return (
@@ -80,7 +85,11 @@ export function Example() {
 ### Controlled
 
 <ComponentPreview title="Controlled Input OTP">
-  <InputOTP maxLength={6} value="123456" onChange={(value) => console.log(value)}>
+  <InputOTP
+    maxLength={6}
+    value="123456"
+    onChange={(value) => console.log(value)}
+  >
     <InputOTPGroup>
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />
@@ -93,11 +102,11 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { InputOTP, InputOTPGroup, InputOTPSlot } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "uilab-core"
 
 export function Example() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("")
 
   return (
     <InputOTP maxLength={6} value={value} onChange={setValue}>

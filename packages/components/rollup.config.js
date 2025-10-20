@@ -3,11 +3,11 @@ import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
+import postcssImport from 'postcss-import'
 import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
-import postcssImport from 'postcss-import'
 import typescriptEngine from 'typescript'
 
 const packageJson = JSON.parse(readFileSync('./package.json'))

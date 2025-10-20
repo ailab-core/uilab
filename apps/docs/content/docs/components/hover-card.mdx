@@ -3,7 +3,15 @@ title: Hover Card
 description: Display rich content when hovering over an element.
 ---
 
-import { HoverCard, HoverCardTrigger, HoverCardContent, Button, Avatar, AvatarImage, AvatarFallback } from "uilab-core"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "uilab-core"
 
 The Hover Card component displays content when hovering over a trigger element.
 
@@ -24,11 +32,11 @@ The Hover Card component displays content when hovering over a trigger element.
         </Avatar>
         <div className="space-y-1">
           <h4 className="text-sm font-semibold">@username</h4>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Software engineer and open source contributor.
           </p>
           <div className="flex items-center pt-2">
-            <span className="text-xs text-muted-foreground">
+            <span className="text-muted-foreground text-xs">
               Joined December 2021
             </span>
           </div>
@@ -40,14 +48,14 @@ The Hover Card component displays content when hovering over a trigger element.
 
 ```tsx
 import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-  Button,
   Avatar,
+  AvatarFallback,
   AvatarImage,
-  AvatarFallback
-} from 'uilab-core'
+  Button,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -63,7 +71,7 @@ export function Example() {
           </Avatar>
           <div className="space-y-1">
             <h4 className="text-sm font-semibold">@username</h4>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Software engineer and open source contributor.
             </p>
           </div>

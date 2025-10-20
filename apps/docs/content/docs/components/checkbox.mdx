@@ -16,7 +16,7 @@ The Checkbox component is built on Radix UI and provides an accessible checkbox 
 </ComponentPreview>
 
 ```tsx
-import { Checkbox } from 'uilab-core'
+import { Checkbox } from "uilab-core"
 
 export function Example() {
   return <Checkbox />
@@ -33,7 +33,7 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { Checkbox, Label } from 'uilab-core'
+import { Checkbox, Label } from "uilab-core"
 
 export function Example() {
   return (
@@ -69,14 +69,18 @@ export function Example() {
 
 <ComponentPreview title="Controlled Checkbox">
   <div className="flex items-center gap-2">
-    <Checkbox id="controlled" checked={true} onCheckedChange={(checked) => console.log(checked)} />
+    <Checkbox
+      id="controlled"
+      checked={true}
+      onCheckedChange={(checked) => console.log(checked)}
+    />
     <Label htmlFor="controlled">Controlled checkbox</Label>
   </div>
 </ComponentPreview>
 
 ```tsx
-import { Checkbox, Label } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { Checkbox, Label } from "uilab-core"
 
 export function Example() {
   const [checked, setChecked] = useState(false)
@@ -88,9 +92,7 @@ export function Example() {
         checked={checked}
         onCheckedChange={setChecked}
       />
-      <Label htmlFor="controlled">
-        {checked ? 'Checked' : 'Unchecked'}
-      </Label>
+      <Label htmlFor="controlled">{checked ? "Checked" : "Unchecked"}</Label>
     </div>
   )
 }

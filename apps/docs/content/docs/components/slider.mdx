@@ -3,7 +3,7 @@ title: Slider
 description: An input control for selecting values from a range.
 ---
 
-import { Slider, Label } from "uilab-core"
+import { Label, Slider } from "uilab-core"
 
 The Slider component allows users to select a value or range of values.
 
@@ -16,7 +16,7 @@ The Slider component allows users to select a value or range of values.
 </ComponentPreview>
 
 ```tsx
-import { Slider } from 'uilab-core'
+import { Slider } from "uilab-core"
 
 export function Example() {
   return <Slider defaultValue={[50]} max={100} step={1} />
@@ -29,15 +29,15 @@ export function Example() {
   <div className="space-y-4">
     <div className="flex items-center justify-between">
       <Label>Volume</Label>
-      <span className="text-sm text-muted-foreground">50%</span>
+      <span className="text-muted-foreground text-sm">50%</span>
     </div>
     <Slider defaultValue={[50]} max={100} step={1} />
   </div>
 </ComponentPreview>
 
 ```tsx
-import { Slider, Label } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { Label, Slider } from "uilab-core"
 
 export function Example() {
   const [value, setValue] = useState([50])
@@ -46,7 +46,7 @@ export function Example() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Label>Volume</Label>
-        <span className="text-sm text-muted-foreground">{value[0]}%</span>
+        <span className="text-muted-foreground text-sm">{value[0]}%</span>
       </div>
       <Slider value={value} onValueChange={setValue} max={100} step={1} />
     </div>

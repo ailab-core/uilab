@@ -3,7 +3,7 @@ title: Radio Group
 description: A set of checkable buttons where only one can be checked at a time.
 ---
 
-import { RadioGroup, RadioGroupItem, Label } from "uilab-core"
+import { Label, RadioGroup, RadioGroupItem } from "uilab-core"
 
 The Radio Group component allows users to select a single option from a set of choices.
 
@@ -29,7 +29,7 @@ The Radio Group component allows users to select a single option from a set of c
 </ComponentPreview>
 
 ```tsx
-import { RadioGroup, RadioGroupItem, Label } from 'uilab-core'
+import { Label, RadioGroup, RadioGroupItem } from "uilab-core"
 
 export function Example() {
   return (
@@ -59,21 +59,21 @@ export function Example() {
       <RadioGroupItem value="default" id="r1" />
       <div>
         <Label htmlFor="r1">Default</Label>
-        <p className="text-sm text-muted-foreground">Standard spacing</p>
+        <p className="text-muted-foreground text-sm">Standard spacing</p>
       </div>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="comfortable" id="r2" />
       <div>
         <Label htmlFor="r2">Comfortable</Label>
-        <p className="text-sm text-muted-foreground">More padding</p>
+        <p className="text-muted-foreground text-sm">More padding</p>
       </div>
     </div>
     <div className="flex items-center gap-2">
       <RadioGroupItem value="compact" id="r3" />
       <div>
         <Label htmlFor="r3">Compact</Label>
-        <p className="text-sm text-muted-foreground">Less padding</p>
+        <p className="text-muted-foreground text-sm">Less padding</p>
       </div>
     </div>
   </RadioGroup>
@@ -85,7 +85,7 @@ export function Example() {
     <RadioGroupItem value="default" id="r1" />
     <div>
       <Label htmlFor="r1">Default</Label>
-      <p className="text-sm text-muted-foreground">Standard spacing</p>
+      <p className="text-muted-foreground text-sm">Standard spacing</p>
     </div>
   </div>
   {/* More options... */}

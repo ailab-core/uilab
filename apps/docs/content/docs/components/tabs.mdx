@@ -3,7 +3,17 @@ title: Tabs
 description: A set of layered sections of content that are displayed one at a time.
 ---
 
-import { Tabs, TabsList, TabsTrigger, TabsContent, Card, CardHeader, CardTitle, CardDescription, CardContent } from "uilab-core"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "uilab-core"
 
 The Tabs component allows users to switch between different sections of related content.
 
@@ -31,7 +41,7 @@ The Tabs component allows users to switch between different sections of related 
 </ComponentPreview>
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from 'uilab-core'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "uilab-core"
 
 export function Example() {
   return (
@@ -68,7 +78,9 @@ export function Example() {
       <Card>
         <CardHeader>
           <CardTitle>Overview</CardTitle>
-          <CardDescription>View your account overview and summary.</CardDescription>
+          <CardDescription>
+            View your account overview and summary.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p>Overview content goes here.</p>
@@ -123,7 +135,9 @@ export function Example() {
   <Tabs defaultValue="available">
     <TabsList>
       <TabsTrigger value="available">Available</TabsTrigger>
-      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>
+        Disabled
+      </TabsTrigger>
       <TabsTrigger value="another">Another</TabsTrigger>
     </TabsList>
     <TabsContent value="available">
@@ -139,7 +153,9 @@ export function Example() {
 <Tabs defaultValue="available">
   <TabsList>
     <TabsTrigger value="available">Available</TabsTrigger>
-    <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+    <TabsTrigger value="disabled" disabled>
+      Disabled
+    </TabsTrigger>
   </TabsList>
 </Tabs>
 ```

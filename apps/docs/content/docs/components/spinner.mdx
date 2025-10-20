@@ -3,7 +3,7 @@ title: Spinner
 description: A loading spinner indicator for async operations.
 ---
 
-import { Spinner, Button } from "uilab-core"
+import { Button, Spinner } from "uilab-core"
 
 The Spinner component displays an animated loading indicator.
 
@@ -16,7 +16,7 @@ The Spinner component displays an animated loading indicator.
 </ComponentPreview>
 
 ```tsx
-import { Spinner } from 'uilab-core'
+import { Spinner } from "uilab-core"
 
 export function Example() {
   return <Spinner />
@@ -57,7 +57,7 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { Spinner, Button } from 'uilab-core'
+import { Button, Spinner } from "uilab-core"
 
 export function Example() {
   return (
@@ -88,20 +88,21 @@ export function Example() {
 <ComponentPreview title="Spinner with Text">
   <div className="flex flex-col items-center gap-2">
     <Spinner className="size-8" />
-    <p className="text-sm text-muted-foreground">Loading content...</p>
+    <p className="text-muted-foreground text-sm">Loading content...</p>
   </div>
 </ComponentPreview>
 
 ```tsx
 <div className="flex flex-col items-center gap-2">
   <Spinner className="size-8" />
-  <p className="text-sm text-muted-foreground">Loading content...</p>
+  <p className="text-muted-foreground text-sm">Loading content...</p>
 </div>
 ```
 
 ## Usage
 
 The Spinner is useful for indicating loading states in:
+
 - Buttons during async operations
 - Page loading overlays
 - Data fetching states

@@ -3,7 +3,15 @@ title: Carousel
 description: A carousel component built on Embla Carousel.
 ---
 
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, Card, CardContent } from "uilab-core"
+import {
+  Card,
+  CardContent,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "uilab-core"
 
 The Carousel component displays scrollable content with navigation controls.
 
@@ -36,9 +44,9 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
-} from 'uilab-core'
+  CarouselPrevious,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -125,9 +133,7 @@ export function Example() {
 <Carousel orientation="vertical" className="w-full max-w-xs">
   <CarouselContent className="h-[200px]">
     {Array.from({ length: 5 }).map((_, index) => (
-      <CarouselItem key={index}>
-        {/* Item content */}
-      </CarouselItem>
+      <CarouselItem key={index}>{/* Item content */}</CarouselItem>
     ))}
   </CarouselContent>
   <CarouselPrevious />

@@ -3,7 +3,15 @@ title: Breadcrumb
 description: Displays the path to the current resource using a hierarchy of links.
 ---
 
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from 'uilab-core'
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "uilab-core"
 
 The Breadcrumb component provides navigation showing the user's location within a hierarchy.
 
@@ -32,12 +40,12 @@ The Breadcrumb component provides navigation showing the user's location within 
 ```tsx
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator
-} from 'uilab-core'
+  BreadcrumbSeparator,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -62,7 +70,10 @@ export function Example() {
 
 ### With Ellipsis
 
-<ComponentPreview title="Breadcrumb with Ellipsis" description="Use ellipsis for long paths">
+<ComponentPreview
+  title="Breadcrumb with Ellipsis"
+  description="Use ellipsis for long paths"
+>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>

@@ -51,7 +51,7 @@ const clientLoader = createClientLoader(docs.doc, {
           <MDX
             components={{
               ...defaultMdxComponents,
-              ...components
+              ...components,
             }}
           />
         </DocsBody>

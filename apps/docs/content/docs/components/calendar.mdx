@@ -16,19 +16,13 @@ The Calendar component displays an interactive calendar for date selection.
 </ComponentPreview>
 
 ```tsx
-import { Calendar } from 'uilab-core'
-import { useState } from 'react'
+import { useState } from "react"
+import { Calendar } from "uilab-core"
 
 export function Example() {
   const [date, setDate] = useState<Date | undefined>(new Date())
 
-  return (
-    <Calendar
-      mode="single"
-      selected={date}
-      onSelect={setDate}
-    />
-  )
+  return <Calendar mode="single" selected={date} onSelect={setDate} />
 }
 ```
 
@@ -39,9 +33,9 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-import { Calendar } from 'uilab-core'
-import { useState } from 'react'
-import { DateRange } from 'react-day-picker'
+import { useState } from "react"
+import { DateRange } from "react-day-picker"
+import { Calendar } from "uilab-core"
 
 export function Example() {
   const [range, setRange] = useState<DateRange | undefined>()
@@ -60,7 +54,12 @@ export function Example() {
 ### With Dropdown
 
 <ComponentPreview title="Calendar with Month/Year Dropdown">
-  <Calendar mode="single" captionLayout="dropdown" fromYear={2020} toYear={2030} />
+  <Calendar
+    mode="single"
+    captionLayout="dropdown"
+    fromYear={2020}
+    toYear={2030}
+  />
 </ComponentPreview>
 
 ```tsx

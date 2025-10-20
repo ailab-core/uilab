@@ -3,7 +3,7 @@ title: Popover
 description: Displays rich content in a portal, triggered by a button.
 ---
 
-import { Popover, PopoverTrigger, PopoverContent, Button } from "uilab-core"
+import { Button, Popover, PopoverContent, PopoverTrigger } from "uilab-core"
 
 The Popover component displays content in a floating panel.
 
@@ -19,7 +19,7 @@ The Popover component displays content in a floating panel.
     <PopoverContent>
       <div className="space-y-2">
         <h4 className="font-medium">Popover Title</h4>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           This is the popover content.
         </p>
       </div>
@@ -28,7 +28,7 @@ The Popover component displays content in a floating panel.
 </ComponentPreview>
 
 ```tsx
-import { Popover, PopoverTrigger, PopoverContent, Button } from 'uilab-core'
+import { Button, Popover, PopoverContent, PopoverTrigger } from "uilab-core"
 
 export function Example() {
   return (
@@ -39,7 +39,7 @@ export function Example() {
       <PopoverContent>
         <div className="space-y-2">
           <h4 className="font-medium">Popover Title</h4>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             This is the popover content.
           </p>
         </div>

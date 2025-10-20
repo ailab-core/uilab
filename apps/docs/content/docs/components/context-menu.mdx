@@ -3,7 +3,18 @@ title: Context Menu
 description: A menu that appears on right-click.
 ---
 
-import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut } from "uilab-core"
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuTrigger,
+} from "uilab-core"
 
 The Context Menu component displays a menu when right-clicking on an element.
 
@@ -30,10 +41,10 @@ The Context Menu component displays a menu when right-clicking on an element.
 ```tsx
 import {
   ContextMenu,
-  ContextMenuTrigger,
   ContextMenuContent,
-  ContextMenuItem
-} from 'uilab-core'
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "uilab-core"
 
 export function Example() {
   return (
@@ -65,9 +76,7 @@ export function Example() {
 </ComponentPreview>
 
 ```tsx
-<ContextMenuCheckboxItem checked>
-  Show Toolbar
-</ContextMenuCheckboxItem>
+<ContextMenuCheckboxItem checked>Show Toolbar</ContextMenuCheckboxItem>
 ```
 
 ## Components
