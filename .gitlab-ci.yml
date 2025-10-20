@@ -15,10 +15,9 @@ build-and-publish:
     - pnpm install
     - pnpm build:components
     - pnpm build:docs
-    - mkdir pages
-    - mkdir pages/registry
-    - mv apps/docs/dist/* pages
-    - mv packages/components/dist/* pages/registry
+    - mkdir -p pages/registry
+    - mv apps/docs/dist/client/* pages/
+    - mv packages/components/dist/* pages/registry/
   artifacts:
     paths:
       - apps/docs/dist
