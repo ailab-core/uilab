@@ -13,8 +13,8 @@ build-and-publish:
     - pnpm config set store-dir .pnpm-store
   script:
     - pnpm install
-    - pnpm build:docs
     - pnpm build:components
+    - pnpm build:docs
     - mkdir pages
     - mkdir pages/registry
     - mv apps/docs/dist/* pages
