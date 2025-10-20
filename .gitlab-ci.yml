@@ -14,15 +14,15 @@ build-and-publish:
   script:
     - pnpm install
     - pnpm build:docs
-    - pnpm build:ui-library
+    - pnpm build:components
     - mkdir pages
     - mkdir pages/registry
-    - mv apps/docs/build/* pages
-    - mv packages/components/public/* pages/registry
+    - mv apps/docs/dist/* pages
+    - mv packages/components/dist/* pages/registry
   artifacts:
     paths:
-      - apps/docs/build
-      - packages/components/public
+      - apps/docs/dist
+      - packages/components/dist
   cache:
     key:
       files:

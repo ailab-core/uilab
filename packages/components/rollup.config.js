@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs'
-import { resolve } from 'node:path'
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
@@ -8,11 +7,13 @@ import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
+import postcssImport from 'postcss-import'
 import typescriptEngine from 'typescript'
 
 const packageJson = JSON.parse(readFileSync('./package.json'))
 
 export default defineConfig([
+  // JavaScript/TypeScript bundle
   {
     input: 'src/index.ts',
     output: [
@@ -42,14 +43,41 @@ export default defineConfig([
         sourceMap: true,
       }),
       postcss({
-        include: './src/index.css',
-        extract: resolve('dist/index.css'),
-        minimize: true,
+        extract: false,
+        inject: false,
       }),
       terser(),
     ],
     external: ['class-variance-authority/types'],
   },
+  // Full CSS bundle (Tailwind utilities + theme variables)
+  {
+    input: 'src/styles.css',
+    output: {
+      file: 'dist/styles.css',
+    },
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: true,
+        plugins: [postcssImport()],
+      }),
+    ],
+  },
+  // Theme variables only (for projects with their own Tailwind setup)
+  {
+    input: 'src/theme.css',
+    output: {
+      file: 'dist/theme.css',
+    },
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: true,
+      }),
+    ],
+  },
+  // TypeScript declarations
   {
     input: 'dist/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
