@@ -19,6 +19,8 @@ export default defineConfig({
     tanstackStart({
       prerender: {
         enabled: true,
+        autoSubfolderIndex: true,
+        crawlLinks: true,
       },
     }),
     react(),
