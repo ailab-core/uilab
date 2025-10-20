@@ -1,0 +1,46 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "objectWrap": "preserve",
+  "printWidth": 80,
+  "endOfLine": "lf",
+  "arrowParens": "always",
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "^types$",
+    "^(@/assets/(.*)$)|^(@/assets$)",
+    "^(@/components/(.*)$)|^(@/components$)",
+    "^(@/components/ui/(.*)$)|^(@/components/ui$)",
+    "^(@/components/blocks(.*)$)|^(@/components/blocks$)",
+    "^(@/data/(.*)$)|^(@/data$)",
+    "^(@/hooks/(.*)$)|^(@/hooks$)",
+    "^(@/lib/(.*)$)|^(@/lib$)",
+    "^(@/providers/(.*)$)|^(@/providers$)",
+    "^(@/routes/(.*)$)|^(@/routes$)",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": [
+    "typescript",
+    "jsx",
+    "decorators-legacy"
+  ],
+  "overrides": [
+    {
+      "files": "**/*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}

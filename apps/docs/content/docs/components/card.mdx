@@ -1,0 +1,124 @@
+---
+title: Card
+description: A versatile container component for displaying content.
+---
+import {
+  Button,
+  Card,
+  CardTitle,
+  CardDescription,
+  CardHeader,
+  CardContent,
+  CardFooter
+} from "uilab-core"
+
+The Card component provides a flexible container for grouping related content.
+
+## Examples
+
+### Basic Card
+
+<ComponentPreview title="Basic Card">
+  <Card className="w-[350px]">
+    <CardHeader>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Card description goes here.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>This is the card content area where you can place any content.</p>
+    </CardContent>
+    <CardFooter>
+      <Button variant="outline">Cancel</Button>
+      <Button className="ml-2">Submit</Button>
+    </CardFooter>
+  </Card>
+</ComponentPreview>
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from 'uilab-core'
+
+export function Example() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>This is the card content area.</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="outline">Cancel</Button>
+        <Button>Submit</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### Simple Card
+
+<ComponentPreview title="Simple Card" description="A card without header or footer">
+  <Card className="w-[350px] p-6">
+    <p className="text-sm">
+      This is a simple card with just content. Perfect for quick information displays.
+    </p>
+  </Card>
+</ComponentPreview>
+
+```tsx
+<Card className="w-[350px] p-6">
+  <p>Simple card content</p>
+</Card>
+```
+
+### Multiple Cards
+
+<ComponentPreview title="Card Grid" description="Cards work great in grid layouts">
+  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <Card>
+      <CardHeader>
+        <CardTitle>Card 1</CardTitle>
+        <CardDescription>First card</CardDescription>
+      </CardHeader>
+      <CardContent>Content for card 1</CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Card 2</CardTitle>
+        <CardDescription>Second card</CardDescription>
+      </CardHeader>
+      <CardContent>Content for card 2</CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Card 3</CardTitle>
+        <CardDescription>Third card</CardDescription>
+      </CardHeader>
+      <CardContent>Content for card 3</CardContent>
+    </Card>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="grid gap-4 md:grid-cols-3">
+  <Card>
+    <CardHeader>
+      <CardTitle>Card 1</CardTitle>
+    </CardHeader>
+    <CardContent>Content</CardContent>
+  </Card>
+  {/* More cards... */}
+</div>
+```
+
+## Components
+
+The Card system includes several sub-components:
+
+- `Card` - The main container
+- `CardHeader` - Header section (optional)
+- `CardTitle` - Title text with proper styling
+- `CardDescription` - Description text with muted styling
+- `CardContent` - Main content area
+- `CardFooter` - Footer section (optional)
