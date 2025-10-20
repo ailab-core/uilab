@@ -5,7 +5,5 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: "Tanstack Start",
     },
-    // Disable search for static deployment to avoid 401 errors
-    enableSearch: false,
   }
 }

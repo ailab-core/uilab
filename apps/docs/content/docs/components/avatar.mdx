@@ -3,7 +3,7 @@ title: Avatar
 description: An image element with a fallback for representing a user.
 ---
 
-import { Avatar, AvatarFallback, AvatarImage } from "uilab-core"
+import { Avatar, AvatarImage, AvatarFallback } from 'uilab-core'
 
 The Avatar component displays a user's profile picture with automatic fallback support.
 
@@ -19,7 +19,7 @@ The Avatar component displays a user's profile picture with automatic fallback s
 </ComponentPreview>
 
 ```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "uilab-core"
+import { Avatar, AvatarImage, AvatarFallback } from 'uilab-core'
 
 export function Example() {
   return (
@@ -33,10 +33,7 @@ export function Example() {
 
 ### Fallback
 
-<ComponentPreview
-  title="Avatar Fallback"
-  description="Shows fallback when image fails to load"
->
+<ComponentPreview title="Avatar Fallback" description="Shows fallback when image fails to load">
   <Avatar>
     <AvatarImage src="/broken-image.jpg" alt="User" />
     <AvatarFallback>AB</AvatarFallback>
