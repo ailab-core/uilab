@@ -1,0 +1,76 @@
+---
+title: Aspect Ratio
+description: Maintains a consistent aspect ratio for content.
+---
+
+import { AspectRatio } from 'uilab-core'
+
+The Aspect Ratio component ensures content maintains a specific width-to-height ratio.
+
+## Examples
+
+### 16:9 Aspect Ratio
+
+<ComponentPreview title="16:9 Video Aspect Ratio">
+  <div className="w-full max-w-md">
+    <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+        alt="Photo"
+        className="h-full w-full object-cover"
+      />
+    </AspectRatio>
+  </div>
+</ComponentPreview>
+
+```tsx
+import { AspectRatio } from 'uilab-core'
+
+export function Example() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <img src="/image.jpg" alt="Photo" />
+    </AspectRatio>
+  )
+}
+```
+
+### Square Aspect Ratio
+
+<ComponentPreview title="1:1 Square Aspect Ratio">
+  <div className="w-full max-w-sm">
+    <AspectRatio ratio={1} className="bg-muted rounded-lg">
+      <div className="flex h-full items-center justify-center">
+        <p className="text-muted-foreground">1:1 Ratio</p>
+      </div>
+    </AspectRatio>
+  </div>
+</ComponentPreview>
+
+```tsx
+<AspectRatio ratio={1}>
+  <div>Square content</div>
+</AspectRatio>
+```
+
+### 4:3 Aspect Ratio
+
+<ComponentPreview title="4:3 Classic Aspect Ratio">
+  <div className="w-full max-w-md">
+    <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg">
+      <div className="flex h-full items-center justify-center">
+        <p className="text-muted-foreground">4:3 Ratio</p>
+      </div>
+    </AspectRatio>
+  </div>
+</ComponentPreview>
+
+```tsx
+<AspectRatio ratio={4 / 3}>
+  <div>4:3 content</div>
+</AspectRatio>
+```
+
+## Props
+
+- `ratio`: number - The desired aspect ratio (width / height). For example, `16 / 9` or `1`

@@ -11,7 +11,7 @@ import {
   DocsPage,
   DocsTitle,
 } from "fumadocs-ui/page"
-import { ComponentPreview } from "@/components"
+import { components } from "@/components/mdx-components"
 import { baseOptions } from "@/lib/layout.shared"
 import { source } from "@/lib/source"
 import { docs } from "../../../source.generated"
@@ -51,7 +51,7 @@ const clientLoader = createClientLoader(docs.doc, {
           <MDX
             components={{
               ...defaultMdxComponents,
-              ComponentPreview,
+              ...components
             }}
           />
         </DocsBody>

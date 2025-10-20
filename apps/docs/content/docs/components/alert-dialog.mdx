@@ -1,0 +1,88 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+---
+
+import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction, AlertDialogCancel, Button } from 'uilab-core'
+
+The Alert Dialog component displays a modal dialog for critical confirmations and alerts.
+
+## Examples
+
+### Default Alert Dialog
+
+<ComponentPreview title="Default Alert Dialog">
+  <AlertDialog>
+    <AlertDialogTrigger asChild>
+      <Button variant="outline">Delete Account</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your account
+          and remove your data from our servers.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Continue</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</ComponentPreview>
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogAction,
+  AlertDialogCancel,
+  Button
+} from 'uilab-core'
+
+export function Example() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Delete Account</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
+```
+
+## Components
+
+- `AlertDialog` - The root container
+- `AlertDialogTrigger` - Button that opens the dialog
+- `AlertDialogContent` - The dialog content wrapper
+- `AlertDialogHeader` - Header section container
+- `AlertDialogTitle` - Dialog title
+- `AlertDialogDescription` - Dialog description text
+- `AlertDialogFooter` - Footer section for action buttons
+- `AlertDialogAction` - Primary action button
+- `AlertDialogCancel` - Cancel button
+
+## Props
+
+### AlertDialog
+
+Inherits all props from Radix UI Alert Dialog Root component.

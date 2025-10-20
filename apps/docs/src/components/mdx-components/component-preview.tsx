@@ -1,5 +1,3 @@
-import { Card } from 'uilab-core'
-
 interface ComponentPreviewProps {
   children: React.ReactNode
   title?: string
@@ -23,11 +21,11 @@ export function ComponentPreview({
           )}
         </div>
       )}
-      <Card className='relative overflow-hidden'>
-        <div className='flex min-h-[350px] items-center justify-center p-8'>
+      <div className='flex flex-col gap-6 rounded-xl border py-6 shadow-sm relative overflow-hidden bg-fd-card'>
+        <div className='flex min-h-[300px] items-center justify-center p-8'>
           {children}
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
