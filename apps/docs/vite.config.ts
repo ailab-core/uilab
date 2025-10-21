@@ -16,9 +16,14 @@ export default defineConfig({
       projects: ["./tsconfig.json"],
     }),
     tanstackStart({
-      prerender: {
+      spa: {
         enabled: true,
-      },
+
+        prerender: {
+          enabled: true,
+          crawlLinks: true,
+        },
+      }
     }),
     react(),
   ],

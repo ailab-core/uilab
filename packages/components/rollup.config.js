@@ -1,13 +1,15 @@
 import { readFileSync } from 'node:fs'
+import { defineConfig } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
+import preserveDirectives from 'rollup-preserve-directives'
 import postcssImport from 'postcss-import'
-import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
-import external from 'rollup-plugin-peer-deps-external'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
+import tsconfigPaths from 'rollup-plugin-tsconfig-paths'
 import typescriptEngine from 'typescript'
 
 const packageJson = JSON.parse(readFileSync('./package.json'))
@@ -34,7 +36,8 @@ export default defineConfig([
     plugins: [
       nodeResolve(),
       commonjs(),
-      external({
+      preserveDirectives(),
+      peerDepsExternal({
         includeDependencies: true,
       }),
       typescript({
@@ -45,10 +48,12 @@ export default defineConfig([
       postcss({
         extract: false,
         inject: false,
+        minimize: false,
+        modules: false
       }),
       terser(),
     ],
-    external: ['class-variance-authority/types'],
+    external: [/\.css$/],
   },
   // Full CSS bundle (Tailwind utilities + theme variables)
   {
@@ -81,7 +86,13 @@ export default defineConfig([
   {
     input: 'dist/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.css$/],
-    plugins: [dts()],
+    plugins: [
+      tsconfigPaths({ preserveExtensions: true }),
+      dts()
+    ],
+    external: [
+      /\.css$/,
+      /class-variance-authority\/types$/,
+    ],
   },
 ])

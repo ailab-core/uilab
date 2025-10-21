@@ -1,14 +1,12 @@
-interface ComponentPreviewProps {
-  children: React.ReactNode
-  title?: string
-  description?: string
-}
-
 export function ComponentPreview({
   children,
   title,
   description,
-}: ComponentPreviewProps) {
+}: {
+  children: React.ReactNode
+  title?: string
+  description?: string
+}) {
   return (
     <div className="not-prose my-8">
       {(title || description) && (

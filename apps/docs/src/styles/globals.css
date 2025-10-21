@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'uilab-core/styles';
+@import 'uilab-core/theme';
+
+@custom-variant dark (&:is(.dark *));
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
