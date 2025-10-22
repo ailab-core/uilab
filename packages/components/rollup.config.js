@@ -36,7 +36,6 @@ export default defineConfig([
     plugins: [
       nodeResolve(),
       commonjs(),
-      preserveDirectives(),
       peerDepsExternal({
         includeDependencies: true,
       }),
@@ -52,6 +51,7 @@ export default defineConfig([
         modules: false
       }),
       terser(),
+      preserveDirectives(),
     ],
     external: [/\.css$/],
   },

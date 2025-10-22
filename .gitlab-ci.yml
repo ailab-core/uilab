@@ -16,11 +16,11 @@ build-and-publish:
     - pnpm build:components
     - pnpm build:docs
     - mkdir -p pages/registry
-    - mv apps/docs/dist/client/* pages/
+    - mv apps/docs/out/* pages/
     - mv packages/components/dist/* pages/registry/
   artifacts:
     paths:
-      - apps/docs/dist
+      - apps/docs/out
       - packages/components/dist
   cache:
     key:
