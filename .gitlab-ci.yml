@@ -18,6 +18,7 @@ build-and-publish:
     - mkdir -p pages/registry
     - mv apps/docs/out/* pages/
     - mv packages/components/dist/* pages/registry/
+    - touch pages/.nojekyll
   artifacts:
     paths:
       - apps/docs/out
