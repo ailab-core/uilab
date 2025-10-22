@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "uilab",
+  "homepage": "https://test.com",
+  "items": [
+    {
+      "name": "data-table",
+      "type": "registry:block",
+      "title": "Data table",
+      "description": "Common extendable data table for uilab",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/data-table/advanced.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/blocks/data-table/basic.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/blocks/data-table/filter-popover.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/blocks/data-table/merged-cell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/blocks/data-table/pagination.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/blocks/data-table/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-dialog",
+      "type": "registry:block",
+      "title": "Form dialog",
+      "description": "Common dialog of a form component",
+      "registryDependencies": [
+        "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
+      ],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ]
+    }
+  ]
+}

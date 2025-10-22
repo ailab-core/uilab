@@ -14,15 +14,16 @@ build-and-publish:
   script:
     - pnpm install
     - pnpm build:components
+    - pnpm build:block-registry
     - pnpm build:docs
-    - mkdir -p pages/registry
+    - mkdir -p pages/r
     - mv apps/docs/out/* pages/
-    - mv packages/components/dist/* pages/registry/
+    - mv packages/block-registry/public/r/* pages/r
     - touch pages/.nojekyll
   artifacts:
     paths:
       - apps/docs/out
-      - packages/components/dist
+      - packages/block-registry/public
   cache:
     key:
       files:

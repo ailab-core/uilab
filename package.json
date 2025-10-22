@@ -9,7 +9,7 @@
     "dev:docs": "pnpm --prefix apps/docs run dev",
     "start:docs": "pnpm --prefix apps/docs run start",
     "build:docs": "pnpm --prefix apps/docs run build",
-    "build:components-registry": "pnpm --prefix packages/components run registry:build",
+    "build:block-registry": "pnpm --prefix packages/block-registry run build",
     "build:components": "pnpm --prefix packages/components run build",
     "format": "prettier --cache --write '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'"
   },
