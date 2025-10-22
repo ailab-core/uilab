@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/global.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "blocks": "@/components/blocks",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {
+    "@internal": {
+      "url": "https://ailabmn.gitlab.io/frontend/uilab/r/{name}.json",
+      "headers": {
+        "Authorization": "Bearer glpat-WNqLGbdgW3jbqmZEpWwZvm86MQp1OmRhaTFkCw.01.121icdhsr"
+      }
+    }
+  }
+}
