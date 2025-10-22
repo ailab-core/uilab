@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-sheet",
+  "type": "registry:block",
+  "title": "Form dialog",
+  "description": "Common sheet of a form component",
+  "dependencies": [
+    "react-hook-form",
+    "lucide-react",
+    "uilab-core"
+  ],
+  "registryDependencies": [
+    "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/form-sheet.tsx",
+      "content": "import * as React from \"react\"\nimport { LoaderCircleIcon } from \"lucide-react\"\nimport { useFormContext } from \"react-hook-form\"\nimport { useConfirmation } from \"@/components/blocks/confirmation\"\nimport {\n  Button,\n  Sheet,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \"uilab-core\"\n\n/**\n * Sheet boilerplate for forms.\n * It has confirmation dialog and everything you need in one component\n */\nexport function FormSheet({\n  title,\n  description = \"\",\n  trigger,\n  className,\n  children,\n  open: propOpen = false,\n  setOpen: propSetOpen,\n  isPending = false,\n  onSubmit,\n}: {\n  /**\n   * Display title on sheet header\n   */\n  title: string\n  /**\n   * Display description on sheet header\n   */\n  description?: string\n  /**\n   * JSX Element (preferable with forwardRef command) for opening the sheet\n   */\n  trigger?: React.ReactNode\n  open?: boolean\n  setOpen?: React.Dispatch<React.SetStateAction<boolean>>\n  className?: string\n  children: any\n  isPending?: boolean\n  /**\n   * This prop should be async function for ease of handling success and error.\n   * Component uses [@tanstack/react-query](https://tanstack.com/query/latest) so you don't have to pass down additional `useMutation` methods\n   */\n  onSubmit?: (values: any) => Promise<void>\n}) {\n  const form = useFormContext()\n  const [open, setOpen] = React.useState<boolean>(propOpen)\n  const { showDialog } = useConfirmation()\n\n  const toggleSheet = React.useCallback(\n    (open: boolean) => {\n      setOpen(open)\n      form.reset()\n      form.clearErrors()\n    },\n    [form, setOpen]\n  )\n\n  const handleOnChange = React.useCallback(\n    (isOpen: boolean) => {\n      if (Object.keys(form.formState.dirtyFields).length !== 0 && open) {\n        showDialog({\n          title: t(\"messages:discard.title\"),\n          description: t(\"messages:discard.description\"),\n          confirmText: t(\"messages:discard.confirmText\"),\n          onConfirm: () => toggleSheet(isOpen),\n        })\n      } else {\n        toggleSheet(isOpen)\n      }\n    },\n    [t, form, open, showDialog, toggleSheet]\n  )\n\n  const handleSubmit = async (values: any) => {\n    if (onSubmit) {\n      await onSubmit(values).then(() => toggleSheet(false))\n    }\n  }\n\n  useEffect(() => propSetOpen && propSetOpen(open), [propSetOpen, open])\n  useEffect(() => setOpen(propOpen), [propOpen])\n\n  return (\n    <Sheet open={open} onOpenChange={handleOnChange}>\n      <SheetTrigger asChild>{trigger}</SheetTrigger>\n      <SheetContent side=\"right\" className={className}>\n        <SheetHeader>\n          <SheetTitle> {title} </SheetTitle>\n          <SheetDescription> {description} </SheetDescription>\n        </SheetHeader>\n        <div className=\"grid flex-1 auto-rows-min gap-4 overflow-y-auto px-4\">\n          {children}\n        </div>\n        <SheetFooter>\n          <Button\n            type=\"button\"\n            disabled={isPending}\n            onClick={form.handleSubmit(handleSubmit)}\n          >\n            {isPending && <LoaderCircleIcon className=\"animate-spin\" />}\n            {t(\"save\")}\n          </Button>\n          <Button\n            variant=\"outline\"\n            type=\"button\"\n            disabled={isPending}\n            onClick={(event) => {\n              event.preventDefault()\n              handleOnChange(false)\n            }}\n          >\n            {t(\"cancel\")}\n          </Button>\n        </SheetFooter>\n      </SheetContent>\n    </Sheet>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

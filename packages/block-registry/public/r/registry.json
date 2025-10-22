@@ -41,6 +41,22 @@
       ]
     },
     {
+      "name": "confirmation",
+      "type": "registry:block",
+      "title": "Confirmation",
+      "description": "Common extendable confirmation dialog for uilab",
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/confirmation.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "form-dialog",
       "type": "registry:block",
       "title": "Form dialog",
@@ -52,6 +68,32 @@
         "react-hook-form",
         "lucide-react",
         "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/form-dialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-sheet",
+      "type": "registry:block",
+      "title": "Form dialog",
+      "description": "Common sheet of a form component",
+      "registryDependencies": [
+        "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
+      ],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/form-sheet.tsx",
+          "type": "registry:component"
+        }
       ]
     }
   ]
