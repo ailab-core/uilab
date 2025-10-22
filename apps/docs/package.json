@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
+    "serve": "npx serve@latest out",
     "postinstall": "fumadocs-mdx",
     "lint": "eslint"
   },
@@ -28,8 +29,9 @@
     "@types/node": "24.9.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
     "eslint": "^9",
-    "eslint-config-next": "16.0.0",
+    "eslint-config-next": "^16.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.15",
     "typescript": "^5.9.3"

@@ -33,6 +33,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       </DocsBody>
     </DocsPage>
   );
+
 }
 
 export async function generateStaticParams() {

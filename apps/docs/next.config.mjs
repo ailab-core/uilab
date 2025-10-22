@@ -7,7 +7,7 @@ const config = {
   reactStrictMode: true,
   output: 'export',
   basePath: '/frontend/uilab',
-  assetPrefix: '/frontend/uilab',
+  trailingSlash: true,
 };
 
 export default withMDX(config);
