@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { BookIcon } from 'lucide-react';
 
 /**
  * Shared layout configurations
@@ -16,6 +17,13 @@ export function baseOptions(): BaseLayoutProps {
       title: "UI Lab",
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
-    links: [],
+    links: [
+      {
+        icon: <BookIcon />,
+        text: "Documentation",
+        url: "/docs",
+        secondary: false
+      }
+    ],
   };
 }

@@ -23,7 +23,7 @@
     "@internal": {
       "url": "https://ailabmn.gitlab.io/frontend/uilab/r/{name}.json",
       "headers": {
-        "Authorization": "Bearer glpat-WNqLGbdgW3jbqmZEpWwZvm86MQp1OmRhaTFkCw.01.121icdhsr"
+        "Authorization": "Bearer ${NPM_TOKEN}"
       }
     }
   }

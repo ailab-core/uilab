@@ -2,6 +2,7 @@
   "pages": [
     "index",
     "get-started",
-    "ui"
+    "ui",
+    "project"
   ]
 }
