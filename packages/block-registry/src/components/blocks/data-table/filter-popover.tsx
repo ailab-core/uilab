@@ -2,12 +2,7 @@
 
 import * as React from "react"
 import { FilterIcon } from "lucide-react"
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "uilab-core"
+import { Button, Popover, PopoverContent, PopoverTrigger } from "uilab-core"
 
 export function FilterPopover({
   applied,

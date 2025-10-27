@@ -8,6 +8,7 @@ import {
   type TableMeta,
 } from "@tanstack/react-table"
 import {
+  cn,
   Skeleton,
   Table,
   TableBody,
@@ -15,7 +16,6 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  cn
 } from "uilab-core"
 import type { DataColumn } from "."
 
@@ -83,9 +83,9 @@ export function BasicDataTable({
               {header.isPlaceholder
                 ? null
                 : flexRender(
-                  header.column.columnDef.header,
-                  header.getContext()
-                )}
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
             </TableHead>
           ))}
         </TableRow>
@@ -128,7 +128,7 @@ export function BasicDataTable({
                       <TableCell
                         className={cn(
                           cell.column.id === "actions" &&
-                          "flex flex-row-reverse"
+                            "flex flex-row-reverse"
                         )}
                         key={cell.id}
                       >

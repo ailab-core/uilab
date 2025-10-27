@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "uilab-core/styles";
 @import "uilab-core/theme";
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

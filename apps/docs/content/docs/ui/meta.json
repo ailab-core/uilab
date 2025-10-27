@@ -1,7 +1,4 @@
 {
   "title": "UI",
-  "pages": [
-    "components",
-    "blocks"
-  ]
+  "pages": ["components", "blocks"]
 }

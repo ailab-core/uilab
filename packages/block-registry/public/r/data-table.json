@@ -4,11 +4,7 @@
   "type": "registry:block",
   "title": "Data table",
   "description": "Common extendable data table for uilab",
-  "dependencies": [
-    "@tanstack/react-table",
-    "lucide-react",
-    "uilab-core"
-  ],
+  "dependencies": ["@tanstack/react-table", "lucide-react", "uilab-core"],
   "files": [
     {
       "path": "src/components/blocks/data-table/advanced.tsx",

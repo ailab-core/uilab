@@ -4,15 +4,15 @@ description: Getting started with uilab-core component library
 ---
 
 import {
-  PackageIcon,
-  PaletteIcon,
   CircleCheckIcon,
   CircleMinusIcon,
   CodeIcon,
   ComponentIcon,
   FolderGit2Icon,
+  PackageIcon,
+  PaletteIcon,
   ZapIcon,
-} from 'lucide-react'
+} from "lucide-react"
 
 ## Introduction
 
@@ -23,23 +23,23 @@ import {
 <Cards>
   <Card
     icon={<PackageIcon />}
-    title='50+ Components'
-    description='Comprehensive collection of UI components for all your needs'
+    title="50+ Components"
+    description="Comprehensive collection of UI components for all your needs"
   />
   <Card
     icon={<PaletteIcon />}
-    title='Tailwind CSS'
-    description='Styled with Tailwind CSS v4 for easy customization'
+    title="Tailwind CSS"
+    description="Styled with Tailwind CSS v4 for easy customization"
   />
   <Card
     icon={<CodeIcon />}
-    title='TypeScript First'
-    description='Fully typed with TypeScript for the best developer experience'
+    title="TypeScript First"
+    description="Fully typed with TypeScript for the best developer experience"
   />
   <Card
     icon={<ZapIcon />}
-    title='Radix UI'
-    description='Built on Radix UI primitives for accessibility and flexibility'
+    title="Radix UI"
+    description="Built on Radix UI primitives for accessibility and flexibility"
   />
 </Cards>
 
@@ -58,10 +58,10 @@ npm install uilab-core tw-animate-css lucide-react
 Import the component styles in your application entry point:
 
 ```css title='app/global.css'
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'uilab-core/styles.css';
-@import 'uilab-core/theme.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "uilab-core/styles.css";
+@import "uilab-core/theme.css";
 
 /* Make sure to add this too for themes */
 @custom-variant dark (&:is(.dark *));
@@ -72,7 +72,7 @@ Import the component styles in your application entry point:
 Import and use components in your React application:
 
 ```tsx
-import { Button, Card, CardHeader, CardTitle, CardContent } from 'uilab-core'
+import { Button, Card, CardContent, CardHeader, CardTitle } from "uilab-core"
 
 export function Example() {
   return (
@@ -92,15 +92,15 @@ export function Example() {
 
 <Cards>
   <Card
-    title='Browse Components'
-    description='Explore all available components with live examples'
-    href='/docs/ui/components'
+    title="Browse Components"
+    description="Explore all available components with live examples"
+    href="/docs/ui/components"
     icon={<ComponentIcon />}
   />
   <Card
-    title='View Examples'
-    description='See components in action with project examples'
-    href='/docs/examples'
+    title="View Examples"
+    description="See components in action with project examples"
+    href="/docs/examples"
     icon={<FolderGit2Icon />}
   />
 </Cards>
@@ -110,7 +110,7 @@ export function Example() {
 All components are written in TypeScript and include complete type definitions. You'll get full IntelliSense support in your IDE:
 
 ```tsx
-import { Button, type ButtonProps } from 'uilab-core'
+import { Button, type ButtonProps } from "uilab-core"
 
 // Full type support for props
 const MyButton: React.FC<ButtonProps> = (props) => {
@@ -131,8 +131,8 @@ All components are built with accessibility in mind, following WAI-ARIA guidelin
 
 uilab-core works with:
 
-- Next.js 13+ (App Router and Pages Router) - *<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested*
-- Vite + React - *<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested*
-- Remix - *<CircleMinusIcon className='inline-block size-4 text-red-600 dark:text-red-300' /> Untested*
+- Next.js 13+ (App Router and Pages Router) - _<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested_
+- Vite + React - _<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested_
+- Remix - _<CircleMinusIcon className='inline-block size-4 text-red-600 dark:text-red-300' /> Untested_
 
 For Next.js 13+ with App Router, make sure to add the `transpilePackages` configuration as shown in the setup section above.

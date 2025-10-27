@@ -10,6 +10,7 @@ import type { PaginationOptions, TableMeta } from "@tanstack/react-table"
 import { RefreshCcwIcon } from "lucide-react"
 import {
   Button,
+  cn,
   Skeleton,
   Table,
   TableBody,
@@ -17,7 +18,6 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  cn
 } from "uilab-core"
 import type { DataColumn, DataPaginationState } from "."
 import Pagination from "./pagination"
@@ -127,9 +127,9 @@ export function AdvancedDataTable({
               {header.isPlaceholder
                 ? null
                 : flexRender(
-                  header.column.columnDef.header,
-                  header.getContext()
-                )}
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
             </TableHead>
           ))}
         </TableRow>
@@ -185,7 +185,7 @@ export function AdvancedDataTable({
                           <TableCell
                             className={cn(
                               cell.column.id === "actions" &&
-                              "flex flex-row-reverse"
+                                "flex flex-row-reverse"
                             )}
                             key={cell.id}
                           >

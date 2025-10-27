@@ -5,6 +5,6 @@ package-lock.json
 docker*
 
 # Ignore build files
-apps/docs/build/*
+apps/docs/out/*
 apps/docs/docs/*
 apps/ui-library/public/*

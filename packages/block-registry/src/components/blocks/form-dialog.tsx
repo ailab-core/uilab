@@ -3,7 +3,6 @@
 import * as React from "react"
 import { LoaderCircleIcon } from "lucide-react"
 import { useFormContext } from "react-hook-form"
-import { useConfirmation } from "@/components/blocks/confirmation"
 import {
   Button,
   Dialog,
@@ -13,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "uilab-core"
+import { useConfirmation } from "@/components/blocks/confirmation"
 
 export function FormDialog({
   title = "",

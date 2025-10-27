@@ -4,10 +4,7 @@
   "type": "registry:block",
   "title": "Confirmation",
   "description": "Common extendable confirmation dialog for uilab",
-  "dependencies": [
-    "lucide-react",
-    "uilab-core"
-  ],
+  "dependencies": ["lucide-react", "uilab-core"],
   "files": [
     {
       "path": "src/components/blocks/confirmation.tsx",

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { CellContext } from "@tanstack/react-table"
-import { TableCell, cn } from "uilab-core"
+import { cn, TableCell } from "uilab-core"
 
 /**
  * In order to use this, you have to set `isCustomCell` to `true` in any form of table block component

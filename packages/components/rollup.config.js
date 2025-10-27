@@ -1,15 +1,15 @@
 import { readFileSync } from 'node:fs'
-import { defineConfig } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
-import preserveDirectives from 'rollup-preserve-directives'
 import postcssImport from 'postcss-import'
+import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import tsconfigPaths from 'rollup-plugin-tsconfig-paths'
+import preserveDirectives from 'rollup-preserve-directives'
 import typescriptEngine from 'typescript'
 
 const packageJson = JSON.parse(readFileSync('./package.json'))
@@ -48,7 +48,7 @@ export default defineConfig([
         extract: false,
         inject: false,
         minimize: false,
-        modules: false
+        modules: false,
       }),
       terser(),
       preserveDirectives(),
@@ -86,13 +86,7 @@ export default defineConfig([
   {
     input: 'dist/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [
-      tsconfigPaths({ preserveExtensions: true }),
-      dts()
-    ],
-    external: [
-      /\.css$/,
-      /class-variance-authority\/types$/,
-    ],
+    plugins: [tsconfigPaths({ preserveExtensions: true }), dts()],
+    external: [/\.css$/, /class-variance-authority\/types$/],
   },
 ])
