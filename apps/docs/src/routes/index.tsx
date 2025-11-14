@@ -10,7 +10,7 @@ function Home() {
   return (
     <HomeLayout {...baseOptions()} className="text-center py-32 justify-center">
       <h1 className="font-medium text-3xl mb-4">
-        <span className="font-black text-blue-400">{"UILAB"}</span>
+        <span className="font-black">{"UILAB"}</span>
         {" Documentation"}
       </h1>
       <p className="mb-8">{"Company internal fully loaded component library for building fast UI"}</p>

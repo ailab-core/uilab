@@ -12,6 +12,7 @@ import {
   DocsTitle,
 } from 'fumadocs-ui/page';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
+import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
 import { createClientLoader } from 'fumadocs-mdx/runtime/vite';
 import { baseOptions } from '@/lib/layout.shared';
 import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions';
@@ -52,6 +53,7 @@ const clientLoader = createClientLoader(docs.doc, {
           <MDX
             components={{
               ...defaultMdxComponents,
+              img: (props) => <ImageZoom className="rounded-lg" {...(props as any)} />,
             }}
           />
         </DocsBody>

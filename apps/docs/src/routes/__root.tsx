@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-router'
 import * as React from 'react'
 import appCss from '@/styles/app.css?url'
+import { Banner } from 'fumadocs-ui/components/banner';
 import { RootProvider } from 'fumadocs-ui/provider/tanstack'
 import SearchDialog from '@/components/search'
 
@@ -43,6 +44,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="flex flex-col min-h-screen">
+        <Banner variant="rainbow">
+          {"uilab-core is client component only! (for now)"}
+        </Banner>
         <RootProvider search={{ SearchDialog }}>{children}</RootProvider>
         <Scripts />
       </body>

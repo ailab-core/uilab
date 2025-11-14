@@ -8,8 +8,8 @@ icon: MonitorDown
 
 If you are starting a new project, you can use the dashboard example right away with the following command:
 
-```
-npx gitpick https://gitlab.com/ailabmn/frontend/uilab/examples/lab-dashboard
+```bash
+npx gitpick https://gitlab.com/ailabmn/frontend/uilab/examples/template-vite-tanstack-router
 cd lab-dashboard
 npm install
 npm run dev
@@ -18,7 +18,8 @@ npm run dev
 Every example here uses so make sure to follow the [guide](https://tanstack.com/start/latest/docs/framework/react/guide/routing).
 
 ### Examples
-- [Basic Dashboard](https://gitlab.com/ailabmn/frontend/uilab/examples/basic-dashboard)
+- [Vite Template - Tanstack Router](https://gitlab.com/ailabmn/frontend/uilab/examples/template-vite-tanstack-router)
+- *Vite Template - Tanstack Start (Waiting for stable)*
 
 ## Manual Setup
 
@@ -70,13 +71,13 @@ All components are written in TypeScript and include complete type definitions. 
 import { Button, type ButtonProps } from "uilab-core"
 
 // Full type support for props
-const MyButton: React.FC<ButtonProps> = (props) => {
+function MyButton(props: ButtonProps) {
   return <Button {...props} />
 }
 ```
 
 ## Framework Compatibility
 
-uilab-core works with anything that's on client component.
+`uilab-core` works with anything that's on client component.
 
 Server component however, is on experimental. There is a known issue of when using the function `cn` on server component. It errors out on console that `cn` function needs to be called in client component. A separate development will be done in near future.
