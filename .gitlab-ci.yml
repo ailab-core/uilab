@@ -17,12 +17,12 @@ build-and-publish:
     - pnpm build:block-registry
     - pnpm build:docs
     - mkdir -p pages/r
-    - mv apps/docs/out/* pages/
+    - mv apps/docs/dist/client/* pages/
     - mv packages/block-registry/public/r/* pages/r
     - touch pages/.nojekyll
   artifacts:
     paths:
-      - apps/docs/out
+      - apps/docs/dist/client
       - packages/block-registry/public
   cache:
     key:
