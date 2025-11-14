@@ -4,6 +4,11 @@ import * as React from "react"
 import { CellContext } from "@tanstack/react-table"
 import { cn, TableCell } from "uilab-core"
 
+type Props = {
+  context: CellContext<any, unknown>
+  border?: boolean
+} & React.ComponentPropsWithoutRef<"div">
+
 /**
  * In order to use this, you have to set `isCustomCell` to `true` in any form of table block component
  */
@@ -12,10 +17,7 @@ export function MergedCell({
   className,
   children,
   border = true,
-}: {
-  context: CellContext<any, unknown>
-  border?: boolean
-} & React.ComponentPropsWithoutRef<"div">) {
+}: Props) {
   const { row, table, column } = context
   const cell = row.original[column.id]
   const rows = table.getRowModel().rows

@@ -1,0 +1,26 @@
+---
+title: Components
+---
+
+Most base components are direct export of [shadcn components](https://ui.shadcn.com/docs/components) except the complex ones.
+It should function exactly the same except the import destination is different.
+
+## Basic usage
+
+```tsx
+import { Button } from "uilab-core" // instead of '@/components/ui'
+
+export function Example() {
+  return <Button variant="secondary">Example</Button>
+}
+```
+
+Components that are not included in the base components are listed below.
+
+- Carousel
+- Chart
+- Data Table
+- Date Picker
+- Sonner
+
+Don't worry, These components are available in our [shadcn registry](/docs/ui/blocks)

@@ -1,6 +1,6 @@
 import * as React from "react"
-import { LoaderCircleIcon } from "lucide-react"
 import { useFormContext } from "react-hook-form"
+import { LoaderCircleIcon } from "lucide-react"
 import {
   Button,
   Sheet,
@@ -26,6 +26,13 @@ export function FormSheet({
   open: propOpen = false,
   setOpen: propSetOpen,
   isPending = false,
+  shouldConfirmDiscard = true,
+  discardTitle = "Discard",
+  discardDescription = "Are you sure you want to discard? Your changes will not be saved!",
+  discardCancelText = "Cancel",
+  discardConfirmText = "Discard",
+  cancelText = "Cancel",
+  confirmText = "Confirm",
   onSubmit,
 }: {
   /**
@@ -45,6 +52,18 @@ export function FormSheet({
   className?: string
   children: any
   isPending?: boolean
+  /** Shows a dialog when clicked out confirming the user to discard */
+  shouldConfirmDiscard?: boolean
+  /** Discard confirmation's dialog title */
+  discardTitle?: string
+  /** Discard confirmation's description title */
+  discardDescription?: string
+  /** Discard confirmation's cancel text */
+  discardCancelText?: string
+  /** Discard confirmation's confirm text */
+  discardConfirmText?: string
+  cancelText?: string
+  confirmText?: string
   /**
    * This prop should be async function for ease of handling success and error.
    * Component uses [@tanstack/react-query](https://tanstack.com/query/latest) so you don't have to pass down additional `useMutation` methods
@@ -67,17 +86,22 @@ export function FormSheet({
   const handleOnChange = React.useCallback(
     (isOpen: boolean) => {
       if (Object.keys(form.formState.dirtyFields).length !== 0 && open) {
-        showDialog({
-          title: t("messages:discard.title"),
-          description: t("messages:discard.description"),
-          confirmText: t("messages:discard.confirmText"),
-          onConfirm: () => toggleSheet(isOpen),
-        })
+        if (shouldConfirmDiscard) {
+          showDialog({
+            title: discardTitle,
+            description: discardDescription,
+            confirmText: discardConfirmText,
+            cancelText: discardCancelText,
+            onConfirm: () => toggleSheet(isOpen),
+          })
+        } else {
+          toggleSheet(isOpen)
+        }
       } else {
         toggleSheet(isOpen)
       }
     },
-    [t, form, open, showDialog, toggleSheet]
+    [form, open, showDialog, toggleSheet, shouldConfirmDiscard]
   )
 
   const handleSubmit = async (values: any) => {
@@ -86,8 +110,8 @@ export function FormSheet({
     }
   }
 
-  useEffect(() => propSetOpen && propSetOpen(open), [propSetOpen, open])
-  useEffect(() => setOpen(propOpen), [propOpen])
+  React.useEffect(() => propSetOpen && propSetOpen(open), [propSetOpen, open])
+  React.useEffect(() => setOpen(propOpen), [propOpen])
 
   return (
     <Sheet open={open} onOpenChange={handleOnChange}>
@@ -107,7 +131,7 @@ export function FormSheet({
             onClick={form.handleSubmit(handleSubmit)}
           >
             {isPending && <LoaderCircleIcon className="animate-spin" />}
-            {t("save")}
+            {confirmText}
           </Button>
           <Button
             variant="outline"
@@ -118,7 +142,7 @@ export function FormSheet({
               handleOnChange(false)
             }}
           >
-            {t("cancel")}
+            {cancelText}
           </Button>
         </SheetFooter>
       </SheetContent>

@@ -19,16 +19,7 @@ import {
 } from "uilab-core"
 import type { DataColumn } from "."
 
-export function BasicDataTable({
-  data,
-  columns,
-  defaultColumn,
-  border = true,
-  noResultsText = "No results",
-  meta,
-  isFetching,
-  isCustomCell,
-}: {
+type Props = {
   /**
    * Content to display
    */
@@ -62,7 +53,18 @@ export function BasicDataTable({
    * You have to define TableCell in your column for more complex use cases
    */
   isCustomCell?: boolean
-}) {
+}
+
+export function BasicDataTable({
+  data,
+  columns,
+  defaultColumn,
+  border = true,
+  noResultsText = "No results",
+  meta,
+  isFetching,
+  isCustomCell,
+}: Props) {
   const table = useReactTable({
     data: data || [],
     columns,
@@ -83,9 +85,9 @@ export function BasicDataTable({
               {header.isPlaceholder
                 ? null
                 : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}
             </TableHead>
           ))}
         </TableRow>
@@ -128,7 +130,7 @@ export function BasicDataTable({
                       <TableCell
                         className={cn(
                           cell.column.id === "actions" &&
-                            "flex flex-row-reverse"
+                          "flex flex-row-reverse"
                         )}
                         key={cell.id}
                       >

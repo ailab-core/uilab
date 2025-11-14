@@ -14,6 +14,10 @@ import {
 } from "uilab-core"
 import { useConfirmation } from "@/components/blocks/confirmation"
 
+/**
+ * Dialog boilerplate for forms.
+ * It has confirmation dialog and everything you need in one component
+ */
 export function FormDialog({
   title = "",
   description = "",

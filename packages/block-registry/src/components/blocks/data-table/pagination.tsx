@@ -16,19 +16,21 @@ import {
 } from "uilab-core"
 import type { DataPaginationState, DataTable } from "."
 
+type Props = {
+  table: DataTable<unknown>
+  state: DataPaginationState
+  totalText?: (total: string | number) => string
+  pageText?: (current: string | number, total: string | number) => string
+  rowsText?: (rows: string | number) => string
+}
+
 export default React.memo(function TablePagination({
   table,
   state,
-  totalText = (total) => `Total of ${total} documents`,
+  totalText = (total) => `Total of ${total} rows`,
   pageText = (current, total) => `Page ${current}/${total}`,
   rowsText = (rows) => `${rows} rows`,
-}: {
-  table: DataTable<unknown>
-  state: DataPaginationState
-  totalText: (total: string | number) => string
-  pageText: (current: string | number, total: string | number) => string
-  rowsText: (rows: string | number) => string
-}) {
+}: Props) {
   // Tanstack methods are acting weird. I am actively working on it but for now this will do
   const canPreviousPage = React.useCallback(
     (): boolean => state.pageIndex > 0,
@@ -82,10 +84,12 @@ export default React.memo(function TablePagination({
           </div>
           <div className="flex items-center gap-1 text-sm">
             <PaginationPrevious
+              size="icon"
               onClick={() => table.previousPage()}
               isActive={canPreviousPage()}
             />
             <PaginationNext
+              size="icon"
               onClick={() => table.nextPage()}
               isActive={canNextPage()}
             />

@@ -4,16 +4,7 @@ import * as React from "react"
 import { FilterIcon } from "lucide-react"
 import { Button, Popover, PopoverContent, PopoverTrigger } from "uilab-core"
 
-export function FilterPopover({
-  applied,
-  applyText = "Apply",
-  clearText = "Clear",
-  filterText = "Filter",
-  filterAppliedText = (applied: number) => `${applied} filter applied`,
-  children,
-  onSubmit,
-  onReset,
-}: {
+type Props = {
   /**
    * Number of filters that is currently applied
    * use `calculateAppliedFilters` function for ease of use
@@ -26,7 +17,18 @@ export function FilterPopover({
   children?: React.ReactNode
   onSubmit?: () => Promise<void>
   onReset?: () => any
-}) {
+}
+
+export function FilterPopover({
+  applied,
+  applyText = "Apply",
+  clearText = "Clear",
+  filterText = "Filter",
+  filterAppliedText = (applied: number) => `${applied} filter applied`,
+  children,
+  onSubmit,
+  onReset,
+}: Props) {
   const [open, setOpen] = React.useState<boolean>(false)
 
   const handleSubmit = () => {

@@ -1,7 +1,7 @@
 {
   "name": "uilab-core",
   "description": "Uilab base components and blocks",
-  "version": "0.1.6",
+  "version": "0.1.9",
   "license": "MIT",
   "author": "",
   "type": "module",
@@ -35,7 +35,11 @@
     "release": "npm run build && npm publish",
     "format": "prettier \"src/**/*.{ts,tsx}\" --write --log-level silent",
     "lint": "eslint --max-warnings 0",
-    "lint:fix": "eslint --max-warnings 0 --fix"
+    "lint:fix": "eslint --max-warnings 0 --fix",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
@@ -100,7 +104,7 @@
     "vaul": "^1.1.2"
   },
   "peerDependencies": {
-    "lucide-react": "^0.546.0",
+    "lucide-react": "^0.x",
     "date-fns": "^4.x",
     "react": "^19.x",
     "react-dom": "^19.x",

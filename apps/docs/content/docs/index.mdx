@@ -1,138 +1,19 @@
 ---
-title: Get started
-description: Getting started with uilab-core component library
+title: Getting started
+icon: BookOpenText
 ---
-
-import {
-  CircleCheckIcon,
-  CircleMinusIcon,
-  CodeIcon,
-  ComponentIcon,
-  FolderGit2Icon,
-  PackageIcon,
-  PaletteIcon,
-  ZapIcon,
-} from "lucide-react"
 
 ## Introduction
 
-**uilab-core** is a comprehensive React component library built with modern web technologies for AI Lab company's internal use. It provides 50+ production-ready, accessible UI components designed for building beautiful and consistent user interfaces.
+`uilab-core` is a React component library. Most of the components are built using [shadcn components](https://ui.shadcn.com/docs/components) and bundled with [rollup](https://rollupjs.org/).
 
-### Key Features
+The reason for making it a separate library instead of using shadcn directly is to have our own internal company design system and an ability to change and control certain components without interacting with the project. We currently have and soon will be having many projects under our company and to change a component style is a massive work.
 
-<Cards>
-  <Card
-    icon={<PackageIcon />}
-    title="50+ Components"
-    description="Comprehensive collection of UI components for all your needs"
-  />
-  <Card
-    icon={<PaletteIcon />}
-    title="Tailwind CSS"
-    description="Styled with Tailwind CSS v4 for easy customization"
-  />
-  <Card
-    icon={<CodeIcon />}
-    title="TypeScript First"
-    description="Fully typed with TypeScript for the best developer experience"
-  />
-  <Card
-    icon={<ZapIcon />}
-    title="Radix UI"
-    description="Built on Radix UI primitives for accessibility and flexibility"
-  />
-</Cards>
+But, we separated it into 2 parts.
 
-## Installation
+<img src="https://i.imgur.com/Vm6Rx5k.png" alt="uilab" width={700} height={140} />
 
-### Using npm
+Smaller *atom* components are made into a library, and more complex components *molecule* (datatable, data-list, form-sheet etc) are made into shadcn registry. So you can download or copy the code for the project needs.
 
-```bash
-npm install uilab-core tw-animate-css lucide-react
-```
+For more information about [atomic design](https://atomicdesign.bradfrost.com/)
 
-## Setup
-
-### 1. Import Styles
-
-Import the component styles in your application entry point:
-
-```css title='app/global.css'
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "uilab-core/styles.css";
-@import "uilab-core/theme.css";
-
-/* Make sure to add this too for themes */
-@custom-variant dark (&:is(.dark *));
-```
-
-## Basic Usage
-
-Import and use components in your React application:
-
-```tsx
-import { Button, Card, CardContent, CardHeader, CardTitle } from "uilab-core"
-
-export function Example() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Welcome to uilab-core</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button>Get Started</Button>
-      </CardContent>
-    </Card>
-  )
-}
-```
-
-## Next Steps
-
-<Cards>
-  <Card
-    title="Browse Components"
-    description="Explore all available components with live examples"
-    href="/docs/ui/components"
-    icon={<ComponentIcon />}
-  />
-  <Card
-    title="View Examples"
-    description="See components in action with project examples"
-    href="/docs/examples"
-    icon={<FolderGit2Icon />}
-  />
-</Cards>
-
-## TypeScript Support
-
-All components are written in TypeScript and include complete type definitions. You'll get full IntelliSense support in your IDE:
-
-```tsx
-import { Button, type ButtonProps } from "uilab-core"
-
-// Full type support for props
-const MyButton: React.FC<ButtonProps> = (props) => {
-  return <Button {...props} />
-}
-```
-
-## Accessibility
-
-All components are built with accessibility in mind, following WAI-ARIA guidelines:
-
-- Keyboard navigation support
-- Screen reader friendly
-- Focus management
-- ARIA attributes
-
-## Framework Compatibility
-
-uilab-core works with:
-
-- Next.js 13+ (App Router and Pages Router) - _<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested_
-- Vite + React - _<CircleCheckIcon className='inline-block size-4 text-emerald-600 dark:text-emerald-300' /> Tested_
-- Remix - _<CircleMinusIcon className='inline-block size-4 text-red-600 dark:text-red-300' /> Untested_
-
-For Next.js 13+ with App Router, make sure to add the `transpilePackages` configuration as shown in the setup section above.

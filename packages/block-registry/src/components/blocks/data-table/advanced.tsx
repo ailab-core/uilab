@@ -22,25 +22,7 @@ import {
 import type { DataColumn, DataPaginationState } from "."
 import Pagination from "./pagination"
 
-/**
- * Advanced data tables that needs complex features such as Pagination, Filters, Column Hiding etc
- */
-export function AdvancedDataTable({
-  data,
-  columns,
-  defaultColumn,
-  isFetching,
-  isCustomCell,
-  pagination,
-  paginationOptions = {},
-  refreshText = "Refresh",
-  noResultsText = "No results",
-  leftHeader,
-  rightHeader,
-  border = true,
-  meta,
-  refetch,
-}: {
+type Props = {
   /**
    * Made to be fit with Pocket Pageable content response.
    */
@@ -66,6 +48,9 @@ export function AdvancedDataTable({
    * State of pagination to keep track. On tanstack table, `manualPagination` is `true`, so you can update the state whenever you call an api.
    */
   pagination?: DataPaginationState
+  paginationTotalText?: (total: string | number) => string,
+  paginationPageText?: (current: string | number, total: string | number) => string,
+  paginationRowsText?: (rows: string | number) => string,
   /**
    * Necessary for rendering `Pagination` component to keep track.
    */
@@ -103,7 +88,30 @@ export function AdvancedDataTable({
    * QOL component
    */
   refetch?: () => void
-}) {
+}
+
+/**
+ * Advanced data tables that needs complex features such as Pagination, Filters, Column Hiding etc
+ */
+export function AdvancedDataTable({
+  data,
+  columns,
+  defaultColumn,
+  isFetching,
+  isCustomCell,
+  pagination,
+  paginationTotalText,
+  paginationPageText,
+  paginationRowsText,
+  paginationOptions = {},
+  refreshText = "Refresh",
+  noResultsText = "No results",
+  leftHeader,
+  rightHeader,
+  border = true,
+  meta,
+  refetch,
+}: Props) {
   const table = useReactTable({
     data: data || [],
     columns,
@@ -127,9 +135,9 @@ export function AdvancedDataTable({
               {header.isPlaceholder
                 ? null
                 : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}
             </TableHead>
           ))}
         </TableRow>
@@ -185,7 +193,7 @@ export function AdvancedDataTable({
                           <TableCell
                             className={cn(
                               cell.column.id === "actions" &&
-                                "flex flex-row-reverse"
+                              "flex flex-row-reverse"
                             )}
                             key={cell.id}
                           >
@@ -208,7 +216,13 @@ export function AdvancedDataTable({
               </TableBody>
             </Table>
           </div>
-          {pagination && <Pagination table={table} state={pagination} />}
+          {pagination && <Pagination
+            totalText={paginationTotalText}
+            pageText={paginationPageText}
+            rowsText={paginationRowsText}
+            table={table}
+            state={pagination}
+          />}
         </>
       )}
     </div>
