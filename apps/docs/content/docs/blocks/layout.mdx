@@ -1,0 +1,28 @@
+---
+title: Layout
+description: Hello
+---
+
+<Tabs items={["CLI", "Manual"]}>
+<Tab value="CLI">
+```bash
+npx shadcn@latest add @uilab/layout
+```
+
+Example:
+```tsx
+import { Layout } from "@/components/blocks/layout"
+
+export default function Page() {
+  return (
+    <Layout>
+      <p>Hello</p>
+    </Layout>
+  )
+}
+```
+</Tab>
+<Tab value="Manual">
+Manual
+</Tab>
+</Tabs>
