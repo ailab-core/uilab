@@ -1,11 +1,10 @@
 {
   "title": "Docs",
   "pages": [
-    "---Introduction---",
     "index",
-    "installation",
     "design-system",
     "---UI---",
+    "installation",
     "components",
     "blocks"
   ]

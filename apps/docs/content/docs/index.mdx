@@ -1,11 +1,13 @@
 ---
-title: Getting started
+title: Introduction
+description: UILab contains everything you need to know about frontend development from component documentation to maintaining a whole project.
 icon: BookOpenText
 ---
 
-## Introduction
+## [`uilab-core`](https://www.npmjs.com/package/uilab-core) npm package
+[`uilab-core`](https://www.npmjs.com/package/uilab-core) is a React component library. Most of the components are built using [shadcn components](https://ui.shadcn.com/docs/components) and bundled with [rollup](https://rollupjs.org/).
 
-`uilab-core` is a React component library. Most of the components are built using [shadcn components](https://ui.shadcn.com/docs/components) and bundled with [rollup](https://rollupjs.org/).
+## `@uilab` custom shadcn registry
 
 The reason for making it a separate library instead of using shadcn directly is to have our own internal company design system and an ability to change and control certain components without interacting with the project. We currently have and soon will be having many projects under our company and to change a component style is a massive work.
 
@@ -13,7 +15,7 @@ But, we separated it into 2 parts.
 
 ![Image](https://i.imgur.com/Vm6Rx5k.png)
 
-Smaller *atom* components are made into a library, and more complex components *molecule* (datatable, data-list, form-sheet etc) are made into shadcn registry. So you can download or copy the code for the project needs.
+Smaller **atom components** are made into a library, and more complex components **molecule** (datatable, data-list, form-sheet etc) are made into shadcn registry. So you can download or copy the code for the project needs.
 
 For more information about [atomic design](https://atomicdesign.bradfrost.com/)
 

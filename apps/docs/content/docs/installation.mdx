@@ -1,7 +1,6 @@
 ---
 title: Installation
 description: How to install dependencies and structure your app.
-icon: MonitorDown
 ---
 
 ## Starting a new project
@@ -19,7 +18,7 @@ Every example here uses so make sure to follow the [guide](https://tanstack.com/
 
 ### Examples
 - [Vite Template - Tanstack Router App](https://gitlab.com/ailabmn/frontend/uilab/-/tree/main/examples/template-vite-tanstack-router)
-- [Vite Template - Tanstack Start](https://gitlab.com/ailabmn/frontend/uilab/-/tree/main/examples/template-vite-tanstack-start) (Tanstack Start is on RC, not stable yet)*
+- [Vite Template - Tanstack Start App](https://gitlab.com/ailabmn/frontend/uilab/-/tree/main/examples/template-vite-tanstack-start) *(Template not fully complete yet. Also Tanstack Start is in RC stage, not fully stable yet)*
 
 ## Manual Setup
 
@@ -32,6 +31,8 @@ npm install uilab-core tw-animate-css lucide-react
 Import the component styles in your application entry point:
 
 ```css title='app/global.css'
+@import "tailwindcss";
+@import "tw-animate-css";
 @import "uilab-core/styles.css";
 @import "uilab-core/theme.css";
 
@@ -40,6 +41,29 @@ Import the component styles in your application entry point:
 ```
 
 **Note that tailwindcss needs to be installed in your project! [See how](https://tailwindcss.com/docs/installation/using-vite)**
+
+## Registry setup
+
+Our custom shadcn registry is deployed through GitLab pages and due to it's privacy, you will need your personal access token to add our custom components to your project
+
+```bash title='.env.local'
+PAT_TOKEN={YOUR_GITLAB_PAT_TOKEN}
+```
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  ...
+  "registries": {
+    "@uilab": {
+      "url": "https://ailabmn.gitlab.io/frontend/uilab/r/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${PAT_TOKEN}"
+      }
+    }
+  }
+}
+```
 
 ### Basic Usage
 
@@ -81,3 +105,4 @@ function MyButton(props: ButtonProps) {
 `uilab-core` works with anything that's on client component.
 
 Server component however, is on experimental. There is a known issue of when using the function `cn` on server component. It errors out on console that `cn` function needs to be called in client component. A separate development will be done in near future.
+
