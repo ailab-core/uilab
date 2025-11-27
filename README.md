@@ -37,7 +37,7 @@ pnpm format
 ## Documentation
 
 The documentation site is available at:
-https://ailabmn.gitlab.io/frontend/uilab/
+https://ailabmn.github.io/frontend/uilab/
 
 ## Using Components in Your Project
 
