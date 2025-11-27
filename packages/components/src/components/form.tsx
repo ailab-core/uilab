@@ -6,6 +6,7 @@ import { Slot } from '@radix-ui/react-slot'
 import {
   Controller,
   FormProvider,
+  FormProviderProps,
   useFormContext,
   useFormState,
   type ControllerProps,
@@ -15,7 +16,9 @@ import {
 import { Label } from '@/components/label'
 import { cn } from '@/lib/utils'
 
-const Form = FormProvider
+export const Form: <TFieldValues extends FieldValues = FieldValues>(
+  props: FormProviderProps<TFieldValues>,
+) => React.JSX.Element = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -156,7 +159,6 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
 
 export {
   useFormField,
-  Form,
   FormItem,
   FormLabel,
   FormControl,
