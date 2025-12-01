@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "currency-input",
+  "type": "registry:component",
+  "title": "Currency Input",
+  "description": "Input for currencies :)",
+  "dependencies": [
+    "react-hook-form",
+    "react-number-format",
+    "uilab-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/currency-input.tsx",
+      "content": "import * as React from \"react\"\nimport { useFormContext } from \"react-hook-form\"\nimport { NumericFormat, type InputAttributes } from \"react-number-format\"\nimport {\n  cn,\n  FormControl,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"uilab-core\"\n\nexport function CurrencyInput({\n  name,\n  label,\n  ...props\n}: Omit<InputAttributes, \"type\"> & {\n  name: string\n  label?: string\n}) {\n  const form = useFormContext()\n\n  return (\n    <FormField\n      control={form.control}\n      name={name}\n      render={({ field }) => {\n        const { onChange, ...fields } = field\n        return (\n          <FormItem className=\"w-full\">\n            <FormLabel>{label || \"Amount\"}</FormLabel>\n            <FormControl>\n              <NumericFormat\n                {...props}\n                {...fields}\n                className={cn(\n                  \"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n                  \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n                  \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n                  props.className\n                )}\n                onValueChange={(values) => onChange(values.floatValue)}\n                valueIsNumericString={true}\n                thousandSeparator\n              />\n            </FormControl>\n            <FormMessage />\n          </FormItem>\n        )\n      }}\n    />\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -6,11 +6,22 @@
   "author": "altanbagana@ailab.mn",
   "private": true,
   "scripts": {
-    "dev:docs": "pnpm --prefix apps/docs run dev",
-    "start:docs": "pnpm --prefix apps/docs run start",
-    "build:docs": "pnpm --prefix apps/docs run build",
-    "build:block-registry": "pnpm --prefix packages/block-registry run build",
-    "build:components": "pnpm --prefix packages/components run build"
+    "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "build:docs": "turbo run build --filter=docs",
+    "build:blocks": "turbo run build --filter=blocks",
+    "build:uilab-core": "turbo run build --filter=components",
+    "clean": "turbo run clean --parallel && rimraf -G node_modules/{*,.bin,.modules.yaml}",
+    "dev": "turbo run dev --parallel",
+    "dev:docs": "turbo run dev --filter=docs",
+    "dev:blocks": "turbo run dev --filter=blocks",
+    "dev:components": "turbo run dev --filter=components",
+    "lint": "turbo run lint",
+    "test:prettier": "prettier --cache --check '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
+    "format": "prettier --cache --write '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
+    "test:docs": "turbo run test --filter=docs",
+    "test:components": "turbo run test --filter=components",
+    "test:blocks": "turbo run test --filter=blocks"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
@@ -20,6 +31,9 @@
     "@vitest/ui": "^4.0.9",
     "happy-dom": "^20.0.10",
     "jsdom": "^27.2.0",
+    "prettier": "^3.7.3",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.6.1",
     "vitest": "^4.0.9"
   },
   "packageManager": "pnpm@10.22.0",

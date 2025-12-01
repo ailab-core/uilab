@@ -4,17 +4,16 @@ import { createServerFn } from '@tanstack/react-start';
 import { source } from '@/lib/source';
 import type * as PageTree from 'fumadocs-core/page-tree';
 import { useMemo } from 'react';
-import { docs } from '@/.source';
+import browserCollections from 'fumadocs-mdx:collections/browser';
 import {
   DocsBody,
   DocsDescription,
   DocsPage,
   DocsTitle,
-} from 'fumadocs-ui/page';
+} from 'fumadocs-ui/layouts/docs/page';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
 import * as TabsComponent from 'fumadocs-ui/components/tabs';
-import { createClientLoader } from 'fumadocs-mdx/runtime/vite';
 import { baseOptions } from '@/lib/layout.shared';
 import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions';
 
@@ -43,8 +42,7 @@ const loader = createServerFn({
     };
   });
 
-const clientLoader = createClientLoader(docs.doc, {
-  id: 'docs',
+const clientLoader = browserCollections.docs.createClientLoader({
   component({ toc, frontmatter, default: MDX }) {
     return (
       <DocsPage toc={toc}>

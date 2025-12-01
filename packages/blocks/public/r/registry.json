@@ -1,14 +1,18 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "uilab",
-  "homepage": "https://test.com",
+  "homepage": "https://ailabmn.gitlab.io/frontend/uilab/",
   "items": [
     {
       "name": "data-table",
       "type": "registry:block",
       "title": "Data table",
       "description": "Common extendable data table for uilab",
-      "dependencies": ["@tanstack/react-table", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "src/components/blocks/data-table/advanced.tsx",
@@ -41,7 +45,10 @@
       "type": "registry:block",
       "title": "Confirmation",
       "description": "Common extendable confirmation dialog for uilab",
-      "dependencies": ["lucide-react", "uilab-core"],
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "src/components/blocks/confirmation.tsx",
@@ -57,7 +64,11 @@
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
       ],
-      "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "src/components/blocks/form-dialog.tsx",
@@ -73,10 +84,48 @@
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
       ],
-      "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "src/components/blocks/form-sheet.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "data-list",
+      "type": "registry:component",
+      "title": "Data List",
+      "description": "Data list component",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/blocks/data-list.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "currency-input",
+      "type": "registry:component",
+      "title": "Currency Input",
+      "description": "Input for currencies :)",
+      "dependencies": [
+        "react-hook-form",
+        "react-number-format",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/currency-input.tsx",
           "type": "registry:component"
         }
       ]
