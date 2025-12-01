@@ -12,7 +12,7 @@ This monorepo contains:
 
 ## Documentation
 
-Visit the [documentation site](https://uilab.example.com) to explore the component library, view usage examples, and access API references.
+Visit the [documentation site](https://ui.ailab.mn) to explore the component library, view usage examples, and access API references.
 
 ## Contributing
 
