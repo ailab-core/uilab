@@ -5,5 +5,6 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: 'UILab',
     },
+    githubUrl: "https://github.com/ailab-core/uilab",
   };
 }

@@ -73,7 +73,11 @@ function Page() {
   );
 
   return (
-    <DocsLayout {...baseOptions()} tree={tree}>
+    <DocsLayout
+      {...baseOptions()}
+      tree={tree}
+      githubUrl='https://github.com/ailab-core/uilab'
+    >
       <Content />
     </DocsLayout>
   );

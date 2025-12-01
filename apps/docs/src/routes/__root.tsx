@@ -6,10 +6,10 @@ import {
 } from "@tanstack/react-router"
 import * as React from "react"
 import appCss from "@/styles/app.css?url"
-import { Banner } from "fumadocs-ui/components/banner"
 import { RootProvider } from "fumadocs-ui/provider/tanstack"
 import SearchDialog from "@/components/search"
-import rootData from "@/data/root.json"
+// import { Banner } from "fumadocs-ui/components/banner"
+// import rootData from "@/data/root.json"
 
 export const Route = createRootRoute({
   head: () => ({
@@ -22,7 +22,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Fumadocs on TanStack Start",
+        title: "UILab Documentation",
       },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
@@ -45,10 +45,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="flex flex-col min-h-screen">
-        <Banner variant="rainbow">
-          {rootData.banner}
-        </Banner>
-        <RootProvider search={{ SearchDialog }}>{children}</RootProvider>
+        {/* <Banner> {rootData.banner} </Banner> */}
+        <RootProvider search={{ SearchDialog }}>
+          {children}
+        </RootProvider>
         <Scripts />
       </body>
     </html>

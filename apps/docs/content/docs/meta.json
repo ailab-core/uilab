@@ -2,9 +2,9 @@
   "title": "Docs",
   "pages": [
     "index",
-    "design-system",
+    "get-started",
+    "styling",
     "---UI---",
-    "installation",
     "components",
     "blocks"
   ]
