@@ -1,0 +1,22 @@
+[
+  {
+    "name": "confirmation",
+    "description": "Common extendable confirmation dialog for uilab",
+    "categories": ["dialog"]
+  },
+  {
+    "name": "data-table",
+    "description": "Common extendable data table for uilab",
+    "categories": ["data", "table"]
+  },
+  {
+    "name": "form-dialog",
+    "description": "Common dialog of a form component",
+    "categories": ["dialog", "form"]
+  },
+  {
+    "name": "form-sheet",
+    "description": "Common sheet of a form component",
+    "categories": ["sheet", "form"]
+  }
+]

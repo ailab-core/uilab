@@ -1,0 +1,11 @@
+{
+  "title": "Docs",
+  "pages": [
+    "index",
+    "get-started",
+    "styling",
+    "---UI---",
+    "components",
+    "blocks"
+  ]
+}

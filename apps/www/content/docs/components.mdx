@@ -1,0 +1,31 @@
+---
+title: Components
+---
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout type="warning" title="Client component only!">
+These components are for client component only! We are actively working to make it compatible on server component
+</Callout>
+
+Most base components are direct export of [shadcn components](https://ui.shadcn.com/docs/components) with our custom styling except the complex ones.
+It should function exactly the same except the import destination is different.
+
+## Basic usage
+
+```tsx
+import { Button } from "uilab-core" // instead of '@/components/ui'
+
+export function Example() {
+  return <Button variant="secondary">Example</Button>
+}
+```
+
+Components that are not included from shadcn in the base components are listed below.
+
+- Carousel *(Should be optional, depending on the project)*
+- Chart *(Should be optional, depending on the project)*
+- [Data Table](/docs/blocks/data-table)
+- [Date Picker](/docs/blocks/date-picker)
+- [Sonner](/docs/blocks/sonner)
+
+Don't worry, Most complex components are available in our [shadcn registry](/docs/blocks) with our solutions
