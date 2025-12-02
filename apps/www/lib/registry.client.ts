@@ -3,9 +3,6 @@ import { z } from "zod/v3"
 
 import { Index } from "@/registry/__index__"
 
-// Check if we're in a browser environment
-const isBrowser = typeof window !== 'undefined'
-
 export function getRegistryComponent(name: string) {
   return Index[name]?.component
 }
@@ -34,16 +31,8 @@ export async function getRegistryItem(name: string) {
   let files: typeof result.data.files = []
   for (const file of item.files) {
     const content = await getFileContent(file, pathMappings)
-    
-    // For CSR/browser, use relative paths from registry root
-    // For SSR/Node, use path.relative
-    let relativePath: string
-    if (isBrowser) {
-      relativePath = file.path.replace(/^registry\//, '')
-    } else {
-      const path = await import("path")
-      relativePath = path.relative(process.cwd(), file.path)
-    }
+    // For CSR, we use relative paths from the registry root
+    const relativePath = file.path.replace(/^registry\//, '')
 
     files.push({
       ...file,
@@ -90,66 +79,33 @@ async function getFileContent(
   file: z.infer<typeof registryItemFileSchema>,
   pathMappings: Map<string, string>
 ) {
+  // CSR: Use dynamic import with ?raw to get file content
   let raw: string
-
-  if (isBrowser) {
-    // CSR: Use dynamic import with ?raw to get file content
-    try {
-      // Try to load as raw text using Vite's ?raw import
-      const modulePath = `/${file.path}?raw`
-      const module = await import(/* @vite-ignore */ modulePath)
-      raw = module.default
-    } catch (error) {
-      console.error(`Failed to load file: ${file.path}`, error)
-      throw new Error(`Could not load file: ${file.path}`)
-    }
-
-    // CSR: We skip the ts-morph processing since it's a Node.js library
-    // Instead, we do simple string manipulation
-    let code = raw
-
-    // Some registry items uses default export.
-    // We want to use named export instead.
-    if (file.type !== "registry:page") {
-      code = code.replaceAll("export default", "export")
-    }
-
-    // Fix imports using path mappings.
-    code = fixImport(code, pathMappings)
-
-    return code
-  } else {
-    // SSR: Use Node.js fs module and ts-morph for processing
-    const fs = await import("fs/promises")
-    const path = await import("path")
-    const { tmpdir } = await import("os")
-    const { Project, ScriptKind } = await import("ts-morph")
-
-    raw = await fs.readFile(file.path, "utf-8")
-
-    const project = new Project({
-      compilerOptions: {},
-    })
-
-    const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-    const tempFile = path.join(dir, file.path)
-    const sourceFile = project.createSourceFile(tempFile, raw, {
-      scriptKind: ScriptKind.TSX,
-    })
-
-    let code = sourceFile.getFullText()
-
-    // Some registry items uses default export.
-    // We want to use named export instead.
-    if (file.type !== "registry:page") {
-      code = code.replaceAll("export default", "export")
-    }
-
-    // Fix imports using path mappings.
-    code = fixImport(code, pathMappings)
-
-    return code
+  
+  try {
+    // Try to load as raw text using Vite's ?raw import
+    const modulePath = `/${file.path}?raw`
+    const module = await import(/* @vite-ignore */ modulePath)
+    raw = module.default
+  } catch (error) {
+    console.error(`Failed to load file: ${file.path}`, error)
+    throw new Error(`Could not load file: ${file.path}`)
   }
+
+  // CSR: We skip the ts-morph processing since it's a Node.js library
+  // Instead, we do simple string manipulation
+  let code = raw
+
+  // Some registry items uses default export.
+  // We want to use named export instead.
+  if (file.type !== "registry:page") {
+    code = code.replaceAll("export default", "export")
+  }
+
+  // Fix imports using path mappings.
+  code = fixImport(code, pathMappings)
+
+  return code
 }
 
 function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
@@ -186,32 +142,14 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
     return []
   }
 
-  // Get the first file's directory
+  // CSR: Use simple path manipulation instead of Node.js path module
   const firstFilePath = files[0].path
-  let firstFilePathDir: string
-
-  if (isBrowser) {
-    // CSR: Use simple string manipulation
-    firstFilePathDir = firstFilePath.substring(0, firstFilePath.lastIndexOf('/'))
-  } else {
-    // SSR: Use Node.js path module (will be loaded dynamically if needed)
-    const pathModule = require("path")
-    firstFilePathDir = pathModule.dirname(firstFilePath)
-  }
+  const firstFilePathDir = firstFilePath.substring(0, firstFilePath.lastIndexOf('/'))
 
   return files.map((file) => {
-    let relativePath: string
-    
-    if (isBrowser) {
-      // CSR: Simple string manipulation
-      relativePath = file.path
-      if (firstFilePathDir && file.path.startsWith(firstFilePathDir)) {
-        relativePath = file.path.substring(firstFilePathDir.length + 1)
-      }
-    } else {
-      // SSR: Use Node.js path module
-      const pathModule = require("path")
-      relativePath = pathModule.relative(firstFilePathDir, file.path)
+    let relativePath = file.path
+    if (firstFilePathDir && file.path.startsWith(firstFilePathDir)) {
+      relativePath = file.path.substring(firstFilePathDir.length + 1)
     }
     
     return {
@@ -323,4 +261,3 @@ export function createFileTreeForRegistryItemFiles(
 
   return root
 }
-

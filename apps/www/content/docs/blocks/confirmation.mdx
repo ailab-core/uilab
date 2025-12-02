@@ -1,0 +1,64 @@
+---
+title: Confirmation Dialog
+description: A reusable confirmation dialog with customizable content and actions
+---
+
+## Overview
+
+The Confirmation Dialog component provides a consistent way to ask users for confirmation before performing destructive or important actions.
+
+## Preview
+
+<ComponentPreview name="confirmation-demo" />
+
+## Usage
+
+```tsx
+import { Button } from 'uilab-core';
+import { ConfirmationProvider, useConfirmation } from '@/components/confirmation';
+
+
+function MyComponent() {
+  const { showDialog } = useConfirmation();
+
+  return (
+    <Button
+      onClick={() =>
+        showDialog({
+          title: 'Delete Item',
+          description: 'Are you sure you want to delete this item?',
+          confirmText: 'Delete',
+          cancelText: 'Cancel',
+          onConfirm: () => {
+            // Handle confirmation
+          },
+        })
+      }
+    >
+      Delete
+    </Button>
+  );
+}
+
+// Wrap your app with the provider
+function App() {
+  return (
+    <ConfirmationProvider>
+      <MyComponent />
+    </ConfirmationProvider>
+  );
+}
+```
+
+## API Reference
+
+### ConfirmationOptions
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `title` | `string` | - | The title of the confirmation dialog |
+| `description` | `string` | - | The description or message shown in the dialog |
+| `confirmText` | `string` | `"Confirm"` | Text for the confirm button |
+| `cancelText` | `string` | `"Cancel"` | Text for the cancel button |
+| `onConfirm` | `() => void` | - | Callback when user confirms |
+| `onCancel` | `() => void` | - | Callback when user cancels |

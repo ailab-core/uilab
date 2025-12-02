@@ -1,0 +1,58 @@
+---
+title: Data List
+description: A flexible component for displaying key-value pairs in a structured layout
+---
+
+## Overview
+
+The Data List component provides a clean way to display structured information in a list format, perfect for forms, profiles, and detail views.
+
+## Usage
+
+```tsx
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from '@/components/data-list';
+
+export default function Example() {
+  return (
+    <DataList>
+      <DataListItem>
+        <DataListLabel>Name</DataListLabel>
+        <DataListValue>John Doe</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Email</DataListLabel>
+        <DataListValue>john.doe@example.com</DataListValue>
+      </DataListItem>
+    </DataList>
+  );
+}
+```
+
+## Features
+
+- Responsive layout
+- Flexible content with custom components
+- Clean and minimal design
+- Supports complex value types
+
+## Examples
+
+### With Status Badge
+
+You can include any React component in the value field:
+
+```tsx
+<DataListItem>
+  <DataListLabel>Status</DataListLabel>
+  <DataListValue>
+    <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+      Active
+    </span>
+  </DataListValue>
+</DataListItem>
+```

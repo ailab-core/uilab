@@ -3,6 +3,7 @@ import { z } from "zod/v3";
 
 import { ui } from "@/registry/ui";
 import { blocks } from "@/registry/blocks";
+import { examples } from "@/registry/examples";
 
 const CLASSIC_STYLE = {
   type: "registry:style",
@@ -27,5 +28,6 @@ export const registry = {
     },
     ...ui,
     ...blocks,
+    ...examples,
   ]),
 } satisfies Registry;

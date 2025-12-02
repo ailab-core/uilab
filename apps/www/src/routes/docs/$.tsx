@@ -13,7 +13,7 @@ import {
 } from 'fumadocs-ui/layouts/docs/page';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
-import { mdxComponents } from '@/src/components/mdx-components'
+import { mdxComponents } from '@/src/components/mdx-components';
 import * as TabsComponent from 'fumadocs-ui/components/tabs';
 import { baseOptions } from '@/src/lib/layout.shared';
 import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions';
@@ -54,6 +54,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
             components={{
               ...defaultMdxComponents,
               ...TabsComponent,
+              ...mdxComponents,
               img: (props) => <ImageZoom className="rounded-lg" {...(props as any)} />,
             }}
           />
