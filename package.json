@@ -8,20 +8,17 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
-    "build:docs": "turbo run build --filter=docs",
-    "build:blocks": "turbo run build --filter=blocks",
+    "build:www": "turbo run build --filter=www",
     "build:uilab-core": "turbo run build --filter=components",
     "clean": "turbo run clean --parallel && rimraf -G node_modules/{*,.bin,.modules.yaml}",
     "dev": "turbo run dev --parallel",
-    "dev:docs": "turbo run dev --filter=docs",
-    "dev:blocks": "turbo run dev --filter=blocks",
-    "dev:components": "turbo run dev --filter=components",
+    "dev:www": "turbo run dev --filter=www",
+    "dev:uilab-core": "turbo run dev --filter=components",
     "lint": "turbo run lint",
     "test:prettier": "prettier --cache --check '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
     "format": "prettier --cache --write '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
-    "test:docs": "turbo run test --filter=docs",
-    "test:components": "turbo run test --filter=components",
-    "test:blocks": "turbo run test --filter=blocks"
+    "test:www": "turbo run test --filter=www",
+    "test:uilab-core": "turbo run test --filter=components"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
@@ -40,5 +37,8 @@
   "engines": {
     "pnpm": ">=10.22",
     "node": ">=22"
+  },
+  "dependencies": {
+    "puppeteer": "^24.31.0"
   }
 }
