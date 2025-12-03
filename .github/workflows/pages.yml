@@ -49,11 +49,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build registry
-        run: pnpm registry:build
-
       - name: Build docs
         run: pnpm build:www
+
+      - name: Build registry
+        run: pnpm registry:build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
