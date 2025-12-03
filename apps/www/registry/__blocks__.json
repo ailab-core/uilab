@@ -1,22 +1,27 @@
 [
   {
     "name": "confirmation",
-    "description": "Common extendable confirmation dialog for uilab",
+    "description": "",
     "categories": ["dialog"]
   },
   {
     "name": "data-table",
-    "description": "Common extendable data table for uilab",
+    "description": "",
     "categories": ["data", "table"]
   },
   {
     "name": "form-dialog",
-    "description": "Common dialog of a form component",
+    "description": "",
     "categories": ["dialog", "form"]
   },
   {
     "name": "form-sheet",
-    "description": "Common sheet of a form component",
+    "description": "",
     "categories": ["sheet", "form"]
+  },
+  {
+    "name": "sonner",
+    "description": "",
+    "categories": ["toaster"]
   }
 ]

@@ -17,10 +17,10 @@ function ConfirmationButton() {
           confirmText: "Delete",
           cancelText: "Cancel",
           onConfirm: () => {
-            console.log("Item deleted");
+            alert("Item deleted");
           },
           onCancel: () => {
-            console.log("Cancelled");
+            alert("Cancelled");
           },
         })
       }
@@ -33,9 +33,7 @@ function ConfirmationButton() {
 export default function ConfirmationDemo() {
   return (
     <ConfirmationProvider>
-      <div className="flex gap-4">
-        <ConfirmationButton />
-      </div>
+      <ConfirmationButton />
     </ConfirmationProvider>
   );
 }

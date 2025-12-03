@@ -10,6 +10,7 @@ export const Index: Record<string, any> = {
     name: "index",
     description: "",
     type: "registry:style",
+    dependencies: ["class-variance-authority", "lucide-react", "uilab-core"],
     registryDependencies: ["utils"],
     files: [],
     component: null,
@@ -20,6 +21,7 @@ export const Index: Record<string, any> = {
     name: "style",
     description: "",
     type: "registry:style",
+    dependencies: ["class-variance-authority", "lucide-react", "uilab-core"],
     registryDependencies: ["utils"],
     files: [],
     component: null,
@@ -30,6 +32,7 @@ export const Index: Record<string, any> = {
     name: "currency-input",
     description: "Input for currencies :)",
     type: "registry:component",
+    dependencies: ["react-hook-form", "react-number-format", "uilab-core"],
     registryDependencies: undefined,
     files: [
       {
@@ -52,8 +55,9 @@ export const Index: Record<string, any> = {
   },
   confirmation: {
     name: "confirmation",
-    description: "Common extendable confirmation dialog for uilab",
+    description: "",
     type: "registry:block",
+    dependencies: ["lucide-react", "uilab-core"],
     registryDependencies: undefined,
     files: [
       {
@@ -76,8 +80,9 @@ export const Index: Record<string, any> = {
   },
   "data-table": {
     name: "data-table",
-    description: "Common extendable data table for uilab",
+    description: "",
     type: "registry:block",
+    dependencies: ["@tanstack/react-table", "lucide-react", "uilab-core"],
     registryDependencies: undefined,
     files: [
       {
@@ -126,8 +131,13 @@ export const Index: Record<string, any> = {
   },
   "data-list": {
     name: "data-list",
-    description: "Data list component",
+    description: "",
     type: "registry:component",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "uilab-core",
+    ],
     registryDependencies: undefined,
     files: [
       {
@@ -150,8 +160,9 @@ export const Index: Record<string, any> = {
   },
   "form-dialog": {
     name: "form-dialog",
-    description: "Common dialog of a form component",
+    description: "",
     type: "registry:block",
+    dependencies: ["react-hook-form", "lucide-react", "uilab-core"],
     registryDependencies: [
       "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
     ],
@@ -176,8 +187,9 @@ export const Index: Record<string, any> = {
   },
   "form-sheet": {
     name: "form-sheet",
-    description: "Common sheet of a form component",
+    description: "",
     type: "registry:block",
+    dependencies: ["react-hook-form", "lucide-react", "uilab-core"],
     registryDependencies: [
       "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
     ],
@@ -200,11 +212,36 @@ export const Index: Record<string, any> = {
     categories: ["sheet", "form"],
     meta: undefined,
   },
+  sonner: {
+    name: "sonner",
+    description: "",
+    type: "registry:block",
+    dependencies: ["uilab-core", "lucide-react", "next-themes"],
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/classic/blocks/sonner.tsx",
+        type: "registry:component",
+        target: "components/sonner.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/classic/blocks/sonner.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    categories: ["toaster"],
+    meta: undefined,
+  },
   "confirmation-demo": {
     name: "confirmation-demo",
-    description:
-      "A demo showcasing the Confirmation component with a delete action.",
+    description: "",
     type: "registry:example",
+    dependencies: ["lucide-react", "uilab-core"],
     registryDependencies: undefined,
     files: [
       {
@@ -228,8 +265,13 @@ export const Index: Record<string, any> = {
   },
   "data-list-demo": {
     name: "data-list-demo",
-    description: "A demo showcasing the DataList component with sample data.",
+    description: "",
     type: "registry:example",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "uilab-core",
+    ],
     registryDependencies: undefined,
     files: [
       {
@@ -241,6 +283,31 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod =
         await import("@/registry/classic/examples/data-list-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-demo": {
+    name: "sonner-demo",
+    description: "",
+    type: "registry:example",
+    dependencies: ["sonner", "next-themes", "uilab-core"],
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/classic/examples/sonner-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/classic/examples/sonner-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

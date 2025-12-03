@@ -45,7 +45,6 @@
       "name": "confirmation",
       "type": "registry:block",
       "title": "Confirmation",
-      "description": "Common extendable confirmation dialog for uilab",
       "dependencies": ["lucide-react", "uilab-core"],
       "files": [
         {
@@ -60,7 +59,6 @@
       "name": "data-table",
       "type": "registry:block",
       "title": "Data table",
-      "description": "Common extendable data table for uilab",
       "dependencies": ["@tanstack/react-table", "lucide-react", "uilab-core"],
       "files": [
         {
@@ -100,7 +98,6 @@
       "name": "data-list",
       "type": "registry:component",
       "title": "Data List",
-      "description": "Data list component",
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -119,7 +116,6 @@
       "name": "form-dialog",
       "type": "registry:block",
       "title": "Form dialog",
-      "description": "Common dialog of a form component",
       "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
@@ -137,7 +133,6 @@
       "name": "form-sheet",
       "type": "registry:block",
       "title": "Form dialog",
-      "description": "Common sheet of a form component",
       "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
@@ -152,9 +147,22 @@
       "categories": ["sheet", "form"]
     },
     {
+      "name": "sonner",
+      "type": "registry:block",
+      "title": "Sonner",
+      "dependencies": ["uilab-core", "lucide-react", "next-themes"],
+      "files": [
+        {
+          "path": "registry/classic/blocks/sonner.tsx",
+          "type": "registry:component",
+          "target": "components/sonner.tsx"
+        }
+      ],
+      "categories": ["toaster"]
+    },
+    {
       "name": "confirmation-demo",
       "type": "registry:example",
-      "description": "A demo showcasing the Confirmation component with a delete action.",
       "dependencies": ["lucide-react", "uilab-core"],
       "files": [
         {
@@ -166,7 +174,6 @@
     {
       "name": "data-list-demo",
       "type": "registry:example",
-      "description": "A demo showcasing the DataList component with sample data.",
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -175,6 +182,17 @@
       "files": [
         {
           "path": "registry/classic/examples/data-list-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sonner-demo",
+      "type": "registry:example",
+      "dependencies": ["sonner", "next-themes", "uilab-core"],
+      "files": [
+        {
+          "path": "registry/classic/examples/sonner-demo.tsx",
           "type": "registry:example"
         }
       ]

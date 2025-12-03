@@ -14,6 +14,8 @@ export async function getRegistryItem(name: string) {
     return null
   }
 
+  console.log(item)
+
   // Convert all file paths to object.
   item.files = item.files.map((file: unknown) =>
     typeof file === "string" ? { path: file } : file
@@ -81,7 +83,7 @@ async function getFileContent(
 ) {
   // CSR: Use dynamic import with ?raw to get file content
   let raw: string
-  
+
   try {
     // Try to load as raw text using Vite's ?raw import
     const modulePath = `/${file.path}?raw`
@@ -151,7 +153,7 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
     if (firstFilePathDir && file.path.startsWith(firstFilePathDir)) {
       relativePath = file.path.substring(firstFilePathDir.length + 1)
     }
-    
+
     return {
       ...file,
       path: relativePath,

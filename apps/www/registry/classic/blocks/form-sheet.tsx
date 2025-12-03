@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "uilab-core";
-import { useConfirmation } from "@/components/blocks/confirmation";
+import { useConfirmation } from "@/registry/classic/blocks/confirmation";
 
 /**
  * Sheet boilerplate for forms.

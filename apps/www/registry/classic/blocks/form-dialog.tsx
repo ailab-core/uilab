@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "uilab-core";
-import { useConfirmation } from "@/components/blocks/confirmation";
+import { useConfirmation } from "@/registry/classic/blocks/confirmation";
 
 /**
  * Dialog boilerplate for forms.

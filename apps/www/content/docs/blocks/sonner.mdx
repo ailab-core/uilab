@@ -2,94 +2,34 @@
 title: Sonner
 description: An opinionated toast component for React.
 ---
-import { TypeTable } from 'fumadocs-ui/components/type-table';
 
-The installation process of the sonner is same as the shadcn ui, but we have modified it a bit for our own needs so please follow our steps.
+[Sonner Docs](https://sonner.emilkowal.ski/)
 
-<Tabs items={["CLI", "Manual"]}>
-<Tab value="CLI">
-Install with shadcn cli
+## Preview
+<ComponentPreview name="sonner-demo" />
 
-```bash
-npx shadcn@latest add @uilab/sonner
-```
-</Tab>
-<Tab value="Manual">
+## Installation
+<ComponentInstallation name="sonner" />
 
-Install the following dependencies:
-
-```bash
-npm install sonner next-themes
-```
-
-Copy and paste the following code into your project.
-
-```tsx title='components/blocks/sonner.tsx'
-"use client"
-
-import {
-  CircleCheckIcon,
-  InfoIcon,
-  Loader2Icon,
-  OctagonXIcon,
-  TriangleAlertIcon,
-} from "lucide-react"
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, type ToasterProps } from "sonner"
-
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
-
-  return (
-    <Sonner
-      theme={theme as ToasterProps["theme"]}
-      className="toaster group"
-      icons={{
-        success: <CircleCheckIcon className="size-4" />,
-        info: <InfoIcon className="size-4" />,
-        warning: <TriangleAlertIcon className="size-4" />,
-        error: <OctagonXIcon className="size-4" />,
-        loading: <Loader2Icon className="size-4 animate-spin" />,
-      }}
-      style={
-        {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
-        } as React.CSSProperties
-      }
-      {...props}
-    />
-  )
-}
-
-export { Toaster }
-```
-</Tab>
-</Tabs>
-
-Add the Toaster component:
-```tsx title='app/layout.tsx'
+## Usage:
+Add it into the providers:
+```tsx
 import { Toaster } from "@/components/blocks/sonner"
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <Toaster />
-        <main>{children}</main>
-      </body>
-    </html>
-  )
+function App() {
+  <OtherProviders>
+    <Toaster />
+    <MyApp />
+  </OtherProviders>
 }
 ```
 
-Usage:
 ```tsx
 import { toast } from "sonner"
 ```
 ```tsx
 toast("Event has been created.")
 ```
+
+## API References
+import { TypeTable } from 'fumadocs-ui/components/type-table';

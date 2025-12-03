@@ -1,64 +1,74 @@
 ---
 title: Confirmation Dialog
-description: A reusable confirmation dialog with customizable content and actions
+description: The Confirmation Dialog component provides a consistent way to ask users for confirmation before performing destructive or important actions
 ---
 
-## Overview
-
-The Confirmation Dialog component provides a consistent way to ask users for confirmation before performing destructive or important actions.
-
 ## Preview
-
 <ComponentPreview name="confirmation-demo" />
 
+## Installation
+<ComponentInstallation name="confirmation" />
+
 ## Usage
-
+Wrap your app with the provider
 ```tsx
-import { Button } from 'uilab-core';
-import { ConfirmationProvider, useConfirmation } from '@/components/confirmation';
+import { ConfirmationProvider } from '@/components/confirmation';
 
-
-function MyComponent() {
-  const { showDialog } = useConfirmation();
-
-  return (
-    <Button
-      onClick={() =>
-        showDialog({
-          title: 'Delete Item',
-          description: 'Are you sure you want to delete this item?',
-          confirmText: 'Delete',
-          cancelText: 'Cancel',
-          onConfirm: () => {
-            // Handle confirmation
-          },
-        })
-      }
-    >
-      Delete
-    </Button>
-  );
-}
-
-// Wrap your app with the provider
 function App() {
   return (
     <ConfirmationProvider>
-      <MyComponent />
+      <MyApp />
     </ConfirmationProvider>
   );
 }
 ```
 
-## API Reference
+```tsx
+import { useConfirmation } from '@/components/confirmation';
+```
+```tsx
+showDialog({
+  title: 'Delete Item',
+  description: 'Are you sure you want to delete this item?',
+  confirmText: 'Delete',
+  cancelText: 'Cancel',
+  onConfirm: () => {
+    // Handle confirmation
+  },
+})
+```
 
+## API References
 ### ConfirmationOptions
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `title` | `string` | - | The title of the confirmation dialog |
-| `description` | `string` | - | The description or message shown in the dialog |
-| `confirmText` | `string` | `"Confirm"` | Text for the confirm button |
-| `cancelText` | `string` | `"Cancel"` | Text for the cancel button |
-| `onConfirm` | `() => void` | - | Callback when user confirms |
-| `onCancel` | `() => void` | - | Callback when user cancels |
+<TypeTable
+  type={{
+    title: {
+      type: "string",
+      description: "The title of the confirmation dialog",
+    },
+    description: {
+      type: "string",
+      description: "The description or message shown in the dialog",
+    },
+    confirmText: {
+      type: "string",
+      default: "Confirm",
+      description: "Text for the confirm button",
+    },
+    cancelText: {
+      type: "string",
+      default: "Cancel",
+      description: "Text for the cancel button",
+    },
+    onConfirm: {
+      type: "() => void",
+      description: "Callback when user confirms",
+    },
+    onCancel: {
+      type: "() => void",
+      description: "Callback when user cancels",
+    },
+  }}
+/>

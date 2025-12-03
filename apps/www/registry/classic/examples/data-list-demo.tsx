@@ -4,6 +4,7 @@ import {
   DataListLabel,
   DataListValue,
 } from "@/registry/classic/blocks/data-list";
+import { Badge } from "uilab-core";
 
 export default function DataListDemo() {
   return (
@@ -23,9 +24,7 @@ export default function DataListDemo() {
       <DataListItem>
         <DataListLabel>Status</DataListLabel>
         <DataListValue>
-          <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-            Active
-          </span>
+          <Badge variant="destructive"> Inactive </Badge>
         </DataListValue>
       </DataListItem>
     </DataList>

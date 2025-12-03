@@ -8,6 +8,7 @@ import * as React from "react"
 import appCss from "@/src/styles/app.css?url"
 import { RootProvider } from "fumadocs-ui/provider/tanstack"
 import SearchDialog from "@/src/components/search"
+import { Toaster } from "@/registry/classic/blocks/sonner"
 // import { Banner } from "fumadocs-ui/components/banner"
 // import rootData from "@/data/root.json"
 
@@ -47,6 +48,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="flex flex-col min-h-screen">
         {/* <Banner> {rootData.banner} </Banner> */}
         <RootProvider search={{ SearchDialog }}>
+          <Toaster />
           {children}
         </RootProvider>
         <Scripts />

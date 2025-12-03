@@ -50,7 +50,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build docs
-        run: pnpm build:docs
+        run: pnpm build:www
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -58,7 +58,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/docs/dist/client
+          path: apps/www/dist/client
 
   deploy:
     environment:

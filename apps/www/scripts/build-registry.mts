@@ -32,6 +32,7 @@ export const Index: Record<string, any> = {`
     name: "${item.name}",
     description: "${item.description ?? ""}",
     type: "${item.type}",
+    dependencies: ${JSON.stringify(item.dependencies)},
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
       const filePath = `registry/classic/${typeof file === "string" ? file : file.path}`

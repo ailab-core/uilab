@@ -3,8 +3,6 @@ import type { Registry } from "shadcn/schema";
 export const examples: Registry["items"] = [
   {
     name: "confirmation-demo",
-    description:
-      "A demo showcasing the Confirmation component with a delete action.",
     type: "registry:example",
     dependencies: ["lucide-react", "uilab-core"],
     files: [
@@ -16,7 +14,6 @@ export const examples: Registry["items"] = [
   },
   {
     name: "data-list-demo",
-    description: "A demo showcasing the DataList component with sample data.",
     type: "registry:example",
     dependencies: [
       "@radix-ui/react-slot",
@@ -26,6 +23,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/data-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sonner-demo",
+    type: "registry:example",
+    dependencies: ["sonner", "next-themes", "uilab-core"],
+    files: [
+      {
+        path: "examples/sonner-demo.tsx",
         type: "registry:example",
       },
     ],

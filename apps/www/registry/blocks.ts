@@ -5,7 +5,6 @@ export const blocks: Registry["items"] = [
     name: "confirmation",
     type: "registry:block",
     title: "Confirmation",
-    description: "Common extendable confirmation dialog for uilab",
     dependencies: ["lucide-react", "uilab-core"],
     files: [
       {
@@ -20,7 +19,6 @@ export const blocks: Registry["items"] = [
     name: "data-table",
     type: "registry:block",
     title: "Data table",
-    description: "Common extendable data table for uilab",
     dependencies: ["@tanstack/react-table", "lucide-react", "uilab-core"],
     files: [
       {
@@ -60,7 +58,6 @@ export const blocks: Registry["items"] = [
     name: "data-list",
     type: "registry:component",
     title: "Data List",
-    description: "Data list component",
     dependencies: [
       "@radix-ui/react-slot",
       "class-variance-authority",
@@ -79,7 +76,6 @@ export const blocks: Registry["items"] = [
     name: "form-dialog",
     type: "registry:block",
     title: "Form dialog",
-    description: "Common dialog of a form component",
     registryDependencies: [
       "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
     ],
@@ -97,7 +93,6 @@ export const blocks: Registry["items"] = [
     name: "form-sheet",
     type: "registry:block",
     title: "Form dialog",
-    description: "Common sheet of a form component",
     registryDependencies: [
       "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
     ],
@@ -110,5 +105,19 @@ export const blocks: Registry["items"] = [
       },
     ],
     categories: ["sheet", "form"],
+  },
+  {
+    name: "sonner",
+    type: "registry:block",
+    title: "Sonner",
+    dependencies: ["uilab-core", "lucide-react", "next-themes"],
+    files: [
+      {
+        path: "blocks/sonner.tsx",
+        type: "registry:component",
+        target: "components/sonner.tsx",
+      },
+    ],
+    categories: ["toaster"],
   },
 ];
