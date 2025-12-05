@@ -3,6 +3,7 @@ import { highlightCode } from "@/src/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry.client"
 import { getIconForLanguageExtension } from "@/src/components/icons"
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock"
+import { Index } from "@/registry/__index__"
 
 export function ComponentSource({
   name,
@@ -17,6 +18,19 @@ export function ComponentSource({
 }) {
   const [highlightedCode, setHighlightedCode] = React.useState<string | null>(null)
   const lang = language ?? title?.split(".").pop() ?? "tsx"
+  const item = Index[name]
+
+  const componentPath = item.files?.[0]?.path
+    ? `@/registry/classic/${item.files[0].path}`
+    : ""
+
+  console.log(item)
+  console.log(componentPath)
+
+  const arst = React.lazy(async () => {
+    const mod = await import(componentPath)
+    console.log(mod)
+  })
 
   if (!name && !src) {
     return null

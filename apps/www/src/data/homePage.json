@@ -1,6 +1,6 @@
 {
   "title": "UILAB",
-  "subtitle": "Documentation",
   "description": "Company internal fully loaded component library for building fast UI",
-  "button": "Get started"
+  "button": "Get started",
+  "starButton": "Star on GitHub"
 }

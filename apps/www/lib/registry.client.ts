@@ -14,8 +14,6 @@ export async function getRegistryItem(name: string) {
     return null
   }
 
-  console.log(item)
-
   // Convert all file paths to object.
   item.files = item.files.map((file: unknown) =>
     typeof file === "string" ? { path: file } : file

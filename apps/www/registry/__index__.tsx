@@ -39,6 +39,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/ui/currency-input.tsx",
         type: "registry:component",
         target: "",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -64,6 +65,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/confirmation.tsx",
         type: "registry:component",
         target: "components/confirmation.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -89,31 +91,37 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/data-table/advanced.tsx",
         type: "registry:component",
         target: "components/data-table/advanced.tsx",
+        content: "",
       },
       {
         path: "registry/classic/blocks/data-table/basic.tsx",
         type: "registry:component",
         target: "components/data-table/basic.tsx",
+        content: "",
       },
       {
         path: "registry/classic/blocks/data-table/filter-popover.tsx",
         type: "registry:component",
         target: "components/data-table/filter-popover.tsx",
+        content: "",
       },
       {
         path: "registry/classic/blocks/data-table/merged-cell.tsx",
         type: "registry:component",
         target: "components/data-table/merged-cell.tsx",
+        content: "",
       },
       {
         path: "registry/classic/blocks/data-table/pagination.tsx",
         type: "registry:component",
         target: "components/data-table/pagination.tsx",
+        content: "",
       },
       {
         path: "registry/classic/blocks/data-table/index.tsx",
         type: "registry:component",
         target: "components/data-table/index.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -144,6 +152,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/data-list.tsx",
         type: "registry:component",
         target: "components/data-list.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -171,6 +180,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/form-dialog.tsx",
         type: "registry:component",
         target: "components/form-dialog.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -198,6 +208,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/form-sheet.tsx",
         type: "registry:component",
         target: "components/form-sheet.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -223,6 +234,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/blocks/sonner.tsx",
         type: "registry:component",
         target: "components/sonner.tsx",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -248,6 +260,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/examples/confirmation-demo.tsx",
         type: "registry:example",
         target: "",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -278,6 +291,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/examples/data-list-demo.tsx",
         type: "registry:example",
         target: "",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
@@ -304,6 +318,7 @@ export const Index: Record<string, any> = {
         path: "registry/classic/examples/sonner-demo.tsx",
         type: "registry:example",
         target: "",
+        content: "",
       },
     ],
     component: React.lazy(async () => {
