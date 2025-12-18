@@ -10,8 +10,12 @@
         "lucide-react",
         "uilab-core"
       ],
-      "devDependencies": ["tw-animate-css"],
-      "registryDependencies": ["utils"],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {}
     },
@@ -23,8 +27,12 @@
         "lucide-react",
         "uilab-core"
       ],
-      "devDependencies": ["tw-animate-css"],
-      "registryDependencies": ["utils"],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {}
     },
@@ -33,7 +41,11 @@
       "type": "registry:component",
       "title": "Currency Input",
       "description": "Input for currencies :)",
-      "dependencies": ["react-hook-form", "react-number-format", "uilab-core"],
+      "dependencies": [
+        "react-hook-form",
+        "react-number-format",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "registry/classic/ui/currency-input.tsx",
@@ -45,7 +57,10 @@
       "name": "confirmation",
       "type": "registry:block",
       "title": "Confirmation",
-      "dependencies": ["lucide-react", "uilab-core"],
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "registry/classic/blocks/confirmation.tsx",
@@ -53,13 +68,19 @@
           "target": "components/confirmation.tsx"
         }
       ],
-      "categories": ["dialog"]
+      "categories": [
+        "dialog"
+      ]
     },
     {
       "name": "data-table",
       "type": "registry:block",
       "title": "Data table",
-      "dependencies": ["@tanstack/react-table", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "registry/classic/blocks/data-table/advanced.tsx",
@@ -92,14 +113,17 @@
           "target": "components/data-table/index.tsx"
         }
       ],
-      "categories": ["data", "table"]
+      "categories": [
+        "data",
+        "table"
+      ]
     },
     {
       "name": "data-list",
       "type": "registry:component",
       "title": "Data List",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "@base-ui/react",
         "class-variance-authority",
         "uilab-core"
       ],
@@ -110,13 +134,20 @@
           "target": "components/data-list.tsx"
         }
       ],
-      "categories": ["data", "list"]
+      "categories": [
+        "data",
+        "list"
+      ]
     },
     {
       "name": "form-dialog",
       "type": "registry:block",
       "title": "Form dialog",
-      "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
       ],
@@ -127,13 +158,20 @@
           "target": "components/form-dialog.tsx"
         }
       ],
-      "categories": ["dialog", "form"]
+      "categories": [
+        "dialog",
+        "form"
+      ]
     },
     {
       "name": "form-sheet",
       "type": "registry:block",
       "title": "Form dialog",
-      "dependencies": ["react-hook-form", "lucide-react", "uilab-core"],
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
       "registryDependencies": [
         "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
       ],
@@ -144,13 +182,20 @@
           "target": "components/form-sheet.tsx"
         }
       ],
-      "categories": ["sheet", "form"]
+      "categories": [
+        "sheet",
+        "form"
+      ]
     },
     {
       "name": "sonner",
       "type": "registry:block",
       "title": "Sonner",
-      "dependencies": ["uilab-core", "lucide-react", "next-themes"],
+      "dependencies": [
+        "uilab-core",
+        "lucide-react",
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/classic/blocks/sonner.tsx",
@@ -158,12 +203,17 @@
           "target": "components/sonner.tsx"
         }
       ],
-      "categories": ["toaster"]
+      "categories": [
+        "toaster"
+      ]
     },
     {
       "name": "confirmation-demo",
       "type": "registry:example",
-      "dependencies": ["lucide-react", "uilab-core"],
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "registry/classic/examples/confirmation-demo.tsx",
@@ -175,7 +225,7 @@
       "name": "data-list-demo",
       "type": "registry:example",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "@base-ui/react",
         "class-variance-authority",
         "uilab-core"
       ],
@@ -189,7 +239,11 @@
     {
       "name": "sonner-demo",
       "type": "registry:example",
-      "dependencies": ["sonner", "next-themes", "uilab-core"],
+      "dependencies": [
+        "sonner",
+        "next-themes",
+        "uilab-core"
+      ],
       "files": [
         {
           "path": "registry/classic/examples/sonner-demo.tsx",

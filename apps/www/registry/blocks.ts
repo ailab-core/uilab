@@ -59,7 +59,7 @@ export const blocks: Registry["items"] = [
     type: "registry:component",
     title: "Data List",
     dependencies: [
-      "@radix-ui/react-slot",
+      "@base-ui/react",
       "class-variance-authority",
       "uilab-core",
     ],

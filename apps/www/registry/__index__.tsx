@@ -142,7 +142,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:component",
     dependencies: [
-      "@radix-ui/react-slot",
+      "@base-ui/react",
       "class-variance-authority",
       "uilab-core",
     ],
@@ -281,7 +281,7 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:example",
     dependencies: [
-      "@radix-ui/react-slot",
+      "@base-ui/react",
       "class-variance-authority",
       "uilab-core",
     ],

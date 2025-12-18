@@ -16,7 +16,7 @@ export const examples: Registry["items"] = [
     name: "data-list-demo",
     type: "registry:example",
     dependencies: [
-      "@radix-ui/react-slot",
+      "@base-ui/react",
       "class-variance-authority",
       "uilab-core",
     ],

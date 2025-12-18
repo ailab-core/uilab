@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createContext, useContext, type ComponentProps } from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { useRender } from "@base-ui/react/use-render";
+import { mergeProps } from "@base-ui/react/merge-props";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "uilab-core";
 
@@ -30,24 +31,31 @@ export function DataList({
   className,
   orientation = "horizontal",
   size,
-  asChild = false,
+  render,
   ...props
 }: ComponentProps<"dl"> &
-  VariantProps<typeof dataListVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "dl";
-
+  VariantProps<typeof dataListVariants> & useRender.ComponentProps<"dl">) {
   return (
     <DataListOrientationContext.Provider value={orientation || "horizontal"}>
-      <Comp
-        className={cn(
-          "gap-2",
-          dataListVariants({ orientation, size }),
-          className,
-        )}
-        {...props}
-      />
+      {useRender({
+        defaultTagName: "dl",
+        props: mergeProps<"dl">(
+          {
+            className: cn(
+              "gap-2",
+              dataListVariants({ orientation, size }),
+              className,
+            ),
+          },
+          props,
+        ),
+        render,
+        state: {
+          slot: "data-list",
+        }
+      })}
     </DataListOrientationContext.Provider>
-  );
+  )
 }
 
 export interface DataListItemProps extends React.HTMLAttributes<HTMLDivElement> {
