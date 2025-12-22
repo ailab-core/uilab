@@ -10,16 +10,16 @@
     "registry:build": "pnpm --filter www registry:build",
     "build": "turbo run build",
     "build:www": "turbo run build --filter=www",
-    "build:uilab-core": "turbo run build --filter=components",
+    "build:uilab-core": "turbo run build --filter=uilab-core",
     "clean": "turbo run clean --parallel && rimraf -G node_modules/{*,.bin,.modules.yaml}",
     "dev": "turbo run dev --parallel",
     "dev:www": "turbo run dev --filter=www",
-    "dev:uilab-core": "turbo run dev --filter=components",
+    "dev:uilab-core": "turbo run dev --filter=uilab-core",
     "lint": "turbo run lint",
     "test:prettier": "prettier --cache --check '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
     "format": "prettier --cache --write '{apps,packages}/**/*.{js,jsx,ts,tsx,css,md,mdx,json}'",
     "test:www": "turbo run test --filter=www",
-    "test:uilab-core": "turbo run test --filter=components"
+    "test:uilab-core": "turbo run test --filter=uilab-core"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
