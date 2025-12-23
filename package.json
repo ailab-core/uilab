@@ -34,9 +34,8 @@
     "turbo": "^2.7.1",
     "vitest": "^4.0.16"
   },
-  "packageManager": "pnpm@10.26.1",
   "engines": {
-    "pnpm": ">=10.22",
+    "pnpm": ">=10",
     "node": ">=22"
   },
   "dependencies": {
