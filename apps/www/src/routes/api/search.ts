@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { source } from '@/src/lib/source';
+import { source } from '@/lib/source';
 import { createFromSource } from 'fumadocs-core/search/server';
 
 const server = createFromSource(source, {
@@ -10,7 +10,7 @@ const server = createFromSource(source, {
 export const Route = createFileRoute('/api/search')({
   server: {
     handlers: {
-      GET: () => server.staticGET(),
+      GET: async ({ request }) => server.GET(request),
     },
   },
 });

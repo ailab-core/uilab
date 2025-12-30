@@ -3,8 +3,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: 'UILab',
+      title: 'Tanstack Start',
     },
-    githubUrl: "https://github.com/ailab-core/uilab",
   };
 }

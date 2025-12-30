@@ -1,0 +1,105 @@
+import { type Registry } from "shadcn/schema";
+
+export const blocks: Registry["items"] = [
+  {
+    name: "confirmation",
+    type: "registry:block",
+    title: "Confirmation",
+    dependencies: ["lucide-react", "uilab-core"],
+    files: [
+      {
+        path: "blocks/confirmation.tsx",
+        type: "registry:component",
+        target: "components/confirmation.tsx",
+      },
+    ],
+    categories: ["dialog"],
+  },
+  {
+    name: "data-table",
+    type: "registry:block",
+    title: "Data table",
+    dependencies: ["@tanstack/react-table", "lucide-react", "uilab-core"],
+    files: [
+      {
+        path: "blocks/data-table/advanced.tsx",
+        type: "registry:component",
+        target: "components/data-table/advanced.tsx",
+      },
+      {
+        path: "blocks/data-table/basic.tsx",
+        type: "registry:component",
+        target: "components/data-table/basic.tsx",
+      },
+      {
+        path: "blocks/data-table/filter-popover.tsx",
+        type: "registry:component",
+        target: "components/data-table/filter-popover.tsx",
+      },
+      {
+        path: "blocks/data-table/merged-cell.tsx",
+        type: "registry:component",
+        target: "components/data-table/merged-cell.tsx",
+      },
+      {
+        path: "blocks/data-table/pagination.tsx",
+        type: "registry:component",
+        target: "components/data-table/pagination.tsx",
+      },
+      {
+        path: "blocks/data-table/index.tsx",
+        type: "registry:component",
+        target: "components/data-table/index.tsx",
+      },
+    ],
+    categories: ["data", "table"],
+  },
+  {
+    name: "form-dialog",
+    type: "registry:block",
+    title: "Form dialog",
+    registryDependencies: [
+      "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
+    ],
+    dependencies: ["react-hook-form", "lucide-react", "uilab-core"],
+    files: [
+      {
+        path: "blocks/form-dialog.tsx",
+        type: "registry:component",
+        target: "components/form-dialog.tsx",
+      },
+    ],
+    categories: ["dialog", "form"],
+  },
+  {
+    name: "form-sheet",
+    type: "registry:block",
+    title: "Form dialog",
+    registryDependencies: [
+      "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json",
+    ],
+    dependencies: ["react-hook-form", "lucide-react", "uilab-core"],
+    files: [
+      {
+        path: "blocks/form-sheet.tsx",
+        type: "registry:component",
+        target: "components/form-sheet.tsx",
+      },
+    ],
+    categories: ["sheet", "form"],
+  },
+  {
+    name: "sonner",
+    type: "registry:block",
+    title: "Sonner",
+    dependencies: ["uilab-core", "lucide-react", "next-themes"],
+    files: [
+      {
+        path: "blocks/sonner.tsx",
+        type: "registry:component",
+        target: "components/sonner.tsx",
+      },
+    ],
+    categories: ["toaster"],
+  },
+];

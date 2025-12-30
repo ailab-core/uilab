@@ -114,18 +114,4 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply font-sans bg-background text-foreground;
-  }
-
-  html {
-    @apply font-sans;
-  }
-}
-
 /* shadcn/ui theme variables */

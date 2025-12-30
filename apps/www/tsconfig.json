@@ -1,11 +1,7 @@
 {
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "scripts/build-registry.mts"
-  ],
-  "exclude": [
-    "node_modules"
+    "**/*.tsx"
   ],
   "compilerOptions": {
     "strict": true,
@@ -30,7 +26,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ],
       "fumadocs-mdx:collections/*": [
         ".source/*"

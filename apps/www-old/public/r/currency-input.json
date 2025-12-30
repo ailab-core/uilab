@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "currency-input",
+  "title": "Currency Input",
+  "description": "Input for currencies :)",
+  "dependencies": [
+    "react-hook-form",
+    "react-number-format",
+    "uilab-core"
+  ],
+  "files": [
+    {
+      "path": "registry/classic/ui/currency-input.tsx",
+      "content": "import { t } from \"i18next\"\nimport { BanknoteIcon } from \"lucide-react\"\nimport { Controller, useFormContext } from \"react-hook-form\"\nimport { NumericFormat } from \"react-number-format\"\nimport {\n  Field,\n  FieldError,\n  FieldLabel,\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n  cn,\n} from \"uilab-core\"\nimport type { InputAttributes } from \"react-number-format\"\n\nexport function CurrencyInputField({\n  name,\n  placeholder,\n  label,\n  labelOnClick,\n  labelClassName = \"\",\n  labelIcon,\n  value,\n  onValueChange,\n  ...props\n}: Omit<InputAttributes, \"type\"> & {\n  name: string\n  label?: string\n  labelOnClick?: (event: any) => void\n  labelClassName?: string\n  labelIcon?: React.ReactNode\n  value?: number | string\n  onValueChange?: (values: {\n    value: string\n    floatValue: number | undefined\n    formattedValue: string\n  }) => void\n}) {\n  const form = useFormContext()\n\n  return (\n    <Controller\n      control={form.control}\n      name={name}\n      render={({ field, fieldState }) => {\n        return (\n          <Field\n            data-invalid={fieldState.invalid}\n            className={cn(\"w-full\", props.className)}\n          >\n            <FieldLabel\n              className={labelClassName}\n              onClick={labelOnClick && labelOnClick}\n            >\n              {labelIcon && labelIcon}\n              {label || t(\"amount\")}\n            </FieldLabel>\n            <InputGroup>\n              <InputGroupAddon>\n                <BanknoteIcon />\n              </InputGroupAddon>\n              <NumericFormat\n                {...props}\n                aria-invalid={fieldState.invalid}\n                placeholder={placeholder ?? label ?? \"\"}\n                customInput={InputGroupInput}\n                value={field.value ?? \"\"}\n                onValueChange={(values) => {\n                  field.onChange(\n                    values.floatValue === undefined ? null : values.floatValue,\n                  )\n                  if (onValueChange) onValueChange(values)\n                }}\n                valueIsNumericString={true}\n                thousandSeparator\n              />\n            </InputGroup>\n            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}\n          </Field>\n        )\n      }}\n    />\n  )\n}\n\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

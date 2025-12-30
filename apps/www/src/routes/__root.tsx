@@ -3,40 +3,36 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-} from "@tanstack/react-router"
-import * as React from "react"
-import appCss from "@/src/styles/app.css?url"
-import { RootProvider } from "fumadocs-ui/provider/tanstack"
-import SearchDialog from "@/src/components/search"
-import { Toaster } from "@/registry/classic/blocks/sonner"
-// import { Banner } from "fumadocs-ui/components/banner"
-// import rootData from "@/data/root.json"
+} from '@tanstack/react-router';
+import * as React from 'react';
+import appCss from '@/styles/app.css?url';
+import { RootProvider } from 'fumadocs-ui/provider/tanstack';
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
-        charSet: "utf-8",
+        charSet: 'utf-8',
       },
       {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
       },
       {
-        title: "UILab Documentation",
+        title: 'UILab Documentation',
       },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [{ rel: 'stylesheet', href: appCss }],
   }),
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
     <RootDocument>
       <Outlet />
     </RootDocument>
-  )
+  );
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -46,13 +42,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="flex flex-col min-h-screen">
-        {/* <Banner> {rootData.banner} </Banner> */}
-        <RootProvider search={{ SearchDialog }}>
-          <Toaster />
-          {children}
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
         <Scripts />
       </body>
     </html>
-  )
+  );
 }

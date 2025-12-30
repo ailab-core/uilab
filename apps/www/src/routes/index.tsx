@@ -1,13 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router"
-import { HomeLayout } from "fumadocs-ui/layouts/home"
-import { Badge } from "uilab-core"
-import { CornerDownLeftIcon, StarIcon } from "lucide-react"
-import homePageData from "@/src/data/homePage.json"
-import { baseOptions } from "@/src/lib/layout.shared"
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import homePageData from '@/data/homePage.json';
+import { baseOptions } from '@/lib/layout.shared';
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: Home,
-})
+});
 
 function Home() {
   return (
@@ -23,32 +21,21 @@ function Home() {
           <Link
             to="/docs/$"
             params={{ _splat: "" }}
-            className="px-4 py-2 rounded-lg bg-fd-primary text-fd-primary-foreground font-medium text-sm"
+            className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-fd-primary text-fd-primary-foreground font-medium text-sm"
           >
             {homePageData.button}
-            <Badge
-              className="ml-2 px-1"
-              variant="secondary"
-            >
-              <CornerDownLeftIcon />
-            </Badge>
           </Link>
           <a
             href="https://github.com/ailab-core/uilab"
             target="_blank"
             rel="noreferrer noopener"
-            className="px-4 py-2 rounded-lg bg-fd-primary text-fd-primary-foreground font-medium text-sm"
+            className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-fd-primary text-fd-primary-foreground font-medium text-sm"
           >
             {homePageData.starButton}
-            <Badge
-              className="ml-2 px-1"
-              variant="secondary"
-            >
-              <StarIcon />
-            </Badge>
           </a>
         </div>
       </div>
     </HomeLayout>
   )
 }
+
