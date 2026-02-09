@@ -1,0 +1,42 @@
+---
+title: Empty
+description: Use the Empty component to display an empty state.
+---
+<ComponentPreview name="empty-preview" />
+
+## Usage
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "uilab-core"
+```
+```tsx
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Icon />
+    </EmptyMedia>
+    <EmptyTitle>No data</EmptyTitle>
+    <EmptyDescription>No data found</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Add data</Button>
+  </EmptyContent>
+</Empty>
+```
+
+## Examples
+### Outline
+Use the `border` utility class to create an outline empty state.
+<ComponentPreview name="empty-outline" />
+### Avatar
+Use the `EmptyMedia` component to display an avatar in the empty state.
+<ComponentPreview name="empty-avatar" />
+### Input Group
+You can add an `InputGroup` component to the `EmptyContent` component.
+<ComponentPreview name="empty-input-group" />

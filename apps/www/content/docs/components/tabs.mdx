@@ -1,0 +1,32 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+---
+<ComponentPreview name="tabs-preview" />
+
+## Usage
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "uilab-core"
+```
+```tsx
+<Tabs defaultValue="account" className="w-100">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+
+## Examples
+### Line
+Use the `variant="line"` prop on `TabsList` for a line style.
+<ComponentPreview name="tabs-line" />
+### Vertical
+Use `orientation="vertical"` for vertical tabs.
+<ComponentPreview name="tabs-vertical" />
+### Disabled
+<ComponentPreview name="tabs-disabled" />
+### Icons
+<ComponentPreview name="tabs-icons" />

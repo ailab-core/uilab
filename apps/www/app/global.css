@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'fumadocs-ui/css/solar.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'uilab-core/styles.css';
+@import 'uilab-core/theme.css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+.docs-code-block {
+  @apply m-0 pt-4 pr-2 pl-2;
+
+  .fd-scroll-container {
+    @apply bg-transparent! p-0;
+  }
+
+  .line {
+    @apply pl-0!;
+  }
+
+  [role="region"] {
+    max-height: 75vh;
+  }
+}
+
+/* Apply !important only for isolated code blocks (not code-block-wrapper) */
+.is-isolated .docs-code-block {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.code-block-wrapper {
+  @apply rounded-xl;
+}
+
+.docs-code-block-line-numbers {
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: rgba(115, 138, 148, 0.4);
+  }
+}
+
+.shiki:not(.not-fumadocs-codeblock *) code .highlighted {
+  border-radius: 4px;
+  background-color: #d6d8e3 !important;
+}
+
+.showcase-source-wrapper {
+  .code-block-wrapper {
+    background: transparent !important;
+  }
+
+  .fd-scroll-container {
+    max-height: 100%;
+    background: transparent;
+  }
+}

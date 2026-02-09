@@ -1,0 +1,52 @@
+---
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+---
+<ComponentPreview name="menubar-preview" />
+
+## Usage
+```tsx
+import {
+  Menubar,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+```
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarGroup>
+        <MenubarItem>
+          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Window</MenubarItem>
+      </MenubarGroup>
+      <MenubarSeparator />
+      <MenubarGroup>
+        <MenubarItem>Share</MenubarItem>
+        <MenubarItem>Print</MenubarItem>
+      </MenubarGroup>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+## Examples
+### Checkboxes
+Use `MenubarCheckboxItem` for toggleable options.
+<ComponentPreview name="menubar-checkboxes" />
+### Radios
+Use `MenubarRadioGroup` and `MenubarRadioItem` for single-select options.
+<ComponentPreview name="menubar-radios" />
+### Submenus
+Use `MenubarSub`, `MenubarSubTrigger`, and `MenubarSubContent` for nested menus.
+<ComponentPreview name="menubar-submenus" />
+### With Icons
+<ComponentPreview name="menubar-icons" />

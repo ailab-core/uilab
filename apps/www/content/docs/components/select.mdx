@@ -1,0 +1,57 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+---
+<ComponentPreview name="select-preview" />
+
+## Usage
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "uilab-core"
+```
+```tsx
+<Select>
+  <SelectTrigger className="w-45">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="light">Light</SelectItem>
+      <SelectItem value="dark">Dark</SelectItem>
+      <SelectItem value="system">System</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+## Example
+### Align Item With Trigger
+Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true` (default), the popup positions so the selected item appears over the trigger. When `false`, the popup aligns to the trigger edge.
+<ComponentPreview name="select-align-item" />
+### Groups
+Use `SelectGroup`, `SelectLabel`, and `SelectSeparator` to organize items.
+<ComponentPreview name="select-groups" />
+### Scrollable
+A select with many items that scrolls.
+<ComponentPreview name="select-scrollable" />
+### Disabled
+<ComponentPreview name="select-disabled" />
+### Invalid
+Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+```tsx
+// [!code word:data-invalid]
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  // [!code word:aria-invalid]
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
+<ComponentPreview name="select-invalid" />

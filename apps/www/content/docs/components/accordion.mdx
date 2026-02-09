@@ -1,0 +1,33 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+---
+<ComponentPreview name="accordion-preview" />
+
+## Usage
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "uilab-core"
+```
+```tsx
+<Accordion defaultValue={["item-1"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Example Item 1</AccordionTrigger>
+    <AccordionContent>
+        Example accordion content
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+### Basic
+<ComponentPreview name="accordion-basic" />
+### Multiple
+<ComponentPreview name="accordion-multiple" />
+### Disabled
+<ComponentPreview name="accordion-disabled" />

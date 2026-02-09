@@ -1,0 +1,43 @@
+---
+title: Context Menu
+description: Displays a menu of actions triggered by a right click.
+---
+<ComponentPreview name="context-menu-preview" />
+
+## Usage
+```tsx
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "uilab-core"
+```
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Profile</ContextMenuItem>
+    <ContextMenuItem>Billing</ContextMenuItem>
+    <ContextMenuItem>Team</ContextMenuItem>
+    <ContextMenuItem>Subscription</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Examples
+### Submenu
+Use `ContextMenuSub` to nest secondary actions.
+<ComponentPreview name="context-menu-submenus" />
+### Icons
+Combine icons with labels for quick scanning.
+<ComponentPreview name="context-menu-icons" />
+### Groups
+Group related actions and separate them with dividers.
+<ComponentPreview name="context-menu-groups" />
+### Checkboxes
+Use `ContextMenuCheckboxItem` for toggles.
+<ComponentPreview name="context-menu-checkboxes" />
+### Radios
+Use `ContextMenuRadioItem` for exclusive choices.
+<ComponentPreview name="context-menu-radios" />

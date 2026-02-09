@@ -1,0 +1,41 @@
+---
+title: Card
+description: Displays a card with header, content, and footer.
+---
+<ComponentPreview name="card-preview" />
+
+## Usage
+```tsx
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "uilab-core"
+```
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Examples
+### Sizes
+Use the `size="sm"` prop to set the size of the card to small. The small size variant uses smaller spacing.
+<ComponentPreview name="card-sizes" />
+### Image
+Add an image before the card header to create a card with an image.
+<ComponentPreview name="card-image" />

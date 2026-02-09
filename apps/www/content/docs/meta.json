@@ -1,11 +1,15 @@
 {
   "title": "Docs",
   "pages": [
+    "---Overview---",
     "index",
     "get-started",
     "styling",
     "---UI---",
     "components",
-    "blocks"
+    "blocks",
+    "---Resources---",
+    "[llms.txt](/llms.txt)",
+    "[llms-full.txt](/llms-full.txt)"
   ]
 }

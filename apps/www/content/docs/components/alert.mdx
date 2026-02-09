@@ -1,0 +1,36 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+---
+<ComponentPreview name="alert-preview" />
+
+## Usage
+```tsx
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle
+} from "uilab-core"
+```
+```tsx
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+</Alert>
+```
+
+## Examples
+### Basic
+A basic alert with an icon, title and description.
+<ComponentPreview name="alert-basic" />
+### Destructive
+Use `variant="destructive"` to create a destructive alert.
+<ComponentPreview name="alert-destructive" />
+### Action
+Use `AlertAction` to add a button or other action element to the alert.
+<ComponentPreview name="alert-action" />
+### Custom color
+You can customize the alert colors by adding custom classes such as `bg-amber-50 dark:bg-amber-950` to the `Alert` component.
+<ComponentPreview name="alert-custom-colors" />

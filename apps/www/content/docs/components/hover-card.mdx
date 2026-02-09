@@ -1,0 +1,49 @@
+---
+title: Hover Card
+description: Displays a badge or a component that looks like a badge.
+---
+<ComponentPreview name="hover-card-preview" />
+
+## Usage
+```tsx
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "uilab-core"
+```
+```tsx
+<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent>
+    The React Framework – created and maintained by @vercel.
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Trigger delays
+Use delay and closeDelay on the trigger to control when the card opens and closes.
+```tsx
+<HoverCard>
+  <HoverCardTrigger delay={100} closeDelay={200}>
+    Hover
+  </HoverCardTrigger>
+  <HoverCardContent>Content</HoverCardContent>
+</HoverCard>
+```
+## Positioning
+Use the `side` and `align` props on `HoverCardContent` to control placement.
+```tsx
+<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent side="top" align="start">
+    Content
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Examples
+### Basic
+<ComponentPreview name="hover-card-basic" />
+### Sides
+<ComponentPreview name="hover-card-sides" />

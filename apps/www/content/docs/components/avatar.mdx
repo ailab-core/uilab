@@ -1,0 +1,20 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+---
+<ComponentPreview name="avatar-preview" />
+
+## Usage
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage
+} from "uilab-core"
+```
+```tsx
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```

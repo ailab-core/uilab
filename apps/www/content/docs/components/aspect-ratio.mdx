@@ -1,0 +1,23 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+---
+<ComponentPreview name="aspect-ratio-preview" />
+
+## Usage
+```tsx
+import { AspectRatio } from "uilab-core"
+```
+```tsx
+<AspectRatio ratio={16 / 9}>
+  <Image src="..." alt="Photo" fill className="rounded-lg object-cover" />
+</AspectRatio>
+```
+
+## Examples
+### Square
+A square aspect ratio component using the `ratio={1 / 1}` prop. This is useful for displaying images in a square format.
+<ComponentPreview name="aspect-ratio-square" />
+### Portrait
+A portrait aspect ratio component using the `ratio={9 / 16}` prop. This is useful for displaying images in a portrait format.
+<ComponentPreview name="aspect-ratio-portrait" />

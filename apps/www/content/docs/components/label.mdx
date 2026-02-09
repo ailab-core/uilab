@@ -1,0 +1,22 @@
+---
+title: Label
+description: Renders an accessible label associated with controls.
+---
+<ComponentPreview name="label-preview" />
+
+## Usage
+```tsx
+import { Label } from "uilab-core"
+```
+```tsx
+<Label htmlFor="email">Your email address</Label>
+```
+
+## Label in Field
+For form fields, use the [Field](/docs/components/field) component which includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+```tsx
+<Field>
+  <FieldLabel htmlFor="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```

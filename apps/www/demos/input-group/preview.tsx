@@ -1,0 +1,21 @@
+"use client"
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "uilab-core"
+import { Search } from "lucide-react"
+
+export function InputGroupPreview() {
+  return (
+    <InputGroup className="max-w-xs">
+      <InputGroupInput placeholder="Search..." />
+      <InputGroupAddon>
+        <Search />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
+    </InputGroup>
+  )
+}
+

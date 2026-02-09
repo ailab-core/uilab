@@ -1,0 +1,30 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+---
+## Usage
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "uilab-core"
+```
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+## Examples
+### Sides
+Use the `side` prop to change the position of the tooltip.
+<ComponentPreview name="tooltip-sides" />
+### With Keyboard Shortcut
+<ComponentPreview name="tooltip-with-kbd" />
+### Disabled Button
+Show a tooltip on a disabled button by wrapping it with a span.
+<ComponentPreview name="tooltip-disabled-button" />

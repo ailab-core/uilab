@@ -1,0 +1,41 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+---
+<ComponentPreview name="popover-preview" />
+
+## Usage
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "uilab-core"
+```
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="outline" />}>
+    Open Popover
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description text here.</PopoverDescription>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
+```
+
+## Examples
+### Basic
+A simple popover with a header, title, and description.
+<ComponentPreview name="popover-basic" />
+### Align
+Use the `align` prop on `PopoverContent` to control the horizontal alignment.
+<ComponentPreview name="popover-align" />
+### With Form
+A popover with form fields inside.
+<ComponentPreview name="popover-form" />

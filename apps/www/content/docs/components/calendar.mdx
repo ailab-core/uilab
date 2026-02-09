@@ -1,0 +1,22 @@
+---
+title: Calendar
+description: A calendar component that allows users to select a date or a range of dates.
+---
+<ComponentPreview name="calendar-preview" />
+
+## Usage
+```tsx
+import { Calendar } from "uilab-core"
+```
+```tsx
+const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+return (
+  <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-lg border"
+  />
+)
+```

@@ -1,0 +1,57 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+---
+<ComponentPreview name="dropdown-menu-preview" />
+## Usage
+```tsx
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "uilab-core"
+```
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger render={<Button variant="outline" />}>
+    Open
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuGroup>
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Billing</DropdownMenuItem>
+      <DropdownMenuSeparator />
+    </DropdownMenuGroup>
+    <DropdownMenuGroup>
+      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem>Subscription</DropdownMenuItem>
+    </DropdownMenuGroup>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+### Basic
+A basic dropdown menu with labels and separators.
+<ComponentPreview name="dropdown-menu-basic" />
+### Submenu
+Use `DropdownMenuSub` to nest secondary actions.
+<ComponentPreview name="dropdown-menu-submenus" />
+### Shortcuts
+Add `DropdownMenuShortcut` to show keyboard hints.
+<ComponentPreview name="dropdown-menu-shortcuts" />
+### Checkboxes
+Use `DropdownMenuCheckboxItem` for toggles.
+<ComponentPreview name="dropdown-menu-checkboxes" />
+### Radios
+Use `DropdownMenuRadioGroup` for exclusive choices.
+<ComponentPreview name="dropdown-menu-radios" />
+### Complex
+A richer example combining groups, icons, and submenus.
+<ComponentPreview name="dropdown-menu-complex" />

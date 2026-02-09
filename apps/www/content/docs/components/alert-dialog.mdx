@@ -1,0 +1,63 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+---
+<ComponentPreview name="alert-dialog-preview" />
+
+## Usage
+```tsx
+import {
+  Button,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "uilab-core"
+```
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger
+    render={<Button variant="outline">Show Dialog</Button>}
+  />
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your
+        account and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Examples
+### Basic
+A basic alert dialog with a title, description, and cancel and continue buttons.
+<ComponentPreview name="alert-dialog-basic" />
+
+### Small
+Use the `size="sm"` prop to make the alert dialog smaller.
+<ComponentPreview name="alert-dialog-small" />
+
+### Media
+Use the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+<ComponentPreview name="alert-dialog-with-media" />
+
+### Small with Media
+Use the `size="sm"` prop to make the alert dialog smaller and the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+<ComponentPreview name="alert-dialog-small-with-media" />
+
+### Destructive
+Use the `AlertDialogAction` component to add a destructive action button to the alert dialog.
+<ComponentPreview name="alert-dialog-destructive" />
