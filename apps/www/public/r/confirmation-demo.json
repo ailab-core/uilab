@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation-demo",
+  "dependencies": [
+    "lucide-react",
+    "uilab-core"
+  ],
+  "files": [
+    {
+      "path": "registry/ionia/examples/confirmation-demo.tsx",
+      "content": "import { Button } from \"uilab-core\";\nimport {\n  ConfirmationProvider,\n  useConfirmation,\n} from \"@/registry/ionia/blocks/confirmation\";\n\nfunction ConfirmationButton() {\n  const { showDialog } = useConfirmation();\n\n  return (\n    <Button\n      onClick={() =>\n        showDialog({\n          title: \"Delete Item\",\n          description:\n            \"Are you sure you want to delete this item? This action cannot be undone.\",\n          confirmText: \"Delete\",\n          cancelText: \"Cancel\",\n          onConfirm: () => {\n            alert(\"Item deleted\");\n          },\n          onCancel: () => {\n            alert(\"Cancelled\");\n          },\n        })\n      }\n    >\n      Delete Item\n    </Button>\n  );\n}\n\nexport default function ConfirmationDemo() {\n  return (\n    <ConfirmationProvider>\n      <ConfirmationButton />\n    </ConfirmationProvider>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

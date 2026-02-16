@@ -1,0 +1,57 @@
+---
+title: Sonner
+description: An opinionated toast component for React.
+---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<ComponentPreview name="sonner-preview" />
+
+## Installation
+<Steps>
+<Step>
+Install via following command:
+<Callout type='info' title="Reminder">
+Following CLI command will install `next-themes` and `sonner` libraries to your project.
+</Callout>
+```package-install
+npx shadcn add @uilab-core/sonner
+```
+
+</Step>
+<Step>
+Add the Toaster component
+```tsx title='app/layout.tsx'
+import { Toaster } from "uilab-core"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <Toaster />
+        <main>{children}</main>
+      </body>
+    </html>
+  )
+}
+```
+</Step>
+</Steps>
+
+## Usage
+```tsx
+import { toast } from "sonner"
+```
+```tsx
+toast("Event has been created.")
+```
+
+## Examples
+### Types
+<ComponentPreview name="sonner-types" />
+### Description
+<ComponentPreview name="sonner-description" />
+### Position
+Use the `position` prop to change the position of the toast.
+<ComponentPreview name="sonner-position" />

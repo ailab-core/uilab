@@ -2,12 +2,15 @@
 title: Confirmation Dialog
 description: The Confirmation Dialog component provides a consistent way to ask users for confirmation before performing destructive or important actions
 ---
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 
 ## Preview
-<ComponentPreview name="confirmation-demo" />
+<ComponentPreview name="confirmation-preview" />
 
 ## Installation
-ComponentInstallation name="confirmation"
+```package-install
+npx shadcn add @uilab-core/confirmation
+```
 
 ## Usage
 Wrap your app with the provider
@@ -22,7 +25,6 @@ function App() {
   );
 }
 ```
-
 ```tsx
 import { useConfirmation } from '@/components/confirmation';
 ```
@@ -30,6 +32,7 @@ import { useConfirmation } from '@/components/confirmation';
 showDialog({
   title: 'Delete Item',
   description: 'Are you sure you want to delete this item?',
+  variant: 'destructive'
   confirmText: 'Delete',
   cancelText: 'Cancel',
   onConfirm: () => {
@@ -40,34 +43,37 @@ showDialog({
 
 ## API References
 ### ConfirmationOptions
-import { TypeTable } from 'fumadocs-ui/components/type-table';
-
 <TypeTable
   type={{
     title: {
-      type: "string",
+      type: <code>string</code>,
       description: "The title of the confirmation dialog",
     },
     description: {
-      type: "string",
+      type: <code>string</code>,
       description: "The description or message shown in the dialog",
     },
+    variant: {
+      type: <code>destructive | default</code>,
+      default: <code>default</code>,
+      description: "Variant of confirmation dialog"
+    },
     confirmText: {
-      type: "string",
+      type: <code>string</code>,
       default: "Confirm",
       description: "Text for the confirm button",
     },
     cancelText: {
-      type: "string",
+      type: <code>string</code>,
       default: "Cancel",
       description: "Text for the cancel button",
     },
     onConfirm: {
-      type: "() => void",
+      type: <code>{"() => void"}</code>,
       description: "Callback when user confirms",
     },
     onCancel: {
-      type: "() => void",
+      type: <code>{"() => void"}</code>,
       description: "Callback when user cancels",
     },
   }}

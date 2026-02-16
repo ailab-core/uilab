@@ -1,7 +1,8 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
-import './global.css';
 import { Chiron_GoRound_TC } from 'next/font/google';
-import { Toaster } from 'sonner';
+import { Toaster } from '@/registry/ionia/components/sonner';
+import { ConfirmationProvider } from '@/registry/ionia/components/confirmation';
+import './global.css';
 
 const chiron = Chiron_GoRound_TC({
   subsets: ['latin'],
@@ -15,7 +16,9 @@ export default function Layout({ children }: LayoutProps<'/'>) {
     <html lang="en" className={chiron.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <Toaster richColors />
-        <RootProvider>{children}</RootProvider>
+        <ConfirmationProvider>
+          <RootProvider>{children}</RootProvider>
+        </ConfirmationProvider>
       </body>
     </html>
   );

@@ -1,9 +1,257 @@
 ---
 title: Data Table
-description: Powerful table and datagrids built using TanStack Table.
+description: Powerful data table built using TanStack Table.
 ---
 import { Callout } from 'fumadocs-ui/components/callout';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 <Callout type="warn" title="Experimental">
 Things may change quickly
 </Callout>
+
+<ComponentPreview name="data-table-preview" />
+
+## Introduction
+Every data table is unique and it depends on your use case and business logic. It's hard to have one data table that fits every single data display. Some needs to be simple and some needs to have complex filters and paginations (e.g. fintech stuff).
+
+We have made 2 types of data tables using [Tanstack Table](https://tanstack.com/table/latest) which is a headless UI. Capability of this package is endless so you can change certain code to fit your use case.
+
+[Tanstack Router](https://tanstack.com/router/latest)'s type-safe routing feature is super useful for filters and pagination, so we will be using it for demonstrations below.
+
+## Installation
+```package-install
+npx shadcn add @uilab-core/data-table
+```
+
+## Basic Table
+Pretty basic and simple table. Made this for smaller data that does not need pagination or any other feature.
+<ComponentPreview name="data-table-basic" />
+
+<Steps>
+<Step>
+### File structure
+Start by creating the following file structure:
+```
+products
+├── index.tsx
+└── -components
+    └── products-table
+        ├── columns.tsx
+        └── index.tsx
+```
+</Step>
+<Step>
+### Column definitions
+```tsx title='-components/products-table/columns.tsx'
+export default [
+  {
+    accessorKey: "name",
+    header: "Name"
+  },
+  {
+    accessorKey: "email",
+    header: "Email"
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }: CellContext<DataItem, unknown>) => (
+      <Badge variant="outline">{row.getValue('status')}</Badge>
+    )
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Created At"
+  }
+] as Array<ColumnDef<DataItem>>
+```
+</Step>
+<Step>
+### Render the table
+Prepare our table component to render on page
+```tsx title='-components/products-table/index.tsx'
+import columns from "./columns"
+import BasicDataTable from "@/components/data-table"
+
+export function Table() {
+  const { data, isFetching } = useQuery(dataQuery())
+
+  return (
+    <BasicDataTable
+      columns={columns}
+      data={data}
+      isFetching={isFetching}
+    />
+  );
+}
+```
+</Step>
+</Steps>
+
+## Advanced Table
+<ComponentPreview name="data-table-preview" />
+
+<Steps>
+<Step>
+### File structure
+Start by creating the following file structure:
+```
+products
+├── index.tsx
+└── -components
+    ├── index.tsx
+    └── table
+        ├── columns.tsx
+        ├── filter.tsx
+        └── index.tsx
+```
+</Step>
+<Step>
+### Validate search params
+Page needs to validate if given search params is valid or not. We are using `zod` library for validation.
+```tsx title='products/index.tsx'
+import { createFileRoute } from "@tanstack/react-router"
+import * as z from "zod"
+import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "@/lib/constants"
+import { Table } from "./-components/table"
+
+export const productsSearchSchema = z.object({
+  pageIndex: z.number().catch(DEFAULT_PAGE_INDEX).optional(),
+  pageSize: z.number().catch(DEFAULT_PAGE_SIZE).optional(),
+})
+
+export const Route = createFileRoute("/products/")({
+  component: ProductsPage,
+  validateSearch: productsSearchSchema.parse,
+})
+
+function ProductsPage() {
+  return <Table />
+}
+```
+</Step>
+<Step>
+### Filter component
+<Callout type="info" title="Reminder">
+Filter form components should be controlled components, so when sharing the url, the values are instantly filled into the form components. Ease of use.
+</Callout>
+```tsx title='products/-components/table/filter.tsx'
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { productsSearchSchema } from "../../"
+
+export default function Filter() {
+  const { filters, setFilters, resetFilters } = useFilters(PATH)
+  const form = useForm({
+    resolver: zodResolver(productsSearchSchema),
+    values: filters,
+  })
+
+  const handleSubmit = form.handleSubmit((items: SearchSchema) => {
+    setFilters(items)
+  })
+
+  const handleReset = () => {
+    resetFilters().then(() => {
+      form.reset()
+      form.clearErrors()
+    })
+  }
+
+  return (
+    <FormProvider {...form}>
+      <form
+        className="flex flex-wrap items-end gap-2 rounded-lg border border-dashed p-2"
+        onSubmit={handleSubmit}
+      >
+        <InputGroup>
+          <InputGroupAddon>
+            <MailIcon />
+          </InputGroupAddon>
+          <InputGroupInput
+            placeholder="Filter emails..."
+            value={emailFilter}
+            onChange={(e) => setEmailFilter(e.target.value)}
+          />
+        </InputGroup>
+        <Button variant="outline" size="icon" onClick={handleReset}>
+          <RotateCcw />
+        </Button>
+        <Button type="submit">
+          <SearchIcon />
+          {t("search")}
+        </Button>
+      </form>
+    </FormProvider>
+  )
+}
+```
+</Step>
+<Step>
+### Column definition
+```tsx title='products/-components/table/columns.tsx'
+export default [
+  {
+    accessorKey: "name",
+    header: "Name"
+  },
+  {
+    accessorKey: "email",
+    header: "Email"
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }: CellContext<DataItem, unknown>) => (
+      <Badge variant="outline">{row.getValue('status')}</Badge>
+    )
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Created At"
+  }
+] as Array<ColumnDef<DataItem>>
+```
+</Step>
+<Step>
+### Render the table
+```tsx title='products/-components/table/index.tsx'
+import { AdvancedDataTable } from "@/components/data-table"
+import { useFilters } from "@/hooks/use-filter"
+import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "@/lib/constants"
+import Filter from "./filter"
+import columns from "./columns"
+
+export function Table() {
+  // This filter will be using `/products` page's validated search params.
+  const { filters, setFilters } = useFilters("/products/")
+
+  const paginationState = {
+    pageIndex: filters.pageIndex ?? DEFAULT_PAGE_INDEX,
+    pageSize: filters.pageSize ?? DEFAULT_PAGE_SIZE,
+  }
+
+  const { data, isFetching, refetch } = useQuery(
+    dataQuery({
+      ...filters,
+      page: paginationState.pageIndex.toString(),
+      size: paginationState.pageSize.toString(),
+    }),
+  )
+
+  return (
+    <AdvancedDataTable
+      columns={COLUMNS}
+      data={data}
+      refetch={refetch}
+      isFetching={isFetching}
+      leftHeader={<Filter />}
+      // For example: You can add sheet components with trigger
+      rightHeader={<Button><PlusIcon />Add</Button>}
+      pagination={paginationState}
+    />
+  );
+}
+```
+</Step>
+</Steps>

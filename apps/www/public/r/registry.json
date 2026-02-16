@@ -1,0 +1,219 @@
+{
+  "name": "uilab",
+  "homepage": "https://ui.ailab.mn",
+  "items": [
+    {
+      "name": "index",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {},
+      "type": "registry:style"
+    },
+    {
+      "name": "style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {},
+      "type": "registry:style"
+    },
+    {
+      "name": "currency-input",
+      "title": "Currency Input",
+      "description": "Input for currencies :)",
+      "dependencies": [
+        "react-hook-form",
+        "react-number-format",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/ui/currency-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "confirmation",
+      "title": "Confirmation",
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/blocks/confirmation.tsx",
+          "type": "registry:component",
+          "target": "components/confirmation.tsx"
+        }
+      ],
+      "categories": [
+        "dialog"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "data-table",
+      "title": "Data table",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/blocks/data-table/advanced.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/advanced.tsx"
+        },
+        {
+          "path": "registry/ionia/blocks/data-table/basic.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/basic.tsx"
+        },
+        {
+          "path": "registry/ionia/blocks/data-table/filter-popover.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/filter-popover.tsx"
+        },
+        {
+          "path": "registry/ionia/blocks/data-table/merged-cell.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/merged-cell.tsx"
+        },
+        {
+          "path": "registry/ionia/blocks/data-table/pagination.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/pagination.tsx"
+        },
+        {
+          "path": "registry/ionia/blocks/data-table/index.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/index.tsx"
+        }
+      ],
+      "categories": [
+        "data",
+        "table"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "form-dialog",
+      "title": "Form dialog",
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "registryDependencies": [
+        "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/blocks/form-dialog.tsx",
+          "type": "registry:component",
+          "target": "components/form-dialog.tsx"
+        }
+      ],
+      "categories": [
+        "dialog",
+        "form"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "form-sheet",
+      "title": "Form dialog",
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "registryDependencies": [
+        "https://ailabmn.gitlab.io/frontend/uilab/registry/r/confirmation.json"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/blocks/form-sheet.tsx",
+          "type": "registry:component",
+          "target": "components/form-sheet.tsx"
+        }
+      ],
+      "categories": [
+        "sheet",
+        "form"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "sonner",
+      "title": "Sonner",
+      "dependencies": [
+        "uilab-core",
+        "lucide-react",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/blocks/sonner.tsx",
+          "type": "registry:component",
+          "target": "components/sonner.tsx"
+        }
+      ],
+      "categories": [
+        "toaster"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "confirmation-demo",
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/examples/confirmation-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-demo",
+      "dependencies": [
+        "sonner",
+        "next-themes",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/examples/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    }
+  ]
+}

@@ -28,7 +28,8 @@ export async function CodeBlock({
 
   try {
     // Trim the code to avoid issues with leading/trailing whitespace
-    const trimmedCode = code?.trim() || "";
+    const trimmedCode = (code?.trim() || "") // Normalize line endings
+      .replace("@/registry/ionia/components", "@/components");
 
     // Skip highlighting for empty code blocks
     if (!trimmedCode) {

@@ -1,0 +1,214 @@
+{
+  "name": "uilab",
+  "homepage": "https://ui.ailab.mn",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "style",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "currency-input",
+      "title": "Currency Input",
+      "description": "Input for currencies :)",
+      "type": "registry:component",
+      "dependencies": [
+        "react-hook-form",
+        "react-number-format",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/ui/currency-input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "confirmation",
+      "title": "Confirmation",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/confirmation.tsx",
+          "type": "registry:component",
+          "target": "components/confirmation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "title": "Data table",
+      "type": "registry:component",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/data-table/advanced.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/advanced.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/basic.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/basic.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/filter-popover.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/filter-popover.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/merged-cell.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/merged-cell.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/pagination.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/pagination.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/row-number-cell.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/row-number-cell.tsx"
+        },
+        {
+          "path": "registry/ionia/components/data-table/index.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/index.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-dialog",
+      "title": "Form dialog",
+      "type": "registry:component",
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "registryDependencies": [
+        "confirmation"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/form-dialog.tsx",
+          "type": "registry:component",
+          "target": "components/form-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-sheet",
+      "title": "Form dialog",
+      "type": "registry:component",
+      "dependencies": [
+        "react-hook-form",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "registryDependencies": [
+        "confirmation"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/form-sheet.tsx",
+          "type": "registry:component",
+          "target": "components/form-sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "title": "Sonner",
+      "type": "registry:component",
+      "dependencies": [
+        "uilab-core",
+        "lucide-react",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/sonner.tsx",
+          "type": "registry:component",
+          "target": "components/sonner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-grid",
+      "type": "registry:component",
+      "title": "Data Grid",
+      "registryDependencies": [
+        "hooks"
+      ],
+      "dependencies": [
+        "react-data-grid",
+        "lucide-react",
+        "uilab-core"
+      ],
+      "files": [
+        {
+          "path": "registry/ionia/components/data-grid.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid.tsx"
+        }
+      ],
+      "cssVars": {}
+    },
+    {
+      "name": "hooks",
+      "type": "registry:hooks",
+      "title": "Hooks",
+      "dependencies": [
+        "@tanstack/react-router"
+      ],
+      "files": [
+        {
+          "path": "hooks/use-filters.ts",
+          "type": "registry:hooks",
+          "target": "hooks/use-filters.ts"
+        }
+      ],
+      "cssVars": {}
+    }
+  ]
+}

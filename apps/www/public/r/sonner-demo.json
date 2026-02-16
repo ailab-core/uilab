@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-demo",
+  "dependencies": [
+    "sonner",
+    "next-themes",
+    "uilab-core"
+  ],
+  "files": [
+    {
+      "path": "registry/ionia/examples/sonner-demo.tsx",
+      "content": "import { Button } from \"uilab-core\";\nimport { toast } from \"sonner\";\n\nexport default function SonnerDemo() {\n  return (\n    <Button\n      onClick={() =>\n        toast.success(\"Data saved successfully!\", {\n          description: \"Your changes have been saved to the database.\",\n          action: {\n            label: \"Undo\",\n            onClick: () => alert(\"Undo\"),\n          },\n        })\n      }\n    >\n      Show Success Toast\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
