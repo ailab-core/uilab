@@ -1,0 +1,39 @@
+---
+title: Bubble
+description: A chat message bubble for displaying conversational content with support for alignment and multiple visual styles.
+isNew: true
+---
+
+<ComponentPreview name="bubble-preview" />
+
+## Usage
+
+```tsx
+import { Bubble, BubbleContent } from "uilab-core"
+```
+
+```tsx
+<Bubble variant="default">
+  <BubbleContent>Hello!</BubbleContent>
+</Bubble>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the visual style.
+
+<ComponentPreview name="bubble-variants" />
+
+### Align
+
+Use `align="start"` or `align="end"` to position the bubble.
+
+<ComponentPreview name="bubble-align" />
+
+### Reactions
+
+Use `BubbleReactions` to attach an emoji reaction badge.
+
+<ComponentPreview name="bubble-reactions" />
