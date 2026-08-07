@@ -1,0 +1,52 @@
+---
+title: Message
+description: Displays a chat message with avatar, header, footer, and content — pairs with Bubble for the message body.
+isNew: true
+---
+
+<ComponentPreview name="message-preview" />
+
+## Usage
+
+```tsx
+import { Message, MessageAvatar, MessageContent, MessageHeader, MessageFooter } from "uilab-core"
+```
+
+```tsx
+<Message align="start">
+  <MessageAvatar>👤</MessageAvatar>
+  <MessageContent>
+    <MessageHeader>Bat</MessageHeader>
+    <Bubble>
+      <BubbleContent>Hello!</BubbleContent>
+    </Bubble>
+    <MessageFooter>10:30 AM</MessageFooter>
+  </MessageContent>
+</Message>
+```
+
+## Examples
+
+### Align
+
+Use `align="start"` or `align="end"` to position the message and its avatar.
+
+<ComponentPreview name="message-align" />
+
+### Group
+
+Use `MessageGroup` to group consecutive messages from the same sender.
+
+<ComponentPreview name="message-group" />
+
+### Action
+
+Place message-level actions in `MessageFooter`, such as copy, retry, or feedback buttons. Give each icon-only button an `aria-label`.
+
+<ComponentPreview name="message-action" />
+
+### With Attachment
+
+Combine `Message`, `Bubble`, and `Attachment` to build a realistic conversation with file sharing.
+
+<ComponentPreview name="message-attachment" />

@@ -1,0 +1,54 @@
+---
+title: Marker
+description: A labeled marker for separating or annotating content, such as timestamps or section dividers.
+isNew: true
+---
+
+<ComponentPreview name="marker-preview" />
+
+## Usage
+
+```tsx
+import { Marker, MarkerIcon, MarkerContent } from "uilab-core"
+```
+
+```tsx
+<Marker>
+  <MarkerIcon>
+    <Clock />
+  </MarkerIcon>
+  <MarkerContent>10:30 AM</MarkerContent>
+</Marker>
+```
+
+## Examples
+
+### Separator
+
+Use `variant="separator"` for a horizontal divider with centered label.
+
+    <ComponentPreview name="marker-separator" />
+
+### Border
+
+Use `variant="border"` for a bottom-bordered label.
+
+<ComponentPreview name="marker-border" />
+
+### Loading
+
+Use an animated icon (e.g. `animate-spin`) to show streaming or thinking state.
+
+<ComponentPreview name="marker-loading" />
+
+### Tool activity
+
+Combine `variant="separator"` with `MarkerIcon` to show background activity like searches or file reads.
+
+<ComponentPreview name="marker-tool-activity" />
+
+### Activity feed
+
+Stack multiple markers to build a realistic agent activity feed.
+
+<ComponentPreview name="marker-feed" />

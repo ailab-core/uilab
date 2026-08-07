@@ -1,0 +1,63 @@
+---
+title: Message Scroller
+description: A scrollable container for chat messages with auto-scroll behavior and a scroll-to-bottom button.
+isNew: true
+---
+
+<ComponentPreview name="message-scroller-preview" />
+
+## Usage
+
+```tsx
+import {
+  MessageScrollerProvider,
+  MessageScroller,
+  MessageScrollerViewport,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerButton,
+} from "uilab-core"
+```
+
+```tsx
+<MessageScrollerProvider>
+  <MessageScroller>
+    <MessageScrollerViewport>
+      <MessageScrollerContent>
+        <MessageScrollerItem>
+          {/* message content */}
+        </MessageScrollerItem>
+      </MessageScrollerContent>
+    </MessageScrollerViewport>
+    <MessageScrollerButton />
+  </MessageScroller>
+</MessageScrollerProvider>
+```
+
+<Callout type="warning">
+`MessageScroller` must be wrapped in `MessageScrollerProvider` — omitting it throws "useMessageScroller must be used within a MessageScroller."
+</Callout>
+
+### Dual buttons
+
+Use two `MessageScrollerButton`s with `direction="start"` and `direction="end"` for two-way navigation.
+
+<ComponentPreview name="message-scroller-dual-buttons" />
+
+### Scrollable state
+
+Use `useMessageScrollerScrollable` to read which directions have more content, and update surrounding UI accordingly.
+
+<ComponentPreview name="message-scroller-scrollable" />
+
+### Jump controls
+
+Use `useMessageScroller` to drive the transcript from outside — jump to the start, end, or a specific message.
+
+<ComponentPreview name="message-scroller-jump" />
+
+### Visibility tracking
+
+Use `useMessageScrollerVisibility` to detect which messages are currently in view — useful for read receipts or active-turn indicators.
+
+<ComponentPreview name="message-scroller-visibility" />

@@ -13,9 +13,10 @@
     "registry:build": "shadcn build"
   },
   "dependencies": {
+    "@shadcn/react": "^0.2.1",
     "@tanstack/react-router": "^1.168.10",
     "@tanstack/react-table": "^8.21.3",
-    "fumadocs-core": "16.7.10",
+    "fumadocs-core": "16.13.0",
     "fumadocs-docgen": "^3.0.8",
     "fumadocs-mdx": "14.2.11",
     "fumadocs-ui": "npm:@fumadocs/base-ui@latest",
