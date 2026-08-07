@@ -1,0 +1,43 @@
+---
+title: Changelogs
+description: Latest updates and announcements
+icon: ScrollText
+---
+
+## August 2026 - New theme and components
+
+Our friend [shadcn](https://ui.shadcn.com) has released a new components!
+
+We've applied our styles and updated our package and it's released as version
+`uilab-core@0.4.0`
+
+Newly added components:
+- [Attachment](/docs/components/attachment)
+- [Bubble](/docs/components/bubble)
+- [Marker](/docs/components/marker)
+- [Message](/docs/components/message)
+- [MessageScroller](/docs/components/message-scroller)
+
+### New theme
+
+If you are going to update the package to the latest version, you will
+encounter a problem that says `uilab-core/theme.css` is not found or something
+like that.
+
+You need to update your css file like below
+
+```css
+@import "uilab-core/styles.css";
+@import "uilab-core/neutral.css";
+
+/*
+	This is the old source, you can remove this line
+	@import "uilab-core/theme.css";
+*/
+```
+
+If you don't like the new theme, you can always use the old one with this line
+```css
+@import "uilab-core/styles.css";
+@import "uilab-core/legacy.css";
+```
