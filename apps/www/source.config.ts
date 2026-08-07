@@ -1,12 +1,15 @@
 import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from 'fumadocs-mdx/config';
 import { remarkNpm, rehypeCode, type RehypeCodeOptions } from 'fumadocs-core/mdx-plugins';
+import { z } from 'zod';
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.dev/docs/mdx/collections
 export const docs = defineDocs({
   dir: 'content/docs',
   docs: {
-    schema: frontmatterSchema,
+    schema: frontmatterSchema.extend({
+      isNew: z.boolean().optional(),
+    }),
     postprocess: {
       includeProcessedMarkdown: true,
     },

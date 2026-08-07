@@ -4,7 +4,9 @@ import { AccordionDemos } from "./accordion"
 import { AlertDialogDemos } from "./alert-dialog"
 import { AlertDemos } from "./alert"
 import { AspectRatioDemos } from "./aspect-ratio"
+import { AttachmentDemos } from "./attachment"
 import { AvatarDemos } from "./avatar"
+import { BubbleDemos } from "./bubble"
 import { BadgeDemos } from "./badge"
 import { BreadcrumbDemos } from "./breadcrumb"
 import { ButtonDemos } from "./button"
@@ -27,7 +29,10 @@ import { InputOTPDemos } from "./input-otp"
 import { ItemDemos } from "./item"
 import { KbdDemos } from "./kbd"
 import { LabelDemos } from "./label"
+import { MarkerDemos } from "./marker"
 import { MenubarDemos } from "./menubar"
+import { MessageDemos } from "./message"
+import { MessageScrollerDemos } from "./message-scroller"
 import { NavigationMenuDemos } from "./navigation-menu"
 import { PaginationDemos } from "./pagination"
 import { PopoverDemos } from "./popover"
@@ -54,7 +59,9 @@ export const componentsDemos: Record<string, DemoItem> = {
     ...AlertDialogDemos,
     ...AlertDemos,
     ...AspectRatioDemos,
+    ...AttachmentDemos,
     ...AvatarDemos,
+    ...BubbleDemos,
     ...BadgeDemos,
     ...BreadcrumbDemos,
     ...ButtonGroupDemos,
@@ -77,7 +84,10 @@ export const componentsDemos: Record<string, DemoItem> = {
     ...ItemDemos,
     ...KbdDemos,
     ...LabelDemos,
+    ...MarkerDemos,
     ...MenubarDemos,
+    ...MessageDemos,
+    ...MessageScrollerDemos,
     ...NavigationMenuDemos,
     ...PaginationDemos,
     ...PopoverDemos,

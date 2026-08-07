@@ -1,0 +1,69 @@
+---
+title: Attachment
+description: Displays a file, image, or media attachment with support for states, sizes, and orientation.
+isNew: true
+---
+
+<ComponentPreview name="attachment-preview" />
+
+## Usage
+
+```tsx
+import { Attachment, AttachmentMedia, AttachmentContent, AttachmentTitle, AttachmentDescription } from "uilab-core"
+```
+
+```tsx
+<Attachment>
+  <AttachmentMedia>
+    <FileTextIcon />
+  </AttachmentMedia>
+  <AttachmentContent>
+    <AttachmentTitle>report.pdf</AttachmentTitle>
+    <AttachmentDescription>2.4 MB</AttachmentDescription>
+  </AttachmentContent>
+</Attachment>
+```
+
+## Examples
+
+### States
+
+Use the `state` prop to show idle, uploading, processing, error, or done states.
+
+<ComponentPreview name="attachment-states" />
+
+### Sizes
+
+Use the `size` prop to change the size.
+
+<ComponentPreview name="attachment-sizes" />
+
+### Vertical
+
+Use `orientation="vertical"` inside `AttachmentGroup` for a gallery-style layout.
+
+<ComponentPreview name="attachment-vertical" />
+
+### Actions
+
+Use `AttachmentActions` and `AttachmentAction` to add remove or download buttons.
+
+<ComponentPreview name="attachment-actions" />
+
+### Trigger
+
+Add an `AttachmentTrigger` to make the whole card open a dialog or link — actions stay independently clickable.
+
+<ComponentPreview name="attachment-trigger" />
+
+### Image
+
+Set `variant="image"` on `AttachmentMedia` and render an `<img>` inside it.
+
+<ComponentPreview name="attachment-image" />
+
+### Group
+
+Wrap attachments in `AttachmentGroup` to lay them out in a horizontally scrollable, snapping row.
+
+<ComponentPreview name="attachment-group" />
