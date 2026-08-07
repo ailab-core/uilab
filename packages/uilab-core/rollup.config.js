@@ -71,9 +71,21 @@ export default defineConfig([
   },
   // Theme variables only (for projects with their own Tailwind setup)
   {
-    input: 'src/theme.css',
+    input: 'src/legacy.css',
     output: {
-      file: 'dist/theme.css',
+      file: 'dist/legacy.css',
+    },
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: true,
+      }),
+    ],
+  },
+  {
+    input: 'src/neutral.css',
+    output: {
+      file: 'dist/neutral.css',
     },
     plugins: [
       postcss({

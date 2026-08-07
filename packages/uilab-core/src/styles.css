@@ -1,4 +1,1 @@
-/* Tailwind v4 source directive + theme variables */
-@import './theme.css';
-
 @source "./**/*";

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "fumadocs-ui/css/solar.css";
-@import "fumadocs-ui/css/preset.css";
 @import "uilab-core/styles.css";
 @import "uilab-core/theme.css";
+@import "fumadocs-ui/css/solar.css";
+@import "fumadocs-ui/css/preset.css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -12,11 +12,11 @@
   @apply m-0 pt-4 pr-2 pl-2;
 
   .fd-scroll-container {
-    @apply bg-transparent p-0!;
+    @apply bg-transparent !p-0;
   }
 
   .line {
-    @apply pl-0!;
+    @apply !pl-0;
   }
 
   [role="region"] {
