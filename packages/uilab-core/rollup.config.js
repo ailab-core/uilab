@@ -39,11 +39,6 @@ export default defineConfig([
       peerDepsExternal({
         includeDependencies: true,
       }),
-      typescript({
-        typescript: typescriptEngine,
-        tsconfig: './tsconfig.json',
-        sourceMap: true,
-      }),
       postcss({
         extract: false,
         inject: false,
@@ -52,6 +47,11 @@ export default defineConfig([
       }),
       terser(),
       preserveDirectives(),
+      typescript({
+        typescript: typescriptEngine,
+        tsconfig: './tsconfig.json',
+        sourceMap: true,
+      }),
     ],
     external: [/\.css$/],
   },
@@ -86,6 +86,18 @@ export default defineConfig([
     input: 'src/neutral.css',
     output: {
       file: 'dist/neutral.css',
+    },
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: true,
+      }),
+    ],
+  },
+  {
+    input: 'src/caffeine.css',
+    output: {
+      file: 'dist/caffeine.css',
     },
     plugins: [
       postcss({

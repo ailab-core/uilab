@@ -1,7 +1,7 @@
 {
   "name": "uilab-core",
   "description": "Uilab base components and blocks",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "author": "",
   "type": "module",
@@ -23,7 +23,9 @@
     "./legacy": "./dist/legacy.css",
     "./legacy.css": "./dist/legacy.css",
     "./neutral": "./dist/neutral.css",
-    "./neutral.css": "./dist/neutral.css"
+    "./neutral.css": "./dist/neutral.css",
+    "./caffeine": "./dist/caffeine.css",
+    "./caffeine.css": "./dist/caffeine.css"
   },
   "sideEffects": [
     "*.css"
