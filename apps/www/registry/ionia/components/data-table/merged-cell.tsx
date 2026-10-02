@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import type { CellContext } from "@tanstack/react-table";
-import { cn, TableCell } from "uilab-core";
+import { cn } from "cn";
+import { TableCell } from "uilab-core";
 
 type Props = {
   context: CellContext<any, unknown>;

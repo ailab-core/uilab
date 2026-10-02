@@ -1,7 +1,7 @@
 import { createContext, useContext, type ComponentProps } from "react"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import { cn } from "cn"
 
 export const dataListVariants = cva("overflow-hidden font-normal text-left", {
   variants: {

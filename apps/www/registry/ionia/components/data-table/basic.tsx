@@ -7,8 +7,8 @@ import {
   useReactTable,
   type TableMeta,
 } from "@tanstack/react-table";
+import { cn } from "cn";
 import {
-  cn,
   Skeleton,
   Table,
   TableBody,

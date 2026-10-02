@@ -13,9 +13,9 @@ import type {
   TableMeta
 } from "@tanstack/react-table";
 import { RefreshCcwIcon } from "lucide-react";
+import { cn } from "cn";
 import {
   Button,
-  cn,
   Skeleton,
   Table,
   TableBody,

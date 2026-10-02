@@ -1,5 +1,6 @@
 import * as React from "react"
 import { DataGrid as ReactDataGrid } from "react-data-grid"
+import { cn } from "cn"
 import {
   Button,
   Empty,
@@ -16,7 +17,6 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-  cn,
 } from "uilab-core"
 import type { DataGridProps as ReactDataGridProps } from "react-data-grid"
 

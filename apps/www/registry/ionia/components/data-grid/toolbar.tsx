@@ -1,5 +1,6 @@
 import { RefreshCcwIcon } from "lucide-react"
-import { Button, cn, Tooltip, TooltipContent, TooltipTrigger } from "uilab-core"
+import { cn } from "cn"
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from "uilab-core"
 
 export type DataGridToolbarProps = {
   /** Tooltip text for the refresh button */

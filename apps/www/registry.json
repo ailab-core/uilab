@@ -44,7 +44,8 @@
       "dependencies": [
         "react-hook-form",
         "react-number-format",
-        "uilab-core"
+        "uilab-core",
+        "cn"
       ],
       "files": [
         {
@@ -76,7 +77,8 @@
       "dependencies": [
         "@tanstack/react-table",
         "lucide-react",
-        "uilab-core"
+        "uilab-core",
+        "cn"
       ],
       "files": [
         {

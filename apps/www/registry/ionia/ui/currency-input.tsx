@@ -1,6 +1,7 @@
 import { BanknoteIcon } from "lucide-react";
 import { Controller, useFormContext } from "react-hook-form";
 import { NumericFormat } from "react-number-format";
+import { cn } from "cn";
 import {
   Field,
   FieldError,
@@ -8,7 +9,6 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-  cn,
 } from "uilab-core";
 import type { InputAttributes, NumberFormatValues } from "react-number-format";
 
