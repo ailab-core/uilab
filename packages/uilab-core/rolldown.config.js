@@ -4,16 +4,21 @@ import { dts } from 'rolldown-plugin-dts'
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'))
 
-// Peer dependencies (and their subpaths, e.g. react/jsx-runtime) are left to the consumer
-const peerDeps = Object.keys(packageJson.peerDependencies ?? {})
+// Dependencies and peer dependencies (and their subpaths, e.g. react/jsx-runtime) are
+// resolved by the consumer instead of being bundled. This also keeps their own
+// 'use client' directives intact (e.g. @base-ui/react), which bundling would drop
+const deps = Object.keys({
+  ...packageJson.dependencies,
+  ...packageJson.peerDependencies,
+})
 const external = [
-  new RegExp(`^(${peerDeps.join('|')})(/.*)?$`),
+  new RegExp(`^(${deps.join('|')})(/.*)?$`),
   /\.css$/,
 ]
 
 // CSS entry points are shipped as-is: styles.css (Tailwind @source + theme vars)
 // and the theme-only files for projects with their own Tailwind setup
-const cssFiles = ['styles.css', 'legacy.css', 'neutral.css', 'caffeine.css']
+const cssFiles = ['styles.css', 'default.css']
 
 /** @returns {import('rolldown').Plugin} */
 function copyCss() {
