@@ -1,0 +1,49 @@
+---
+title: Use with AI
+description: Give your AI assistant the UI Lab docs so it writes code that uses our components.
+icon: Sparkles
+---
+import { Callout } from 'fumadocs-ui/components/callout';
+
+AI assistants don't know UI Lab yet. Give them the docs, and they will use `uilab-core` components and blocks instead of guessing.
+
+## Give it all the docs
+
+|Link|What it is|
+|:-|:-|
+|[`/llms.txt`](/llms.txt)|A short index of every docs page with links. Good for tools that fetch pages on their own.|
+|[`/llms-full.txt`](/llms-full.txt)|All the docs in one file. Paste it, or give the link, to load everything at once.|
+
+For example, in Claude, ChatGPT or Cursor:
+
+```txt
+Read https://ui.ailab.mn/llms-full.txt and use uilab-core components to build a settings page.
+```
+
+## Give it one page
+
+Every docs page is also available as plain markdown. Add `.mdx` to the end of the URL:
+
+```txt
+https://ui.ailab.mn/docs/components/button.mdx
+```
+
+You can also use the buttons at the top of each page:
+
+- **Copy Markdown** copies the page so you can paste it into any chat.
+- **Open** opens the page directly in ChatGPT, Claude, T3 Chat or Scira AI.
+
+## Add it to your project
+
+For coding agents such as Claude Code or Cursor, add a short note to your project instructions (`CLAUDE.md`, `AGENTS.md` or `.cursor/rules`):
+
+```md title="CLAUDE.md"
+## UI
+- Use components from `uilab-core`. Docs: https://ui.ailab.mn/llms.txt
+- Add blocks with `npx shadcn@latest add @uilab-core/<name>`.
+- Don't edit uilab-core components. Change the theme with CSS variables (see https://ui.ailab.mn/docs/styling.mdx).
+```
+
+<Callout type="info" title="Blocks and the shadcn MCP">
+Once the `@uilab-core` registry is in your `components.json` (see [Get started](/docs/get-started)), agents that use the [shadcn MCP server](https://ui.shadcn.com/docs/mcp) can find and install UI Lab blocks on their own.
+</Callout>

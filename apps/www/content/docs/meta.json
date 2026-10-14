@@ -5,12 +5,10 @@
     "index",
     "get-started",
     "styling",
+    "ai",
     "changelogs",
     "---UI---",
     "components",
-    "blocks",
-    "---Resources---",
-    "[llms.txt](/llms.txt)",
-    "[llms-full.txt](/llms-full.txt)"
+    "blocks"
   ]
 }
