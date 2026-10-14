@@ -9,6 +9,7 @@ import {
   TourFooter,
   TourHeader,
   TourNext,
+  TourPortal,
   TourPrev,
   TourSpotlight,
   TourSpotlightRing,
@@ -118,52 +119,54 @@ export function TourControlled() {
           </TourFooter>
         }
       >
-        <TourSpotlight />
-        <TourSpotlightRing />
-        <TourStep target="#controlled-title" side="bottom" align="center">
-          <TourArrow />
-          <TourHeader>
-            <TourTitle>Controlled Tour</TourTitle>
-            <TourDescription>
-              This tour's state is controlled externally. Notice how the step
-              counter updates.
-            </TourDescription>
-          </TourHeader>
-          <TourClose />
-        </TourStep>
-        <TourStep target="#controlled-step-1" side="top" align="center">
-          <TourArrow />
-          <TourHeader>
-            <TourTitle>External Controls</TourTitle>
-            <TourDescription>
-              You can control this tour using the external buttons above, or use
-              the built-in navigation.
-            </TourDescription>
-          </TourHeader>
-          <TourClose />
-        </TourStep>
-        <TourStep target="#controlled-step-2" side="top" align="center">
-          <TourArrow />
-          <TourHeader>
-            <TourTitle>Second Feature</TourTitle>
-            <TourDescription>
-              The tour state is fully controlled by the parent component. Watch
-              what happens next!
-            </TourDescription>
-          </TourHeader>
-          <TourClose />
-        </TourStep>
-        <TourStep target="#controlled-step-3" side="top" align="center">
-          <TourArrow />
-          <TourHeader>
-            <TourTitle>Dynamic Layout</TourTitle>
-            <TourDescription>
-              This element appeared when you reached this step, demonstrating
-              how the tour handles dynamic content and layout shifts.
-            </TourDescription>
-          </TourHeader>
-          <TourClose />
-        </TourStep>
+        <TourPortal>
+          <TourSpotlight />
+          <TourSpotlightRing />
+          <TourStep target="#controlled-title" side="bottom" align="center">
+            <TourArrow />
+            <TourHeader>
+              <TourTitle>Controlled Tour</TourTitle>
+              <TourDescription>
+                This tour's state is controlled externally. Notice how the step
+                counter updates.
+              </TourDescription>
+            </TourHeader>
+            <TourClose />
+          </TourStep>
+          <TourStep target="#controlled-step-1" side="top" align="center">
+            <TourArrow />
+            <TourHeader>
+              <TourTitle>External Controls</TourTitle>
+              <TourDescription>
+                You can control this tour using the external buttons above, or
+                use the built-in navigation.
+              </TourDescription>
+            </TourHeader>
+            <TourClose />
+          </TourStep>
+          <TourStep target="#controlled-step-2" side="top" align="center">
+            <TourArrow />
+            <TourHeader>
+              <TourTitle>Second Feature</TourTitle>
+              <TourDescription>
+                The tour state is fully controlled by the parent component.
+                Watch what happens next!
+              </TourDescription>
+            </TourHeader>
+            <TourClose />
+          </TourStep>
+          <TourStep target="#controlled-step-3" side="top" align="center">
+            <TourArrow />
+            <TourHeader>
+              <TourTitle>Dynamic Layout</TourTitle>
+              <TourDescription>
+                This element appeared when you reached this step, demonstrating
+                how the tour handles dynamic content and layout shifts.
+              </TourDescription>
+            </TourHeader>
+            <TourClose />
+          </TourStep>
+        </TourPortal>
       </Tour>
     </div>
   );
