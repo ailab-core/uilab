@@ -1,13 +1,23 @@
 ---
 title: Get started
-description: How to install dependencies and structure your app.
+description: Install uilab-core, connect the UI Lab registry and add components and blocks to your project.
 icon: BookCheck
 ---
 import { Callout } from 'fumadocs-ui/components/callout';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+UI Lab ships in two parts:
+
+|Part|What it is|How you get it|
+|:-|------|------|
+|**Components**|Primitives such as `Button`, `Dialog` and `Table`, built on Base UI|The `uilab-core` npm package. Import them, don't copy them.|
+|**Blocks**|Higher-level pieces such as Data Table, Data Grid and Tour|The UI Lab [shadcn registry](https://ui.shadcn.com/docs/registry). The CLI copies the source into your project so you can change it.|
+
+Blocks are built from `uilab-core` components, so set up the package first, then the registry.
 
 ## Starting a new project
 
-If you are starting a new project, you can use the dashboard example right away with the following command:
+The quickest start is a template that already has everything below set up:
 
 ```bash
 npx gitpick https://github.com/ailab-core/uilab/tree/main/examples/template-vite-tanstack-router [your_project_name]
@@ -16,76 +26,150 @@ npm install
 npm run dev
 ```
 
-Every example here uses Tanstack Router so make sure to follow the [guide](https://tanstack.com/start/latest/docs/framework/react/guide/routing).
+- [Vite Template - TanStack Router App](https://github.com/ailab-core/uilab/tree/main/examples/template-vite-tanstack-router)
+- [Vite Template - TanStack Start App](https://github.com/ailab-core/uilab/tree/main/examples/template-vite-tanstack-start)
 
-### Examples
-- [Vite Template - Tanstack Router App](https://github.com/ailab-core/uilab/tree/main/examples/template-vite-tanstack-router)
-- [Vite Template - Tanstack Start App](https://github.com/ailab-core/uilab/tree/main/examples/template-vite-tanstack-start)
-<Callout type="warning">
-Tanstack Start Template not fully complete yet. Tanstack Start is in RC stage, not fully stable yet so expect frequent changes
-</Callout>
+Our projects use [TanStack Router](https://tanstack.com/router/latest) or [TanStack Start](https://tanstack.com/start/latest). Some blocks, such as Data Table, need TanStack Router.
 
-## Manual Setup
+## Manual setup
 
-Install these packages for your project.
+Your project needs React 19, TypeScript, [Tailwind CSS v4](https://tailwindcss.com/docs/installation/using-vite) and an `@/*` path alias pointing at your source folder.
 
-```bash
+<Steps>
+<Step>
+### Install uilab-core
+
+```package-install
 npm install uilab-core cn tw-animate-css lucide-react
 ```
+</Step>
+<Step>
+### Import the styles
 
-Import the component styles in your application entry point:
+Add the styles to your main CSS file, after Tailwind:
 
-```css title='app/global.css'
+```css title="src/styles.css"
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "uilab-core/styles.css";
-@import "uilab-core/neutral.css";
+@import "uilab-core/default.css";
 
 /* Make sure to add this too for themes */
 @custom-variant dark (&:is(.dark *));
 ```
 
-**Note that tailwindcss needs to be installed in your project! [See how](https://tailwindcss.com/docs/installation/using-vite)**
+`default.css` is the theme. See [Styling](/docs/styling) to change the brand color, radius and fonts.
+</Step>
+<Step>
+### Use a component
+
+```tsx
+import { Button } from "uilab-core"
+
+export function Save() {
+  return <Button>Save</Button>
+}
+```
+
+That's all you need for components. Continue below to use blocks.
+</Step>
+</Steps>
 
 ## Registry setup
 
-Our custom shadcn registry is deployed through GitLab pages and due to it's privacy, you will need your personal access token to add our custom components to your project
+Blocks are installed with the [shadcn CLI](https://ui.shadcn.com/docs/cli) from the UI Lab registry at `https://ui.ailab.mn/r`.
 
-```bash title='.env.local'
-PAT_TOKEN={YOUR_GITLAB_PAT_TOKEN}
-```
+<Steps>
+<Step>
+### Add a components.json
 
-```json
+The CLI reads `components.json` at your project root to know where to put files. Create it, or add the `registries` entry if you already have one:
+
+```json title="components.json"
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  ...
+  "style": "base-mira",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks",
+    "utils": "@/lib/utils"
+  },
   "registries": {
-    "@uilab": {
-      "url": "https://ailabmn.gitlab.io/frontend/uilab/r/{name}.json",
-      "headers": {
-        "Authorization": "Bearer ${PAT_TOKEN}"
-      }
-    }
+    "@uilab-core": "https://ui.ailab.mn/r/{name}.json"
   }
 }
 ```
 
-## TypeScript Support
+Point `tailwind.css` at the CSS file from the manual setup. The `aliases` decide where block files go and how their imports are rewritten.
+</Step>
+<Step>
+### Add a block
 
-All components are written in TypeScript and include complete type definitions. You'll get full IntelliSense support in your IDE:
+```package-install
+npx shadcn@latest add @uilab-core/data-table
+```
+
+The CLI copies the block's files into your project, installs its npm dependencies and adds any blocks it depends on. Data Table, for example, lands in `components/data-table/`, `hooks/` and `lib/`:
+
+```tsx
+import { DataTable } from "@/components/data-table/data-table"
+import { useDataTable } from "@/hooks/use-data-table"
+```
+
+You can add several at once: `npx shadcn@latest add @uilab-core/data-grid @uilab-core/tour`.
+</Step>
+</Steps>
+
+<Callout type="info" title="Available items">
+|Name|Install|
+|:-|:-|
+|[Data Table](/docs/blocks/data-table)|`@uilab-core/data-table`|
+|[Data Grid](/docs/blocks/data-grid)|`@uilab-core/data-grid`|
+|[Tour](/docs/blocks/tour)|`@uilab-core/tour`|
+|[Confirmation Dialog](/docs/blocks/confirmation)|`@uilab-core/confirmation`|
+|[Sonner](/docs/blocks/sonner)|`@uilab-core/sonner`|
+|Form Dialog, Form Sheet|`@uilab-core/form-dialog`, `@uilab-core/form-sheet`|
+|Currency Input|`@uilab-core/currency-input`|
+
+Each block page lists any provider or setup it needs. For example, Confirmation needs `ConfirmationProvider` around your app.
+</Callout>
+
+### Updating a block
+
+Block files are yours after you install them. To pull the latest version, preview what would change, then overwrite:
+
+```bash
+npx shadcn@latest add @uilab-core/data-table --dry-run
+npx shadcn@latest add @uilab-core/data-table --overwrite
+```
+
+`--overwrite` replaces your local copy, so commit or back up your changes first.
+
+## TypeScript support
+
+All components are written in TypeScript and include complete type definitions:
 
 ```tsx
 import { Button, type ButtonProps } from "uilab-core"
 
-// Full type support for props
 function MyButton(props: ButtonProps) {
   return <Button {...props} />
 }
 ```
 
-## Framework Compatibility
+## Framework compatibility
 
-`uilab-core` works with anything that's on client component.
+`uilab-core` and the blocks are client components. They work in any React app, including TanStack Router and TanStack Start.
 
-Server component however, is on experimental. There is a known issue of when using the function `cn` on server component. It errors out on console that `cn` function needs to be called in client component. A separate development will be done in near future.
-
+React Server Components are not supported yet. Calling `cn` from a server component logs an error that it must run in a client component.

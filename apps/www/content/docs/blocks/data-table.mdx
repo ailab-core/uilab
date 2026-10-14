@@ -1,257 +1,238 @@
 ---
 title: Data Table
-description: Powerful data table built using TanStack Table.
+description: Paginated data table with sorting, column filters and view options, with its state kept in TanStack Router search params.
+isNew: true
 ---
 import { Callout } from 'fumadocs-ui/components/callout';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-<Callout type="warn" title="Experimental">
-Things may change quickly
-</Callout>
-
 <ComponentPreview name="data-table-preview" />
 
 ## Introduction
-Every data table is unique and it depends on your use case and business logic. It's hard to have one data table that fits every single data display. Some needs to be simple and some needs to have complex filters and paginations (e.g. fintech stuff).
+Data Table is built on [TanStack Table](https://tanstack.com/table/latest) and ported from [Dice UI](https://diceui.com/docs/components/base/data-table). Pagination, sorting and filters live in the URL as [TanStack Router](https://tanstack.com/router/latest) search params, so a filtered view can be shared, bookmarked and restored with the back button. All primitives come from `uilab-core`.
 
-We have made 2 types of data tables using [Tanstack Table](https://tanstack.com/table/latest) which is a headless UI. Capability of this package is endless so you can change certain code to fit your use case.
+Use Data Table for read-mostly, paginated lists. Use [Data Grid](/docs/blocks/data-grid) when users need to **edit** data in place.
 
-[Tanstack Router](https://tanstack.com/router/latest)'s type-safe routing feature is super useful for filters and pagination, so we will be using it for demonstrations below.
+<Callout type="info" title="TanStack Router required">
+`useDataTable` reads and writes search params with `useSearch` and `useNavigate`, so the table must render inside a TanStack Router `RouterProvider`. Try the demo above: its pagination, sorting and filters are written to this page's URL.
+</Callout>
 
 ## Installation
+<Steps>
+<Step>
+Install via following command:
+<Callout type="info" title="Reminder">
+Following CLI command will install `@tanstack/react-table`, `@tanstack/react-router`, `@dnd-kit/*`, `cmdk` and `zod` to your project.
+</Callout>
 ```package-install
 npx shadcn add @uilab-core/data-table
 ```
+</Step>
+</Steps>
 
-## Basic Table
-Pretty basic and simple table. Made this for smaller data that does not need pagination or any other feature.
-<ComponentPreview name="data-table-basic" />
+## Usage
+```tsx
+import { DataTable } from "@/components/data-table/data-table";
+import { DataTableSortMenu } from "@/components/data-table/data-table-sort-menu";
+import { DataTableToolbar } from "@/components/data-table/data-table-toolbar";
+import { useDataTable } from "@/hooks/use-data-table";
 
+const { table } = useDataTable({
+  data,
+  columns,
+  pageCount,
+  getRowId: (row) => row.id,
+});
+
+<DataTable table={table}>
+  <DataTableToolbar table={table}>
+    <DataTableSortMenu table={table} />
+  </DataTableToolbar>
+</DataTable>
+```
+
+The toolbar renders one filter for each column with `enableColumnFilter: true` and picks the control from `meta.variant`. It also has a reset button and the view options (column visibility). Its children are rendered at the end of the toolbar.
+
+## Columns
+The column `id` is also the search param key for that column's filter.
+
+```tsx
+import type { ColumnDef } from "@tanstack/react-table";
+import { TextIcon } from "lucide-react";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
+import { getDataTableSelectColumn } from "@/components/data-table/data-table-select-column";
+import type { DataTableFeatures } from "@/lib/data-table-features";
+
+const columns = React.useMemo<ColumnDef<DataTableFeatures, Task>[]>(
+  () => [
+    // Checkbox column for row selection
+    getDataTableSelectColumn(),
+    {
+      id: "title",
+      accessorKey: "title",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} label="Title" />
+      ),
+      meta: {
+        label: "Title",
+        placeholder: "Search titles...",
+        variant: "text",
+        icon: TextIcon,
+      },
+      // Columns are not filterable unless this is `true`
+      enableColumnFilter: true,
+    },
+  ],
+  [],
+);
+```
+
+### Column meta
+|Option|Description|
+|:-|------|
+|`label`|Name shown in the toolbar, sort menu and view options|
+|`placeholder`|Placeholder of the `text` and `number` filter inputs|
+|`variant`|Filter control: `text`, `number`, `range`, `date`, `dateRange`, `boolean`, `select` or `multiSelect`|
+|`options`|`{ label, value, count?, icon? }[]` for `select` and `multiSelect`|
+|`range`|`[min, max]` for the `range` slider|
+|`unit`|Unit shown next to `number` and `range` values|
+|`icon`|Icon component shown next to the label|
+
+## Client and server mode
+In both modes, `useDataTable` keeps pagination, sorting and filters in the URL.
+
+|Mode|Description|
+|:-|------|
+|`server`|Default. Pass the current page of `data` and the total `pageCount` (required). The route loader reads the search params and queries your API.|
+|`client`|Pass all rows as `data` and omit `pageCount`. The table sorts, filters and paginates them in the browser.|
+
+### Client mode
+```tsx
+const { table } = useDataTable({
+  mode: "client",
+  data,
+  columns,
+  getRowId: (row) => row.id,
+});
+```
+
+### Server mode
 <Steps>
 <Step>
-### File structure
-Start by creating the following file structure:
-```
-products
-├── index.tsx
-└── -components
-    └── products-table
-        ├── columns.tsx
-        └── index.tsx
+Describe the filterable and sortable columns once, then share that config between the route and the column definitions:
+```ts title="routes/tasks/-search.ts"
+import type { DataTableColumnConfig } from "@/lib/data-table-types";
+import type { DataTableSearchOptions } from "@/lib/data-table-parsers";
+
+export const tasksColumnConfigs = {
+  // Sortable, not filterable
+  code: { isSortable: false },
+  title: { variant: "text" },
+  status: { variant: "multiSelect" },
+  estimatedHours: { variant: "range" },
+  createdAt: { variant: "dateRange" },
+} as const satisfies Record<string, DataTableColumnConfig>;
+
+export const tasksSearchOptions = {
+  columnConfigs: tasksColumnConfigs,
+  defaultSorting: [{ id: "createdAt", desc: true }],
+  defaultPerPage: 10,
+} satisfies DataTableSearchOptions<typeof tasksColumnConfigs>;
 ```
 </Step>
 <Step>
-### Column definitions
-```tsx title='-components/products-table/columns.tsx'
-export default [
-  {
-    accessorKey: "name",
-    header: "Name"
-  },
-  {
-    accessorKey: "email",
-    header: "Email"
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }: CellContext<DataItem, unknown>) => (
-      <Badge variant="outline">{row.getValue('status')}</Badge>
-    )
-  },
-  {
-    accessorKey: "createdAt",
-    header: "Created At"
-  }
-] as Array<ColumnDef<DataItem>>
-```
-</Step>
-<Step>
-### Render the table
-Prepare our table component to render on page
-```tsx title='-components/products-table/index.tsx'
-import columns from "./columns"
-import BasicDataTable from "@/components/data-table"
+Validate the search params on the route and turn them into a query in the loader. Because of `loaderDeps`, the loader re-runs whenever the table changes the URL:
+```tsx title="routes/tasks/index.tsx"
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  getDataTableQuery,
+  validateDataTableSearch,
+} from "@/lib/data-table-parsers";
+import { tasksSearchOptions } from "./-search";
 
-export function Table() {
-  const { data, isFetching } = useQuery(dataQuery())
+export const Route = createFileRoute("/tasks/")({
+  validateSearch: validateDataTableSearch(tasksSearchOptions),
+  loaderDeps: ({ search }) => search,
+  loader: ({ deps }) => {
+    // { page, perPage, sorting, filters, joinOperator }
+    const query = getDataTableQuery(deps, tasksSearchOptions);
+    return getTasks(query);
+  },
+  component: TasksPage,
+});
 
-  return (
-    <BasicDataTable
-      columns={columns}
-      data={data}
-      isFetching={isFetching}
-    />
-  );
+function TasksPage() {
+  const { data, pageCount } = Route.useLoaderData();
+  return <TasksTable data={data} pageCount={pageCount} />;
 }
+```
+Type your query function's input with `DataTableColumnConfigsQuery<typeof tasksColumnConfigs>`. Each filter has an `id`, `variant`, `operator` and `value` to map onto your API or database query.
+
+To add your own search params, spread the validator: `validateSearch: (search) => ({ ...validateDataTableSearch(tasksSearchOptions)(search), tab: search.tab as string | undefined })`.
+</Step>
+<Step>
+Spread `getColumnOptions` into each column so filtering and sorting match the config. Use the same defaults in `initialState`:
+```tsx
+import { getColumnOptions } from "@/lib/data-table-parsers";
+
+{
+  id: "title",
+  accessorKey: "title",
+  meta: { label: "Title", variant: "text" },
+  ...getColumnOptions(tasksColumnConfigs.title),
+}
+
+const { table } = useDataTable({
+  data,
+  columns,
+  pageCount,
+  initialState: {
+    sorting: tasksSearchOptions.defaultSorting,
+    pagination: { pageIndex: 0, pageSize: tasksSearchOptions.defaultPerPage },
+  },
+});
 ```
 </Step>
 </Steps>
 
-## Advanced Table
-<ComponentPreview name="data-table-preview" />
-
-<Steps>
-<Step>
-### File structure
-Start by creating the following file structure:
-```
-products
-├── index.tsx
-└── -components
-    ├── index.tsx
-    └── table
-        ├── columns.tsx
-        ├── filter.tsx
-        └── index.tsx
-```
-</Step>
-<Step>
-### Validate search params
-Page needs to validate if given search params is valid or not. We are using `zod` library for validation.
-```tsx title='products/index.tsx'
-import { createFileRoute } from "@tanstack/react-router"
-import * as z from "zod"
-import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "@/lib/constants"
-import { Table } from "./-components/table"
-
-export const productsSearchSchema = z.object({
-  pageIndex: z.number().catch(DEFAULT_PAGE_INDEX).optional(),
-  pageSize: z.number().catch(DEFAULT_PAGE_SIZE).optional(),
-})
-
-export const Route = createFileRoute("/products/")({
-  component: ProductsPage,
-  validateSearch: productsSearchSchema.parse,
-})
-
-function ProductsPage() {
-  return <Table />
-}
-```
-</Step>
-<Step>
-### Filter component
-<Callout type="info" title="Reminder">
-Filter form components should be controlled components, so when sharing the url, the values are instantly filled into the form components. Ease of use.
+<Callout type="warn" title="Keep defaults in sync">
+Search params that equal their default are left out of the URL. `defaultSorting` and `defaultPerPage` in the route options must match the hook's `initialState`. Otherwise the loader and the table disagree whenever the URL omits them.
 </Callout>
-```tsx title='products/-components/table/filter.tsx'
-import { FormProvider, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { productsSearchSchema } from "../../"
 
-export default function Filter() {
-  const { filters, setFilters, resetFilters } = useFilters(PATH)
-  const form = useForm({
-    resolver: zodResolver(productsSearchSchema),
-    values: filters,
-  })
+## URL format
+Each filterable column has its own search param, keyed by column id. The value is the operator followed by the filter value. When a filter uses the column's default operator, the operator is left out. Several filters on the same column are stored as an array.
 
-  const handleSubmit = form.handleSubmit((items: SearchSchema) => {
-    setFilters(items)
-  })
-
-  const handleReset = () => {
-    resetFilters().then(() => {
-      form.reset()
-      form.clearErrors()
-    })
-  }
-
-  return (
-    <FormProvider {...form}>
-      <form
-        className="flex flex-wrap items-end gap-2 rounded-lg border border-dashed p-2"
-        onSubmit={handleSubmit}
-      >
-        <InputGroup>
-          <InputGroupAddon>
-            <MailIcon />
-          </InputGroupAddon>
-          <InputGroupInput
-            placeholder="Filter emails..."
-            value={emailFilter}
-            onChange={(e) => setEmailFilter(e.target.value)}
-          />
-        </InputGroup>
-        <Button variant="outline" size="icon" onClick={handleReset}>
-          <RotateCcw />
-        </Button>
-        <Button type="submit">
-          <SearchIcon />
-          {t("search")}
-        </Button>
-      </form>
-    </FormProvider>
-  )
-}
+```txt
+?title=report                     # text, default operator (contains)
+?title=eq.Weekly%20report         # text, "is"
+?status=todo,done                 # multi-select, default operator (has any of)
+?estimatedHours=2,8               # range, default operator (between)
+?estimatedHours=gt.4              # range, "is greater than"
+?createdAt=is.empty               # no value
+?sort=createdAt.desc,title.asc
+?page=2&perPage=20
 ```
-</Step>
-<Step>
-### Column definition
-```tsx title='products/-components/table/columns.tsx'
-export default [
-  {
-    accessorKey: "name",
-    header: "Name"
-  },
-  {
-    accessorKey: "email",
-    header: "Email"
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }: CellContext<DataItem, unknown>) => (
-      <Badge variant="outline">{row.getValue('status')}</Badge>
-    )
-  },
-  {
-    accessorKey: "createdAt",
-    header: "Created At"
-  }
-] as Array<ColumnDef<DataItem>>
-```
-</Step>
-<Step>
-### Render the table
-```tsx title='products/-components/table/index.tsx'
-import { AdvancedDataTable } from "@/components/data-table"
-import { useFilters } from "@/hooks/use-filter"
-import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "@/lib/constants"
-import Filter from "./filter"
-import columns from "./columns"
 
-export function Table() {
-  // This filter will be using `/products` page's validated search params.
-  const { filters, setFilters } = useFilters("/products/")
+## API reference
+### useDataTable
+Accepts every TanStack Table option except `state`, `features` and the `manual*` flags, plus:
 
-  const paginationState = {
-    pageIndex: filters.pageIndex ?? DEFAULT_PAGE_INDEX,
-    pageSize: filters.pageSize ?? DEFAULT_PAGE_SIZE,
-  }
+|Option|Default|Description|
+|:-|:-|------|
+|`mode`|`"server"`|`"server"` or `"client"`, see above|
+|`pageCount`|-|Total page count, required in server mode|
+|`queryKeys`|-|Rename the `page`, `perPage`, `sort` and `joinOperator` search params|
+|`history`|`"replace"`|Replace the current history entry or push a new one|
+|`debounceMs`|`300`|Delay before filter changes are written to the URL|
+|`clearOnDefault`|`true`|Leave search params out of the URL when they equal their default|
+|`scroll`|`false`|Scroll to the top when the search params change|
 
-  const { data, isFetching, refetch } = useQuery(
-    dataQuery({
-      ...filters,
-      page: paginationState.pageIndex.toString(),
-      size: paginationState.pageSize.toString(),
-    }),
-  )
+### DataTable
+|Prop|Description|
+|:-|------|
+|`table`|Table instance from `useDataTable`|
+|`actionBar`|Rendered under the table while any visible row is selected|
+|`children`|Rendered above the table, usually `DataTableToolbar`|
 
-  return (
-    <AdvancedDataTable
-      columns={COLUMNS}
-      data={data}
-      refetch={refetch}
-      isFetching={isFetching}
-      leftHeader={<Filter />}
-      // For example: You can add sheet components with trigger
-      rightHeader={<Button><PlusIcon />Add</Button>}
-      pagination={paginationState}
-    />
-  );
-}
-```
-</Step>
-</Steps>
+### DataTablePagination
+`DataTable` renders it for you. When you use it on its own, it accepts `pageSizeOptions` (default `[10, 20, 30, 40, 50]`).

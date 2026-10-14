@@ -29,10 +29,10 @@ import {
 ```
 
 ## Link Component (experimental)
-Use the render prop to compose a custom link component such as Next.js Link.
+Use the render prop to compose a router link, such as TanStack Router's `Link`.
 Copy
 ```tsx
-import Link from "next/link"
+import { Link } from "@tanstack/react-router"
 
 import {
   NavigationMenuItem,
@@ -44,7 +44,7 @@ export function NavigationMenuDemo() {
   return (
     <NavigationMenuItem>
       <NavigationMenuLink
-        render={<Link href="/docs" />}
+        render={<Link to="/docs" />}
         className={navigationMenuTriggerStyle()}
       >
         Documentation

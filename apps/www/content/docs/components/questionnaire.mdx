@@ -1,0 +1,75 @@
+---
+title: Questionnaire
+description: A step-by-step form that shows one question at a time, with choices, text answers, keyboard shortcuts and progress.
+isNew: true
+---
+
+<ComponentPreview name="questionnaire-preview" />
+
+## Usage
+
+```tsx
+import {
+  Questionnaire,
+  QuestionnaireActions,
+  QuestionnaireChoice,
+  QuestionnaireChoices,
+  QuestionnaireItem,
+  QuestionnaireNext,
+  QuestionnairePrevious,
+  QuestionnaireProgress,
+  QuestionnaireSubmit,
+  QuestionnaireTitle,
+} from "uilab-core"
+```
+
+```tsx
+<Questionnaire onSubmit={onSubmit}>
+  <QuestionnaireProgress />
+  <QuestionnaireItem name="role" required>
+    <QuestionnaireTitle>What best describes your role?</QuestionnaireTitle>
+    <QuestionnaireChoices>
+      <QuestionnaireChoice value="developer">Developer</QuestionnaireChoice>
+      <QuestionnaireChoice value="designer">Designer</QuestionnaireChoice>
+    </QuestionnaireChoices>
+  </QuestionnaireItem>
+  <QuestionnaireActions>
+    <QuestionnairePrevious />
+    <QuestionnaireNext />
+    <QuestionnaireSubmit />
+  </QuestionnaireActions>
+</Questionnaire>
+```
+
+`Questionnaire` renders a `<form>`, and each `QuestionnaireItem` is one question. Only the current question is shown. Answers are submitted as regular form fields named after each item's `name`, so read them with `FormData` in `onSubmit`.
+
+## Answers
+
+|Answer type|How|
+|:-|------|
+|Single choice|`QuestionnaireChoices` with `QuestionnaireChoice` items (radio buttons)|
+|Multiple choice|Add `multiple` to `QuestionnaireItem` (checkboxes)|
+|Text|`QuestionnaireInput` instead of choices. Accepts `type` such as `email`, `number` or `date`|
+
+Add `QuestionnaireChoiceDescription` inside a choice for a second line of text.
+
+## Required questions
+
+Add `required` to a `QuestionnaireItem` to stop users moving on without an answer. `QuestionnaireError` shows its message when they try.
+
+## Keyboard shortcuts
+
+Set `shortcuts="letters"` or `shortcuts="numbers"` on `Questionnaire` to pick choices with `A`/`B`/`C` or `1`/`2`/`3`. Each choice shows its key, and `Enter` moves to the next question.
+
+## Navigation
+
+|Component|Shown|
+|:-|------|
+|`QuestionnairePrevious`|After the first question|
+|`QuestionnaireSkip`|On optional questions|
+|`QuestionnaireNext`|Before the last question|
+|`QuestionnaireSubmit`|On the last question|
+
+Each button accepts `variant` and `size` like `Button`. Pass children to change the label.
+
+Use `item`, `defaultItem` and `onItemChange` on `Questionnaire` to control which question is shown.

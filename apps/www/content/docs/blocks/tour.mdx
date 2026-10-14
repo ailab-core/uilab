@@ -1,0 +1,155 @@
+---
+title: Tour
+description: Guided product tour that spotlights elements on the page and walks users through them step by step.
+isNew: true
+---
+import { Callout } from "fumadocs-ui/components/callout";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview name="tour-preview" />
+
+## Introduction
+Tour dims the page, cuts a spotlight around a target element, and anchors a step card next to it. Steps are positioned with [Floating UI](https://floating-ui.com), and the buttons come from `uilab-core`.
+
+## Installation
+<Steps>
+<Step>
+Install via following command:
+<Callout type="info" title="Reminder">
+Following CLI command will install `@base-ui/react`, `@base-ui/utils` and `@floating-ui/react-dom` to your project.
+</Callout>
+```package-install
+npx shadcn add @uilab-core/tour
+```
+</Step>
+</Steps>
+
+## Layout
+Import the parts and compose them together.
+```tsx
+import {
+  Tour,
+  TourArrow,
+  TourClose,
+  TourDescription,
+  TourFooter,
+  TourHeader,
+  TourNext,
+  TourPortal,
+  TourPrev,
+  TourSkip,
+  TourSpotlight,
+  TourSpotlightRing,
+  TourStep,
+  TourStepCounter,
+  TourTitle,
+} from "@/components/ui/tour"
+
+<Tour>
+  <TourPortal>
+    <TourSpotlight />
+    <TourSpotlightRing />
+    <TourStep target="#element">
+      <TourArrow />
+      <TourClose />
+      <TourHeader>
+        <TourTitle />
+        <TourDescription />
+      </TourHeader>
+      <TourFooter>
+        <TourStepCounter />
+        <TourPrev />
+        <TourNext />
+        <TourSkip />
+      </TourFooter>
+    </TourStep>
+  </TourPortal>
+</Tour>
+```
+
+`target` takes a CSS selector, a ref, or an element. Pass `stepFooter` to `Tour` to share one footer across every step instead of repeating it.
+
+## Examples
+
+### Controlled
+Control the open state and the current step from outside the tour with `value` and `onValueChange`.
+<ComponentPreview name="tour-controlled" />
+
+### Custom spotlight styling
+Style the highlighted area with `TourSpotlightRing`:
+```tsx
+<TourSpotlightRing className="rounded-lg border-2 border-primary" />
+<TourSpotlightRing className="rounded-xl ring-2 ring-blue-500 ring-offset-2" />
+<TourSpotlightRing className="rounded-lg shadow-lg shadow-primary/50" />
+<TourSpotlightRing className="animate-pulse rounded-lg border-2 border-primary" />
+```
+
+### Global offsets
+Set default spacing on `Tour` and override it per step:
+```tsx
+<Tour open={open} onOpenChange={setOpen} sideOffset={16} alignOffset={0}>
+  <TourPortal>
+    <TourSpotlight />
+    <TourSpotlightRing />
+    {/* Uses sideOffset={16} */}
+    <TourStep target="#step-1" side="bottom">
+      <TourHeader>
+        <TourTitle>Step 1</TourTitle>
+      </TourHeader>
+    </TourStep>
+    {/* Overrides with sideOffset={32} */}
+    <TourStep target="#step-2" side="top" sideOffset={32}>
+      <TourHeader>
+        <TourTitle>Step 2 - Larger gap</TourTitle>
+      </TourHeader>
+    </TourStep>
+  </TourPortal>
+</Tour>
+```
+
+## API Reference
+
+### Tour
+| Prop | Type | Description |
+| --- | --- | --- |
+| `open` / `defaultOpen` / `onOpenChange` | `boolean` | Controlled or uncontrolled open state. |
+| `value` / `defaultValue` / `onValueChange` | `number` | Controlled or uncontrolled current step index. |
+| `onComplete` | `() => void` | Called when the last step is finished. |
+| `onSkip` | `() => void` | Called when the tour is skipped. |
+| `onEscapeKeyDown` | `(event) => void` | Called on Escape. Closes the tour unless prevented. |
+| `onPointerDownOutside` / `onInteractOutside` | `(event) => void` | Called on interaction outside the step. |
+| `onOpenAutoFocus` / `onCloseAutoFocus` | `(event) => void` | Focus management hooks. |
+| `dir` | `"ltr" \| "rtl"` | Reading direction. |
+| `sideOffset` / `alignOffset` | `number` | Default offsets for every step. |
+| `spotlightPadding` | `number` | Padding around the spotlight cutout. |
+| `autoScroll` / `scrollBehavior` / `scrollOffset` | | Scroll the target into view on each step. |
+| `dismissible` | `boolean` | Whether outside clicks and Escape close the tour. |
+| `modal` | `boolean` | Trap focus and block interaction with the page. |
+| `stepFooter` | `ReactElement` | Footer rendered in every step. |
+
+### TourStep
+| Prop | Type | Description |
+| --- | --- | --- |
+| `target` | `string \| RefObject<HTMLElement> \| HTMLElement` | Element to spotlight. |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | Side of the target to place the step. |
+| `align` | `"start" \| "center" \| "end"` | Alignment against the target. |
+| `sideOffset` / `alignOffset` | `number` | Overrides the tour defaults. |
+| `collisionBoundary` / `collisionPadding` / `avoidCollisions` | | Floating UI collision handling. |
+| `arrowPadding` | `number` | Padding between the arrow and the card edges. |
+| `sticky` | `"partial" \| "always"` | Keep the step attached while scrolling. |
+| `hideWhenDetached` | `boolean` | Hide the step when the target is clipped. |
+| `required` | `boolean` | User can't skip or close on this step. |
+| `forceMount` | `boolean` | Keep the step mounted when inactive. |
+| `onStepEnter` / `onStepLeave` | `() => void` | Step lifecycle callbacks. |
+
+`TourSpotlight` and `TourSpotlightRing` expose `data-state="open" | "closed"`. `TourStep` exposes `data-side` and `data-align`.
+
+## Accessibility
+| Key | Description |
+| --- | --- |
+| `Escape` | Triggers `onEscapeKeyDown`. Closes the tour unless prevented. |
+| `Tab` / `Shift+Tab` | Moves focus between focusable elements in the step. |
+| `Enter` / `Space` | Activates the focused button (next, previous, skip or close). |
+
+## Credits
+Ported from [Dice UI Tour](https://diceui.com/docs/components/base/tour).

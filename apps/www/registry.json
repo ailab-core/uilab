@@ -49,7 +49,7 @@
       ],
       "files": [
         {
-          "path": "registry/ionia/ui/currency-input.tsx",
+          "path": "registry/base/ui/currency-input.tsx",
           "type": "registry:component"
         }
       ]
@@ -64,7 +64,7 @@
       ],
       "files": [
         {
-          "path": "registry/ionia/components/confirmation.tsx",
+          "path": "registry/base/components/confirmation.tsx",
           "type": "registry:component",
           "target": "components/confirmation.tsx"
         }
@@ -72,49 +72,119 @@
     },
     {
       "name": "data-table",
-      "title": "Data table",
-      "type": "registry:component",
+      "type": "registry:block",
+      "title": "Data Table",
+      "description": "Paginated data table with sorting, column filters and view options, keeping its state in TanStack Router search params.",
       "dependencies": [
         "@tanstack/react-table",
+        "@tanstack/react-router",
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@base-ui/react",
+        "@base-ui/utils",
+        "cmdk",
+        "zod",
         "lucide-react",
         "uilab-core",
         "cn"
       ],
       "files": [
         {
-          "path": "registry/ionia/components/data-table/advanced.tsx",
+          "path": "registry/base/components/data-table/data-table.tsx",
           "type": "registry:component",
-          "target": "components/data-table/advanced.tsx"
+          "target": "components/data-table/data-table.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/basic.tsx",
+          "path": "registry/base/components/data-table/data-table-column-header.tsx",
           "type": "registry:component",
-          "target": "components/data-table/basic.tsx"
+          "target": "components/data-table/data-table-column-header.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/filter-popover.tsx",
+          "path": "registry/base/components/data-table/data-table-date-filter.tsx",
           "type": "registry:component",
-          "target": "components/data-table/filter-popover.tsx"
+          "target": "components/data-table/data-table-date-filter.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/merged-cell.tsx",
+          "path": "registry/base/components/data-table/data-table-faceted-filter.tsx",
           "type": "registry:component",
-          "target": "components/data-table/merged-cell.tsx"
+          "target": "components/data-table/data-table-faceted-filter.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/pagination.tsx",
+          "path": "registry/base/components/data-table/data-table-pagination.tsx",
           "type": "registry:component",
-          "target": "components/data-table/pagination.tsx"
+          "target": "components/data-table/data-table-pagination.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/row-number-cell.tsx",
+          "path": "registry/base/components/data-table/data-table-select-column.tsx",
           "type": "registry:component",
-          "target": "components/data-table/row-number-cell.tsx"
+          "target": "components/data-table/data-table-select-column.tsx"
         },
         {
-          "path": "registry/ionia/components/data-table/index.tsx",
+          "path": "registry/base/components/data-table/data-table-skeleton.tsx",
           "type": "registry:component",
-          "target": "components/data-table/index.tsx"
+          "target": "components/data-table/data-table-skeleton.tsx"
+        },
+        {
+          "path": "registry/base/components/data-table/data-table-slider-filter.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/data-table-slider-filter.tsx"
+        },
+        {
+          "path": "registry/base/components/data-table/data-table-sort-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/data-table-sort-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-table/data-table-toolbar.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/data-table-toolbar.tsx"
+        },
+        {
+          "path": "registry/base/components/data-table/data-table-view-options.tsx",
+          "type": "registry:component",
+          "target": "components/data-table/data-table-view-options.tsx"
+        },
+        {
+          "path": "registry/base/ui/faceted.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/base/ui/sortable.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/base/hooks/use-data-table.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-debounced-callback.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/lib/data-table-features.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-table-filters.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-table-parsers.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-table-types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-table-utils.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/format.ts",
+          "type": "registry:lib"
         }
       ]
     },
@@ -128,11 +198,11 @@
         "uilab-core"
       ],
       "registryDependencies": [
-        "confirmation"
+        "https://ui.ailab.mn/r/confirmation.json"
       ],
       "files": [
         {
-          "path": "registry/ionia/components/form-dialog.tsx",
+          "path": "registry/base/components/form-dialog.tsx",
           "type": "registry:component",
           "target": "components/form-dialog.tsx"
         }
@@ -148,11 +218,11 @@
         "uilab-core"
       ],
       "registryDependencies": [
-        "confirmation"
+        "https://ui.ailab.mn/r/confirmation.json"
       ],
       "files": [
         {
-          "path": "registry/ionia/components/form-sheet.tsx",
+          "path": "registry/base/components/form-sheet.tsx",
           "type": "registry:component",
           "target": "components/form-sheet.tsx"
         }
@@ -169,7 +239,7 @@
       ],
       "files": [
         {
-          "path": "registry/ionia/components/sonner.tsx",
+          "path": "registry/base/components/sonner.tsx",
           "type": "registry:component",
           "target": "components/sonner.tsx"
         }
@@ -177,40 +247,203 @@
     },
     {
       "name": "data-grid",
-      "type": "registry:component",
+      "type": "registry:block",
       "title": "Data Grid",
-      "registryDependencies": [
-        "hooks"
-      ],
+      "description": "High-performance editable data grid with virtualization, keyboard navigation, cell editing, filtering, sorting and undo/redo.",
       "dependencies": [
-        "react-data-grid",
+        "@tanstack/react-table",
+        "@tanstack/react-virtual",
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "@base-ui/react",
+        "@base-ui/utils",
+        "cmdk",
+        "sonner",
         "lucide-react",
-        "uilab-core"
+        "uilab-core",
+        "cn"
       ],
       "files": [
         {
-          "path": "registry/ionia/components/data-grid.tsx",
+          "path": "registry/base/components/data-grid/data-grid-cell-variants.tsx",
           "type": "registry:component",
-          "target": "components/data-grid.tsx"
+          "target": "components/data-grid/data-grid-cell-variants.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-cell-wrapper.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-cell-wrapper.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-cell.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-cell.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-column-header.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-column-header.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-context-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-context-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-filter-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-filter-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-keyboard-shortcuts.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-keyboard-shortcuts.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-paste-dialog.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-paste-dialog.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-presence.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-presence.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-row-height-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-row-height-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-row.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-row.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-search.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-search.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-select-column.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-select-column.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-skeleton.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-skeleton.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-sort-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-sort-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid-view-menu.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid-view-menu.tsx"
+        },
+        {
+          "path": "registry/base/components/data-grid/data-grid.tsx",
+          "type": "registry:component",
+          "target": "components/data-grid/data-grid.tsx"
+        },
+        {
+          "path": "registry/base/hooks/use-data-grid.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-data-grid-undo-redo.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-badge-overflow.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-debounced-callback.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-ref-with-init.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/hooks/use-value-as-ref.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/base/lib/data-grid-features.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-grid-filters.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-grid-types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/data-grid-utils.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/lib/format.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/base/ui/faceted.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/base/ui/sortable.tsx",
+          "type": "registry:ui"
         }
-      ],
-      "cssVars": {}
+      ]
     },
     {
       "name": "hooks",
-      "type": "registry:hooks",
+      "type": "registry:hook",
       "title": "Hooks",
       "dependencies": [
         "@tanstack/react-router"
       ],
       "files": [
         {
-          "path": "hooks/use-filters.ts",
-          "type": "registry:hooks",
-          "target": "hooks/use-filters.ts"
+          "path": "registry/base/hooks/use-filters.tsx",
+          "type": "registry:hook"
         }
       ],
       "cssVars": {}
+    },
+    {
+      "name": "tour",
+      "type": "registry:ui",
+      "title": "Tour",
+      "description": "Guided product tour that spotlights page elements and walks users through them step by step.",
+      "dependencies": [
+        "@base-ui/react",
+        "@base-ui/utils",
+        "@floating-ui/react-dom",
+        "lucide-react",
+        "uilab-core",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/base/ui/tour.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tour.tsx"
+        }
+      ]
     }
   ]
 }

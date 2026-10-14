@@ -4,6 +4,38 @@ description: Latest updates and announcements
 icon: ScrollText
 ---
 
+## October 2026 - New blocks and one theme file
+
+Released as `uilab-core@0.4.5`.
+
+New component:
+- [Questionnaire](/docs/components/questionnaire): one question at a time, with progress
+
+New blocks:
+- [Data Grid](/docs/blocks/data-grid): editable, spreadsheet-like grid
+- [Tour](/docs/blocks/tour): step-by-step product tour
+
+Updated:
+- [Data Table](/docs/blocks/data-table): rebuilt with sorting, filters and view options. It needs TanStack Router.
+- All components updated to the latest shadcn and Base UI.
+- [Get started](/docs/get-started) and [Styling](/docs/styling) rewritten to be shorter.
+
+### Theme file renamed
+
+`neutral.css` and `legacy.css` are gone. There is now one theme file, `default.css`. Update your CSS:
+
+```css
+@import "uilab-core/styles.css";
+@import "uilab-core/default.css";
+
+/* Remove these old lines:
+	@import "uilab-core/neutral.css";
+	@import "uilab-core/legacy.css";
+*/
+```
+
+To use your own brand colors, see [Styling](/docs/styling).
+
 ## August 2026 - New theme and components
 
 Our friend [shadcn](https://ui.shadcn.com) has released a new components!

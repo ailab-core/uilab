@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hooks",
+  "title": "Hooks",
+  "dependencies": [
+    "@tanstack/react-router"
+  ],
+  "files": [
+    {
+      "path": "registry/base/hooks/use-filters.tsx",
+      "content": "import type { RegisteredRouter, RouteIds } from \"@tanstack/react-router\";\nimport { getRouteApi, useNavigate } from \"@tanstack/react-router\";\n\nconst cleanEmptyParams = <T extends Record<string, unknown>>(search: T) => {\n  const newSearch = { ...search };\n  Object.keys(newSearch).forEach((key) => {\n    const value = newSearch[key];\n    if (\n      value === undefined ||\n      value === \"\" ||\n      (typeof value === \"number\" && isNaN(value))\n    )\n      delete newSearch[key];\n  });\n\n  return newSearch;\n};\n\nexport function useFilters<T extends RouteIds<RegisteredRouter[\"routeTree\"]>>(\n  routeId: T,\n) {\n  const routeApi = getRouteApi<T>(routeId);\n  const navigate = useNavigate();\n  const filters = routeApi.useSearch();\n\n  const setFilters = (partialFilters: Partial<typeof filters>) =>\n    navigate({\n      to: \".\",\n      search: (prev: any) => cleanEmptyParams({ ...prev, ...partialFilters }),\n      replace: true,\n    });\n\n  const resetFilters = (search?: any) =>\n    navigate({ to: \".\", search: search || {}, replace: true });\n\n  return { filters, setFilters, resetFilters };\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "cssVars": {},
+  "type": "registry:hook"
+}

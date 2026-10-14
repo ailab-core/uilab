@@ -1,0 +1,28 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { generateOGImage } from "fumadocs-ui/og/takumi";
+import { appName } from "@/lib/shared";
+import { source } from "@/lib/source";
+
+export const Route = createFileRoute("/og/docs/$")({
+  server: {
+    handlers: {
+      GET: ({ params }) => {
+        // The last segment is the file name (`image.png`)
+        const slugs = (params._splat?.split("/") ?? [])
+          .filter((segment) => segment.length > 0)
+          .slice(0, -1);
+        const page = source.getPage(slugs);
+        if (!page) return new Response(undefined, { status: 404 });
+
+        return generateOGImage({
+          title: page.data.title,
+          description: page.data.description,
+          site: appName,
+          format: "png",
+          width: 1200,
+          height: 630,
+        });
+      },
+    },
+  },
+});

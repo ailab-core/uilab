@@ -1,15 +1,120 @@
 ---
 title: Styling
-description: A guide to styling components with our color system.
+description: Add the UI Lab styles to your project and put your brand color on top.
 icon: Palette
 ---
-## Extended Color Variables
+import { Callout } from 'fumadocs-ui/components/callout';
 
-- `--info`: Information state color
-- `--info-foreground`: Foreground color for information states
-- `--success`: Success state color
-- `--success-foreground`: Foreground color for success states
-- `--warning`: Warning state color
-- `--warning-foreground`: Foreground color for warning states
+All UI Lab colors are CSS variables. To change the look, you override the variables in your own CSS. You never edit the components.
 
-These additional variables ensure consistent styling across components that need to communicate different states or levels of importance.
+## 1. Add the styles
+
+Put these lines at the top of your main CSS file:
+
+```css title="src/styles.css"
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "uilab-core/styles.css";   /* base styles */
+@import "uilab-core/default.css";  /* default theme */
+
+@custom-variant dark (&:is(.dark *));
+```
+
+Your project now uses the default theme. Anything you write **below** these lines overrides it.
+
+## 2. Add your brand color
+
+Your brand color goes in `--primary`. Buttons, checkboxes, switches, links and focus outlines all use it.
+
+Paste this below the imports and replace the colors with yours:
+
+```css title="src/styles.css"
+:root {
+  --primary: #2563eb;              /* your brand color */
+  --primary-foreground: #ffffff;   /* text on top of it */
+  --ring: #2563eb;                 /* focus outline */
+}
+
+.dark {
+  --primary: #3b82f6;              /* slightly lighter for dark mode */
+  --primary-foreground: #ffffff;
+  --ring: #3b82f6;
+}
+```
+
+That's it. Every component now uses your brand color.
+
+<Callout type="info" title="Tips">
+- Any CSS color works: hex, `rgb()`, `hsl()` or `oklch()`. [oklch.com](https://oklch.com) is a good picker.
+- `--primary-foreground` must be readable on your brand color: white on dark colors, near-black on light ones.
+- Using the sidebar? Also set `--sidebar-primary` and `--sidebar-primary-foreground`.
+</Callout>
+
+## Other colors you can change
+
+Every color is a pair: a background and the text on it (`--card` and `--card-foreground`). Change both together, in `:root` for light mode and `.dark` for dark mode.
+
+|Variable|Used for|
+|:-|:-|
+|`--background` / `--foreground`|Page background and text|
+|`--card` / `--card-foreground`|Cards|
+|`--popover` / `--popover-foreground`|Menus, popovers, dialogs|
+|`--secondary` / `--secondary-foreground`|Secondary buttons|
+|`--muted` / `--muted-foreground`|Subtle backgrounds and hint text|
+|`--accent` / `--accent-foreground`|Hovered items in menus and lists|
+|`--destructive`|Delete actions and errors|
+|`--border`, `--input`|Borders and input borders|
+|`--chart-1` … `--chart-5`|Chart colors|
+|`--sidebar-*`|Sidebar versions of the above|
+
+Each one has a matching Tailwind class: `--card` → `bg-card`, `--muted-foreground` → `text-muted-foreground`, and so on.
+
+## Corners
+
+`--radius` controls how rounded everything is. The default is `0.625rem`.
+
+```css title="src/styles.css"
+:root {
+  --radius: 0.375rem; /* use 0 for square corners, 1rem for soft */
+}
+```
+
+## Font
+
+Load your font, then set it as the sans font:
+
+```css title="src/styles.css"
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap");
+@import "tailwindcss";
+/* ...the other imports */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+```
+
+The font `@import url(...)` line must be the first line in the file.
+
+## Dark mode
+
+Dark mode is on when `<html>` (or any parent) has the `dark` class. Add or remove that class yourself, or use a library like [next-themes](https://github.com/pacocoursey/next-themes), which also works without Next.js.
+
+## Add a new color
+
+Need a second brand color? Define it and register it with Tailwind:
+
+```css title="src/styles.css"
+:root {
+  --brand-2: #db2777;
+}
+
+.dark {
+  --brand-2: #ec4899;
+}
+
+@theme inline {
+  --color-brand-2: var(--brand-2);
+}
+```
+
+Now you can use `bg-brand-2`, `text-brand-2` and `border-brand-2`.

@@ -7,7 +7,7 @@
     "cssDir": "./styles",
     "libDir": "./lib"
   },
-  "baseDir": "",
+  "baseDir": "src",
   "uiLibrary": "base-ui",
   "commands": {}
 }

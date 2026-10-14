@@ -1,11 +1,297 @@
 ---
 title: Data Grid
-description: The DataGrid component is designed to handle large datasets efficiently while offering a rich set of features for customization and interactivity.
+description: High-performance editable data grid with virtualization, spreadsheet-like keyboard navigation and cell editing.
+isNew: true
 ---
 import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout type="warn" title="Experimental">
-Things may change quickly
-</Callout>
+import { Step, Steps } from "fumadocs-ui/components/steps";
 
 <ComponentPreview name="data-grid-preview" />
+
+## Introduction
+Data Grid is a spreadsheet-like grid built on [TanStack Table](https://tanstack.com/table/latest) and [TanStack Virtual](https://tanstack.com/virtual/latest). Rows and columns are virtualized, so 10,000+ rows stay smooth. All primitives (popover, select, command, calendar…) come from `uilab-core`.
+
+Use [Data Table](/docs/blocks/data-table) for read-mostly, paginated lists. Use Data Grid when users need to **edit** data in place.
+
+## Installation
+<Steps>
+<Step>
+Install via following command:
+<Callout type="info" title="Reminder">
+Following CLI command will install `@tanstack/react-table`, `@tanstack/react-virtual`, `@dnd-kit/*`, `cmdk` and `sonner` to your project.
+</Callout>
+```package-install
+npx shadcn add @uilab-core/data-grid
+```
+</Step>
+<Step>
+Make sure the `Toaster` from [Sonner](/docs/blocks/sonner) is mounted. The grid uses it for copy/paste and validation feedback.
+</Step>
+</Steps>
+
+The block installs the following files:
+```
+components/data-grid/   # grid, cells, header, menus, skeleton...
+hooks/                  # use-data-grid, use-data-grid-undo-redo, ...
+lib/                    # data-grid-types, data-grid-filters, ...
+components/ui/          # faceted, sortable
+```
+
+## Usage
+```tsx
+"use client"
+
+import * as React from "react"
+import type { ColumnDef } from "@tanstack/react-table"
+import { DataGrid } from "@/components/data-grid/data-grid"
+import { DataGridKeyboardShortcuts } from "@/components/data-grid/data-grid-keyboard-shortcuts"
+import { useDataGrid } from "@/hooks/use-data-grid"
+import type { DataGridFeatures } from "@/lib/data-grid-features"
+
+type Person = { id: string; name?: string; age?: number }
+
+const columns: ColumnDef<DataGridFeatures, Person>[] = [
+  {
+    id: "name",
+    accessorKey: "name",
+    header: "Name",
+    meta: { cell: { variant: "short-text" } },
+  },
+  {
+    id: "age",
+    accessorKey: "age",
+    header: "Age",
+    meta: { cell: { variant: "number", min: 0 } },
+  },
+]
+
+export function PeopleGrid({ initialData }: { initialData: Person[] }) {
+  const [data, setData] = React.useState(initialData)
+
+  const { table, ...dataGridProps } = useDataGrid({
+    data,
+    columns,
+    onDataChange: setData,
+    getRowId: (row) => row.id,
+  })
+
+  return (
+    <>
+      <DataGridKeyboardShortcuts />
+      <DataGrid table={table} {...dataGridProps} />
+    </>
+  )
+}
+```
+
+<Callout type="info" title="Performance">
+Define `columns` outside the component (or memoize them). A new columns array on every render forces the whole grid to rebuild.
+</Callout>
+
+## Examples
+### Read only
+Pass `readOnly` to disable every edit, paste and delete action. `stretchColumns` makes columns fill the available width.
+<ComponentPreview name="data-grid-read-only" />
+
+### Loading
+Render `DataGridSkeleton` while data is loading, e.g. as a `Suspense` fallback.
+<ComponentPreview name="data-grid-skeleton" />
+
+### Toolbar
+Filter, sort, row height and column visibility menus all take the `table` instance.
+```tsx
+<div role="toolbar" aria-orientation="horizontal" className="flex items-center gap-2 self-end">
+  <DataGridFilterMenu table={table} />
+  <DataGridSortMenu table={table} />
+  <DataGridRowHeightMenu table={table} />
+  <DataGridViewMenu table={table} />
+</div>
+```
+
+Filtering only works on columns that have a `filterFn`. Set `meta.label` to control the name shown in the menus.
+```tsx
+import { getFilterFn } from "@/lib/data-grid-filters"
+
+const filterFn = getFilterFn<Person>()
+
+const columns: ColumnDef<DataGridFeatures, Person>[] = [
+  {
+    id: "name",
+    accessorKey: "name",
+    header: "Name",
+    filterFn,
+    meta: { label: "Name", cell: { variant: "short-text" } },
+  },
+]
+```
+
+### Row selection
+```tsx
+import { getDataGridSelectColumn } from "@/components/data-grid/data-grid-select-column"
+
+const columns = [
+  getDataGridSelectColumn<Person>({ enableRowMarkers: true }),
+  ...personColumns,
+]
+```
+
+### Adding and deleting rows
+`onRowAdd` can return the cell to focus after the row is created. `onRowsAdd` is used by paste when it needs to grow the grid. This is faster than adding rows one at a time.
+```tsx
+const { table, ...dataGridProps } = useDataGrid({
+  data,
+  columns,
+  onDataChange: setData,
+  getRowId: (row) => row.id,
+  onRowAdd: () => {
+    const row = { id: crypto.randomUUID() }
+    setData((prev) => [...prev, row])
+    return { rowId: row.id, columnId: "name" }
+  },
+  onRowsAdd: (count) => {
+    setData((prev) => [
+      ...prev,
+      ...Array.from({ length: count }, () => ({ id: crypto.randomUUID() })),
+    ])
+  },
+  onRowsDelete: (rows) => {
+    const removed = new Set(rows)
+    setData((prev) => prev.filter((row) => !removed.has(row)))
+  },
+})
+```
+
+### Search and paste
+```tsx
+useDataGrid({
+  data,
+  columns,
+  enableSearch: true, // Ctrl/Cmd + F
+  enablePaste: true,  // Ctrl/Cmd + V
+})
+```
+
+### Undo / redo
+`useDataGridUndoRedo` keeps the history, and you report each change to it. The preview source at the top of this page has a full example.
+```tsx
+import { useDataGridUndoRedo } from "@/hooks/use-data-grid-undo-redo"
+
+const { trackCellsUpdate, trackRowsAdd, trackRowsDelete } = useDataGridUndoRedo({
+  data,
+  onDataChange: setData,
+  getRowId: (row) => row.id,
+})
+```
+
+### Column pinning
+```tsx
+useDataGrid({
+  data,
+  columns,
+  initialState: {
+    columnPinning: { start: ["select", "name"], end: ["actions"] },
+  },
+})
+```
+
+### RTL
+Wrap the grid in Base UI's `DirectionProvider`.
+```tsx
+import { DirectionProvider } from "@base-ui/react/direction-provider"
+
+<DirectionProvider direction="rtl">
+  <PeopleGrid />
+</DirectionProvider>
+```
+
+## Cell variants
+Set the variant with `meta.cell.variant` on the column.
+
+|Variant|Options|Description|
+|:-|:-|:-|
+|`short-text`|-|Single-line inline text|
+|`long-text`|-|Multi-line text edited in a popover|
+|`number`|`min`, `max`, `step`|Numeric input|
+|`url`|-|Validated, clickable link|
+|`checkbox`|-|Boolean value|
+|`select`|`options: { label, value }[]`|Single choice|
+|`multi-select`|`options: { label, value }[]`|Multiple choices rendered as badges|
+|`date`|-|Date picker using `Calendar`|
+|`file`|`maxFileSize`, `maxFiles`, `accept`, `multiple`|File upload, requires `onFilesUpload` and `onFilesDelete`|
+
+```tsx
+useDataGrid({
+  data,
+  columns,
+  onFilesUpload: async ({ files, rowId, columnId }) => {
+    const uploaded = await uploadFiles(files)
+    return uploaded.map((f) => ({ id: f.id, name: f.name, size: f.size, type: f.type, url: f.url }))
+  },
+  onFilesDelete: async ({ fileIds }) => {
+    await deleteFiles(fileIds)
+  },
+})
+```
+
+### Custom variants
+A cell variant receives `DataGridCellProps` and wraps its content in `DataGridCellWrapper`. The wrapper handles focus, selection, search highlighting and keyboard events.
+```tsx
+import { DataGridCellWrapper } from "@/components/data-grid/data-grid-cell-wrapper"
+import type { DataGridCellProps } from "@/lib/data-grid-types"
+
+export function RatingCell<TData>(props: DataGridCellProps<TData>) {
+  const value = props.cell.getValue() as number
+
+  return <DataGridCellWrapper {...props}>{"★".repeat(value)}</DataGridCellWrapper>
+}
+```
+
+## API
+### useDataGrid
+Accepts all TanStack Table options, plus the following:
+
+|Prop|Type|Description|
+|:-|:-|:-|
+|`onDataChange`|`(data: TData[]) => void`|Called after any cell edit, paste or clear|
+|`onRowAdd`|`() => Partial<CellPosition> \| null`|Enables adding rows (`Shift + Enter`, footer button). Return the cell to focus|
+|`onRowsAdd`|`(count: number) => void`|Bulk add used by paste|
+|`onRowsDelete`|`(rows: TData[], rowIds: string[]) => void`|Enables deleting rows|
+|`onPaste`|`(updates: CellUpdate[]) => void`|Intercept pasted updates|
+|`onFilesUpload` / `onFilesDelete`|`(params) => Promise`|Required for `file` cells|
+|`enableSearch`|`boolean`|Ctrl/Cmd + F search|
+|`enablePaste`|`boolean`|Clipboard paste|
+|`readOnly`|`boolean`|Disable editing|
+|`autoFocus`|`boolean \| Partial<CellPosition>`|Focus a cell on mount|
+|`overscan`|`number`|Rows rendered outside the viewport|
+
+### DataGrid
+Takes everything returned by `useDataGrid`, plus:
+
+|Prop|Type|Default|
+|:-|:-|:-|
+|`height`|`number`|`600`|
+|`stretchColumns`|`boolean`|`false`|
+
+## Keyboard shortcuts
+Press `Ctrl/Cmd + /` inside the grid to see every shortcut.
+
+|Keys|Action|
+|:-|:-|
+|`↑ ↓ ← →`, `Tab`, `Shift + Tab`|Move between cells|
+|`Home` / `End`|First / last column|
+|`Ctrl/Cmd + Home` / `End`|First / last cell|
+|`PgUp` / `PgDn`|Move one page|
+|`Shift + Arrow`|Extend selection|
+|`Ctrl/Cmd + A`|Select all cells|
+|`Enter`, `F2`, double click|Edit cell|
+|`Escape`|Exit edit mode / clear selection|
+|`Shift + Enter`|Insert row below|
+|`Ctrl/Cmd + C` / `X` / `V`|Copy / cut / paste|
+|`Delete`, `Backspace`|Clear selected cells|
+|`Ctrl/Cmd + Backspace`|Delete selected rows|
+|`Ctrl/Cmd + Z` / `Ctrl/Cmd + Shift + Z`|Undo / redo|
+|`Ctrl/Cmd + F`|Search|
+|`Ctrl/Cmd + Shift + F` / `S`|Open filter / sort menu|
+
+## Credits
+Ported from [Dice UI Data Grid](https://diceui.com/docs/components/base/data-grid) and adapted to use `uilab-core` primitives.

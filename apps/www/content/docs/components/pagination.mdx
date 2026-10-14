@@ -51,23 +51,15 @@ A simple pagination with only page numbers.
 Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
 <ComponentPreview name="pagination-icons-only" />
 
-## Next.js
-By default the `<PaginationLink />` component will render an `<a />` tag.
+## TanStack Router
+By default the `<PaginationLink />` component renders an `<a />` tag. Wrap it with `createLink` to get a type-safe router link with `to`, `params` and `search`.
+```tsx
+import { createLink } from "@tanstack/react-router"
+import { PaginationLink } from "uilab-core"
 
-To use the Next.js `<Link />` component, make the following updates to `pagination.tsx`.
-```diff
-+ import Link from "next/link"
+const PaginationRouterLink = createLink(PaginationLink)
 
-- type PaginationLinkProps = ... & React.ComponentProps<"a">
-+ type PaginationLinkProps = ... & React.ComponentProps<typeof Link>
-
-const PaginationLink = ({...props }: ) => (
-  <PaginationItem>
--   <a>
-+   <Link>
-      // ...
--   </a>
-+   </Link>
-  </PaginationItem>
-)
+<PaginationRouterLink to="/posts" search={{ page: 2 }} isActive>
+  2
+</PaginationRouterLink>
 ```

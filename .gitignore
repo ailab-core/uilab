@@ -14,7 +14,9 @@ node_modules
 
 # outputs
 .turbo
-.next
+.output
+.nitro
+.tanstack
 dist
 .contentlayer
 .eslintcache
@@ -40,4 +42,3 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
